@@ -1525,6 +1525,17 @@
       "numdoc": "69f3f2a5-993a-4bbe-8b1f-cd3619499f5e",
       "favorecido": "--",
       "historico": "Transferência enviada pelo Pix - Luiz Martins de Souza - •••.871.706-•• - MERCADO PAGO IP LTDA. (0323) Agência: 1 Conta: 4187198287-0"
+    },
+    {
+      "id": 137,
+      "numbanco": 1,
+      "data": "2026-08-03",
+      "valor": 30,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.302",
+      "favorecido": "Pix - Enviado",
+      "historico": "03/08 08:00 Luiz Martins de Souza"
     }
   ]
 }
