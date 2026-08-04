@@ -1547,6 +1547,61 @@
       "numdoc": "42.151",
       "favorecido": "Pagamento de DARF/RFB",
       "historico": "RFB - PAGAMENTO DARF/RFB"
+    },
+    {
+      "id": 138,
+      "numbanco": 1,
+      "data": "2026-08-03",
+      "valor": 50,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.301",
+      "favorecido": "Pix - Enviado",
+      "historico": "01/08 17:32 Geisa Reck Brasil de Souz"
+    },
+    {
+      "id": 139,
+      "numbanco": 1,
+      "data": "2026-08-03",
+      "valor": 30,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.302",
+      "favorecido": "Pix - Enviado",
+      "historico": "03/08 08:00 Luiz Martins de Souza"
+    },
+    {
+      "id": 140,
+      "numbanco": 1,
+      "data": "2026-08-03",
+      "valor": 0.26,
+      "operacao": "D",
+      "especie": "O",
+      "numdoc": "511.058.923",
+      "favorecido": "Cobrança de Juros",
+      "historico": "Cobrança de Juros"
+    },
+    {
+      "id": 141,
+      "numbanco": 1,
+      "data": "2026-08-03",
+      "valor": 0.13,
+      "operacao": "D",
+      "especie": "O",
+      "numdoc": "391.100.701",
+      "favorecido": "Cobrança de I.O.F.",
+      "historico": "Cobrança de I.O.F."
+    },
+    {
+      "id": 142,
+      "numbanco": 1,
+      "data": "2026-08-04",
+      "valor": 5166.4,
+      "operacao": "C",
+      "especie": "O",
+      "numdoc": "179.144.277",
+      "favorecido": "Benefício INSS",
+      "historico": "Benefício INSS"
     }
   ]
 }
