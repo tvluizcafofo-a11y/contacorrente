@@ -2383,6 +2383,17 @@
       "numdoc": "6a0b2b34-6dd4-4d5f-a8e1-6e8a6d359ef7",
       "favorecido": "--",
       "historico": "Transferencia enviada pelo Pix - LUIZ MARTINS DE SOUZA - ***.871.706-** - Banco XP S.A. (0348) Agencia: 1 Conta: 254987-5"
+    },
+    {
+      "id": 214,
+      "numbanco": 260,
+      "data": "2026-03-10",
+      "valor": 5,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "69b07bec-e6d2-4e07-a958-bdac44f2f28a",
+      "favorecido": "--",
+      "historico": "Transferencia recebida pelo Pix - LUIZ MARTINS DE SOUZA - ***.871.706-** - BCO DO BRASIL S.A. (0001) Agencia: 3491 Conta: 37258-7"
     }
   ]
 }
