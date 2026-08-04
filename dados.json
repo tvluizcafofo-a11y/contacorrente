@@ -2240,28 +2240,6 @@
       "numdoc": "171354050728",
       "favorecido": "Pix enviado Luiz Martins de Souza",
       "historico": "Pix enviado Luiz Martins de Souza (Ref: 171354050728)"
-    },
-    {
-      "id": 201,
-      "numbanco": 260,
-      "data": "2026-06-16",
-      "valor": 1,
-      "operacao": "C",
-      "especie": "P",
-      "numdoc": "6a30ec16-72ac-40b7-93f5-91da1672ce41",
-      "favorecido": "--",
-      "historico": "Transferencia recebida pelo Pix - LUIZ MARTINS DE SOUZA - â¢â¢â¢.871.706-â¢â¢ - BCO DO BRASIL S.A. (0001) Agencia: 3491 Conta: 37258-7"
-    },
-    {
-      "id": 202,
-      "numbanco": 260,
-      "data": "2026-06-20",
-      "valor": 5,
-      "operacao": "C",
-      "especie": "P",
-      "numdoc": "6a36a7db-0ffc-4061-bbcc-48b2e313920d",
-      "favorecido": "--",
-      "historico": "Transferencia recebida pelo Pix - Luiz Martins de Souza - â¢â¢â¢.871.706-â¢â¢ - MERCADO PAGO IP LTDA. (0323) Agencia: 1 Conta: 4187198287-0"
     }
   ]
 }
