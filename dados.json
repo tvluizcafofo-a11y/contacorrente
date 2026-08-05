@@ -2464,6 +2464,39 @@
       "numdoc": "51.514.261.663.612",
       "favorecido": "Pix - Recebido",
       "historico": "05/08 15:14 00025587170659 LUIZ MARTIN"
+    },
+    {
+      "id": 223,
+      "numbanco": 323,
+      "data": "2026-08-03",
+      "valor": 30,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "171812440872",
+      "favorecido": "Pix recebido LUIZ MARTINS DE SOUZA",
+      "historico": "Pix recebido LUIZ MARTINS DE SOUZA (Ref: 171812440872)"
+    },
+    {
+      "id": 224,
+      "numbanco": 323,
+      "data": "2026-08-03",
+      "valor": 15.37,
+      "operacao": "D",
+      "especie": "O",
+      "numdoc": "171812938934",
+      "favorecido": "Pagamento Padaria padua caicara",
+      "historico": "Pagamento Padaria padua caicara (Ref: 171812938934)"
+    },
+    {
+      "id": 225,
+      "numbanco": 323,
+      "data": "2026-08-03",
+      "valor": 10,
+      "operacao": "D",
+      "especie": "A",
+      "numdoc": "171813179098",
+      "favorecido": "Reserva por gastos Reforma Fusca",
+      "historico": "Reserva por gastos Reforma Fusca (Ref: 171813179098)"
     }
   ]
 }
