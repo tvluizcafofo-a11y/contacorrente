@@ -2497,17 +2497,6 @@
       "numdoc": "171813179098",
       "favorecido": "Reserva por gastos Reforma Fusca",
       "historico": "Reserva por gastos Reforma Fusca (Ref: 171813179098)"
-    },
-    {
-      "id": 226,
-      "numbanco": 756,
-      "data": "2026-08-05",
-      "valor": 100,
-      "operacao": "D",
-      "especie": "P",
-      "numdoc": "9999",
-      "favorecido": "Luiz",
-      "historico": "Teste"
     }
   ]
 }
