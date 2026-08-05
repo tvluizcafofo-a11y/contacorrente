@@ -2420,6 +2420,17 @@
       "numdoc": "0000",
       "favorecido": "Luiz",
       "historico": "Rendimento da conta"
+    },
+    {
+      "id": 217,
+      "numbanco": 1,
+      "data": "2026-08-05",
+      "valor": 63.44,
+      "operacao": "D",
+      "especie": "O",
+      "numdoc": "2.534",
+      "favorecido": "Pagto Energia Eletrica",
+      "historico": "Pagto Energia Eletrica"
     }
   ]
 }
