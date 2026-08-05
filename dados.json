@@ -2431,6 +2431,39 @@
       "numdoc": "2.534",
       "favorecido": "Pagto Energia Eletrica",
       "historico": "Pagto Energia Eletrica"
+    },
+    {
+      "id": 220,
+      "numbanco": 1,
+      "data": "2026-08-05",
+      "valor": 145.17,
+      "operacao": "D",
+      "especie": "A",
+      "numdoc": "80.501",
+      "favorecido": "Pagamento de Boleto",
+      "historico": "COOPERATIVA ORIGO GERACAO DIST"
+    },
+    {
+      "id": 221,
+      "numbanco": 1,
+      "data": "2026-08-05",
+      "valor": 20,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.502",
+      "favorecido": "Pix - Enviado",
+      "historico": "05/08 15:11 ALEXIS XAVIER DA SILVA"
+    },
+    {
+      "id": 222,
+      "numbanco": 1,
+      "data": "2026-08-05",
+      "valor": 145,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "51.514.261.663.612",
+      "favorecido": "Pix - Recebido",
+      "historico": "05/08 15:14 00025587170659 LUIZ MARTIN"
     }
   ]
 }
