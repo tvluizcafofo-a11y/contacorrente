@@ -2,8 +2,12 @@
   "usuarios": [
     {
       "codigo": 1,
-      "nome": "Luiz",
-      "senha": "macaco"
+      "nome": "Luiz Martins",
+      "senha": "macaco",
+      "nomeCompleto": "",
+      "endereco": "",
+      "telefone": "",
+      "email": ""
     }
   ],
   "bancos": [
