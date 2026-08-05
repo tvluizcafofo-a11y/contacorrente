@@ -2,11 +2,11 @@
   "usuarios": [
     {
       "codigo": 1,
-      "nome": "Luiz Martins",
+      "nome": "Luiz",
       "senha": "macaco",
-      "nomeCompleto": "",
-      "endereco": "",
-      "telefone": "",
+      "nomeCompleto": "Luiz Martins de Souza",
+      "endereco": "R. Cisplatina 387 - Caiçara - BH",
+      "telefone": "31988129977",
       "email": ""
     }
   ],
