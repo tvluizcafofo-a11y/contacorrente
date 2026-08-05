@@ -2405,6 +2405,17 @@
       "numdoc": "41.940.369.972.692",
       "favorecido": "Pix - Recebido",
       "historico": "04/08 19:40 00025587170659 LUIZ MARTIN"
+    },
+    {
+      "id": 216,
+      "numbanco": 260,
+      "data": "2026-08-05",
+      "valor": 0.08,
+      "operacao": "C",
+      "especie": "O",
+      "numdoc": "0000",
+      "favorecido": "Luiz",
+      "historico": "Rendimento da conta"
     }
   ]
 }
