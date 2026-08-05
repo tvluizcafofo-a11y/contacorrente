@@ -2398,6 +2398,39 @@
       "numdoc": "0000",
       "favorecido": "Luiz",
       "historico": "Rendimento da conta"
+    },
+    {
+      "id": 217,
+      "numbanco": 1,
+      "data": "2026-08-04",
+      "valor": 100,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "41.940.369.972.692",
+      "favorecido": "Pix - Recebido",
+      "historico": "04/08 19:40 00025587170659 LUIZ MARTIN"
+    },
+    {
+      "id": 218,
+      "numbanco": 1,
+      "data": "2026-08-04",
+      "valor": 71,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.403",
+      "favorecido": "Pix - Enviado",
+      "historico": "04/08 15:42 ALEXIS XAVIER DA SILVA"
+    },
+    {
+      "id": 219,
+      "numbanco": 1,
+      "data": "2026-08-05",
+      "valor": 63.44,
+      "operacao": "D",
+      "especie": "A",
+      "numdoc": "2.534",
+      "favorecido": "Pagto Energia Eletrica",
+      "historico": "Pagto Energia Eletrica"
     }
   ]
 }
