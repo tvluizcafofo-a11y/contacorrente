@@ -2497,6 +2497,17 @@
       "numdoc": "0",
       "favorecido": "Luiz M. de Souza",
       "historico": "Manual"
+    },
+    {
+      "id": 227,
+      "numbanco": 1,
+      "data": "2026-07-31",
+      "valor": 319,
+      "operacao": "C",
+      "especie": "O",
+      "numdoc": "311.259.389.637.672",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "31/07 12:59 00007483756608 CINTHIA REC"
     }
   ]
 }
