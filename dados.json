@@ -1564,17 +1564,6 @@
       "historico": "31/07 13:25 MUNICIPIO DE BELO HORIZON"
     },
     {
-      "id": 140,
-      "numbanco": 1,
-      "data": "2026-07-31",
-      "valor": 123.26,
-      "operacao": "D",
-      "especie": "P",
-      "numdoc": "73.105",
-      "favorecido": "Pix - Enviado",
-      "historico": "31/07 13:28 MUNICIPIO DE BELO HORIZON"
-    },
-    {
       "id": 143,
       "numbanco": 323,
       "data": "2026-07-02",
