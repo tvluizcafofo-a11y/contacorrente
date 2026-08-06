@@ -770,6 +770,127 @@
       "numdoc": "42.151",
       "favorecido": "RFB - PAGAMENTO DARF/RFB",
       "historico": "Pagamento de DARF/RFB"
+    },
+    {
+      "id": 67,
+      "numbanco": 1,
+      "data": "2026-08-03",
+      "valor": 50,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.301",
+      "favorecido": "01/08 17:32 Geisa Reck Brasil de Souz",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 68,
+      "numbanco": 1,
+      "data": "2026-08-03",
+      "valor": 30,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.302",
+      "favorecido": "03/08 08:00 Luiz Martins de Souza",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 69,
+      "numbanco": 1,
+      "data": "2026-08-04",
+      "valor": 5166.4,
+      "operacao": "C",
+      "especie": "O",
+      "numdoc": "179.144.277",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Beneficio INSS"
+    },
+    {
+      "id": 70,
+      "numbanco": 1,
+      "data": "2026-08-04",
+      "valor": 100,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "41.940.369.972.692",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Recebido"
+    },
+    {
+      "id": 71,
+      "numbanco": 1,
+      "data": "2026-08-04",
+      "valor": 5000,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.401",
+      "favorecido": "04/08 10:34 Luiz Martins de Souza",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 72,
+      "numbanco": 1,
+      "data": "2026-08-04",
+      "valor": 140,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.402",
+      "favorecido": "04/08 12:13 Geisa Reck Brasil de Souz",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 73,
+      "numbanco": 1,
+      "data": "2026-08-04",
+      "valor": 71,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.403",
+      "favorecido": "04/08 15:42 ALEXIS XAVIER DA SILVA",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 74,
+      "numbanco": 1,
+      "data": "2026-08-05",
+      "valor": 63.44,
+      "operacao": "D",
+      "especie": "A",
+      "numdoc": "2.534",
+      "favorecido": "Pagto Energia Eletrica",
+      "historico": "Pagto Energia Eletrica"
+    },
+    {
+      "id": 75,
+      "numbanco": 1,
+      "data": "2026-08-05",
+      "valor": 145.17,
+      "operacao": "D",
+      "especie": "A",
+      "numdoc": "80.501",
+      "favorecido": "COOPERATIVA ORIGO GERACAO DIST",
+      "historico": "Pagamento de Boleto"
+    },
+    {
+      "id": 76,
+      "numbanco": 1,
+      "data": "2026-08-05",
+      "valor": 20,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.502",
+      "favorecido": "05/08 15:11 ALEXIS XAVIER DA SILVA",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 77,
+      "numbanco": 1,
+      "data": "2026-08-05",
+      "valor": 145,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "51.514.261.663.612",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Recebido"
     }
   ]
 }
