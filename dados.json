@@ -1694,6 +1694,17 @@
       "numdoc": "42.151",
       "favorecido": "RFB - PAGAMENTO DARF/RFB",
       "historico": "Pagamento de DARF/RFB"
+    },
+    {
+      "id": 151,
+      "numbanco": 323,
+      "data": "2026-03-10",
+      "valor": 5,
+      "operacao": "C",
+      "especie": "O",
+      "numdoc": "69b07bec-e6d2-4e07-a958-bdac44f2f28a",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "--"
     }
   ]
 }
