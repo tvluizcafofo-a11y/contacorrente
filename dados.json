@@ -2497,6 +2497,17 @@
       "numdoc": "73.103",
       "favorecido": "Pagamento de Boleto",
       "historico": "CONSELHO REGIONAL DE ADMINISTR"
+    },
+    {
+      "id": 234,
+      "numbanco": 1,
+      "data": "2026-08-05",
+      "valor": 145,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "51.514.261.663.612",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Recebido"
     }
   ]
 }
