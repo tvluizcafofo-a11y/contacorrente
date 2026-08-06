@@ -1531,17 +1531,6 @@
       "historico": "31/07 08:25 MUNICIPIO DE BELO HORIZON"
     },
     {
-      "id": 138,
-      "numbanco": 1,
-      "data": "2026-07-31",
-      "valor": 244.12,
-      "operacao": "D",
-      "especie": "O",
-      "numdoc": "73.103",
-      "favorecido": "Pagamento de Boleto",
-      "historico": "CONSELHO REGIONAL DE ADMINISTR"
-    },
-    {
       "id": 143,
       "numbanco": 323,
       "data": "2026-07-02",
