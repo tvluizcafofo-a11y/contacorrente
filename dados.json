@@ -1586,17 +1586,6 @@
       "historico": "31/07 18:37 ALEXIS XAVIER DA SILVA"
     },
     {
-      "id": 142,
-      "numbanco": 1,
-      "data": "2026-07-31",
-      "valor": 143.21,
-      "operacao": "D",
-      "especie": "O",
-      "numdoc": "42.151",
-      "favorecido": "Pagamento de DARF/RFB",
-      "historico": "RFB - PAGAMENTO DARF/RFB"
-    },
-    {
       "id": 143,
       "numbanco": 323,
       "data": "2026-07-02",
