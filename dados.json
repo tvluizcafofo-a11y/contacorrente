@@ -2497,6 +2497,17 @@
       "numdoc": "42.151",
       "favorecido": "Pagamento de DARF/RFB",
       "historico": "RFB - PAGAMENTO DARF/RFB"
+    },
+    {
+      "id": 233,
+      "numbanco": 1,
+      "data": "2026-07-31",
+      "valor": 244.12,
+      "operacao": "D",
+      "especie": "A",
+      "numdoc": "73.103",
+      "favorecido": "Pagamento de Boleto",
+      "historico": "CONSELHO REGIONAL DE ADMINISTR"
     }
   ]
 }
