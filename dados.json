@@ -2442,6 +2442,72 @@
       "numdoc": "0",
       "favorecido": "Luiz M. de Souza",
       "historico": "Manual"
+    },
+    {
+      "id": 227,
+      "numbanco": 1,
+      "data": "2026-07-31",
+      "valor": 1082,
+      "operacao": "C",
+      "especie": "O",
+      "numdoc": "310.903.575.960.701",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "31/07 09:03 25587170659 Luiz Martins d"
+    },
+    {
+      "id": 228,
+      "numbanco": 1,
+      "data": "2026-07-31",
+      "valor": 319,
+      "operacao": "C",
+      "especie": "O",
+      "numdoc": "311.259.389.637.672",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "31/07 12:59 00007483756608 CINTHIA REC"
+    },
+    {
+      "id": 229,
+      "numbanco": 1,
+      "data": "2026-07-31",
+      "valor": 514.09,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "73.104",
+      "favorecido": "Pix - Enviado",
+      "historico": "31/07 13:25 MUNICIPIO DE BELO HORIZON"
+    },
+    {
+      "id": 230,
+      "numbanco": 1,
+      "data": "2026-07-31",
+      "valor": 123.26,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "73.105",
+      "favorecido": "Pix - Enviado",
+      "historico": "31/07 13:28 MUNICIPIO DE BELO HORIZON"
+    },
+    {
+      "id": 231,
+      "numbanco": 1,
+      "data": "2026-07-31",
+      "valor": 69,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "73.106",
+      "favorecido": "Pix - Enviado",
+      "historico": "31/07 18:37 ALEXIS XAVIER DA SILVA"
+    },
+    {
+      "id": 232,
+      "numbanco": 1,
+      "data": "2026-07-31",
+      "valor": 143.21,
+      "operacao": "D",
+      "especie": "O",
+      "numdoc": "42.151",
+      "favorecido": "Pagamento de DARF/RFB",
+      "historico": "RFB - PAGAMENTO DARF/RFB"
     }
   ]
 }
