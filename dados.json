@@ -1804,6 +1804,94 @@
       "numdoc": "69f3f2a5-993a-4bbe-8b1f-cd3619499f5e",
       "favorecido": "Transferencia enviada pelo Pix - Luiz Martins de Souza - ***.871.706-** - MERCADO PAGO IP LTDA. (0323) Agencia: 1 Conta: 4187198287-0",
       "historico": "--"
+    },
+    {
+      "id": 161,
+      "numbanco": 1,
+      "data": "2026-08-06",
+      "valor": 100,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "61.926.428.719.632",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Recebido"
+    },
+    {
+      "id": 162,
+      "numbanco": 1,
+      "data": "2026-08-06",
+      "valor": 66,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.601",
+      "favorecido": "06/08 14:20 CHAVE DE OURO LOTERIAS  E",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 163,
+      "numbanco": 1,
+      "data": "2026-08-06",
+      "valor": 24,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.602",
+      "favorecido": "06/08 19:23 ALEXIS XAVIER DA SILVA",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 164,
+      "numbanco": 1,
+      "data": "2026-08-07",
+      "valor": 90,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "70.824.498.098.922",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix-Recebido QR Code"
+    },
+    {
+      "id": 165,
+      "numbanco": 1,
+      "data": "2026-08-07",
+      "valor": 18,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.701",
+      "favorecido": "07/08 07:06 CLAUDIO LAMEGO NASCIMENTO",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 166,
+      "numbanco": 1,
+      "data": "2026-08-07",
+      "valor": 78,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.702",
+      "favorecido": "07/08 18:21 ALEXIS XAVIER DA SILVA",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 167,
+      "numbanco": 1,
+      "data": "2026-08-07",
+      "valor": 200,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.703",
+      "favorecido": "07/08 19:40 Geisa Reck Brasil de Souz",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 168,
+      "numbanco": 1,
+      "data": "2026-08-10",
+      "valor": 0.5,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "81.031.530.106.432",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix-Recebido QR Code"
     }
   ]
 }
