@@ -2002,6 +2002,28 @@
       "numdoc": "81.031.530.106.432",
       "favorecido": "Luiz M. de Souza",
       "historico": "Pix-Recebido QR Code"
+    },
+    {
+      "id": 179,
+      "numbanco": 1,
+      "data": "2026-08-10",
+      "valor": 22,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "81.001",
+      "favorecido": "08/08 16:01 EDGARD PAZOLINI FURTADO D",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 180,
+      "numbanco": 1,
+      "data": "2026-08-10",
+      "valor": 36,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "81.002",
+      "favorecido": "08/08 17:25 ALEXIS XAVIER DA SILVA",
+      "historico": "Pix - Enviado"
     }
   ]
 }
