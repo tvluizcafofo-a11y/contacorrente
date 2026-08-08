@@ -1892,6 +1892,17 @@
       "numdoc": "6a36b14f-af73-4cdb-b3aa-c19acbf064ef",
       "favorecido": "Luiz M. de Souza",
       "historico": "--"
+    },
+    {
+      "id": 169,
+      "numbanco": 260,
+      "data": "2026-03-10",
+      "valor": 5,
+      "operacao": "C",
+      "especie": "O",
+      "numdoc": "69b07bec-e6d2-4e07-a958-bdac44f2f28a",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "--"
     }
   ]
 }
