@@ -1,15 +1,6 @@
 {
   "usuarios": [
     {
-      "codigo": 1,
-      "nome": "Administrador",
-      "nomeCompleto": "Administrador do Sistema",
-      "endereco": "",
-      "telefone": "",
-      "email": "",
-      "senha": "123"
-    },
-    {
       "codigo": 2,
       "nome": "Usuario1",
       "nomeCompleto": "Usuário Teste",
