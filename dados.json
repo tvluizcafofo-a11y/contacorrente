@@ -19,15 +19,6 @@
       "senha": "123"
     }
   ],
-  "bancos": [
-    {
-      "numbanco": 2,
-      "nomebanco": "Bradesco",
-      "agencia": "4321",
-      "numconta": "98765-0",
-      "saldoinicial": 500,
-      "logo": ""
-    }
-  ],
+  "bancos": [],
   "movimentos": []
 }
