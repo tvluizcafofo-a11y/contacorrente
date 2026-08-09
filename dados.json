@@ -5,7 +5,7 @@
       "nome": "Luiz",
       "senha": "macaco",
       "nomeCompleto": "Luiz Martins de Souza",
-      "endereco": "R. Cisplatina 387 Caiçara",
+      "endereco": "R. Cisplatina 387 CaiÃ§ara",
       "telefone": "31988129977",
       "email": "tvluizcafofo@gmail.com."
     }
@@ -75,8 +75,8 @@
       "operacao": "C",
       "especie": "O",
       "numdoc": "179.144.277",
-      "favorecido": "Benefício INSS",
-      "historico": "Benefício INSS"
+      "favorecido": "BenefÃ­cio INSS",
+      "historico": "BenefÃ­cio INSS"
     },
     {
       "id": 5,
@@ -163,7 +163,7 @@
       "operacao": "D",
       "especie": "O",
       "numdoc": "2.534",
-      "favorecido": "Pagto Energia Elétrica",
+      "favorecido": "Pagto Energia ElÃ©trica",
       "historico": "CEMIG DISTRIBUICAO"
     },
     {
@@ -317,7 +317,7 @@
       "operacao": "C",
       "especie": "O",
       "numdoc": "34.031.053",
-      "favorecido": "TED-Crédito em Conta",
+      "favorecido": "TED-CrÃ©dito em Conta",
       "historico": "102 0001    25587170659 LUIZ MARTINS D"
     },
     {
@@ -416,7 +416,7 @@
       "operacao": "D",
       "especie": "O",
       "numdoc": "71.603",
-      "favorecido": "Pgto conta água",
+      "favorecido": "Pgto conta Ã¡gua",
       "historico": "CIA DE SANEAMENTO DE MG"
     },
     {
@@ -449,7 +449,7 @@
       "operacao": "C",
       "especie": "O",
       "numdoc": "551.614.000.000.553",
-      "favorecido": "Transferência recebida",
+      "favorecido": "TransferÃªncia recebida",
       "historico": "20/07 09:41 RODRIGUES MARTINS IMOVEI"
     },
     {
@@ -680,7 +680,7 @@
       "operacao": "C",
       "especie": "O",
       "numdoc": "33.818.830",
-      "favorecido": "TED-Crédito em Conta",
+      "favorecido": "TED-CrÃ©dito em Conta",
       "historico": "102 0001    25587170659 LUIZ MARTINS D"
     },
     {
@@ -791,7 +791,7 @@
       "especie": "P",
       "numdoc": "6a515608-6442-4710-a685-ec2be9a0e6f1",
       "favorecido": "--",
-      "historico": "Transferência enviada pelo Pix - LUIZ MARTINS DE SOUZA - •••.871.706-•• - BCO DO BRASIL S.A. (0001) Agência: 3491 Conta: 37258-7"
+      "historico": "TransferÃªncia enviada pelo Pix - LUIZ MARTINS DE SOUZA - â¢â¢â¢.871.706-â¢â¢ - BCO DO BRASIL S.A. (0001) AgÃªncia: 3491 Conta: 37258-7"
     },
     {
       "id": 128,
@@ -802,7 +802,7 @@
       "especie": "P",
       "numdoc": "6a57adb4-163f-404f-a6a3-4e71c4ce6cb3",
       "favorecido": "--",
-      "historico": "Transferência enviada pelo Pix - LUIZ MARTINS DE SOUZA - •••.871.706-•• - BCO DO BRASIL S.A. (0001) Agência: 3491 Conta: 37258-7"
+      "historico": "TransferÃªncia enviada pelo Pix - LUIZ MARTINS DE SOUZA - â¢â¢â¢.871.706-â¢â¢ - BCO DO BRASIL S.A. (0001) AgÃªncia: 3491 Conta: 37258-7"
     },
     {
       "id": 129,
@@ -813,7 +813,7 @@
       "especie": "P",
       "numdoc": "6a30ec16-72ac-40b7-93f5-91da1672ce41",
       "favorecido": "--",
-      "historico": "Transferência recebida pelo Pix - LUIZ MARTINS DE SOUZA - •••.871.706-•• - BCO DO BRASIL S.A. (0001) Agência: 3491 Conta: 37258-7"
+      "historico": "TransferÃªncia recebida pelo Pix - LUIZ MARTINS DE SOUZA - â¢â¢â¢.871.706-â¢â¢ - BCO DO BRASIL S.A. (0001) AgÃªncia: 3491 Conta: 37258-7"
     },
     {
       "id": 130,
@@ -824,7 +824,7 @@
       "especie": "P",
       "numdoc": "6a36a7db-0ffc-4061-bbcc-48b2e313920d",
       "favorecido": "--",
-      "historico": "Transferência recebida pelo Pix - Luiz Martins de Souza - •••.871.706-•• - MERCADO PAGO IP LTDA. (0323) Agência: 1 Conta: 4187198287-0"
+      "historico": "TransferÃªncia recebida pelo Pix - Luiz Martins de Souza - â¢â¢â¢.871.706-â¢â¢ - MERCADO PAGO IP LTDA. (0323) AgÃªncia: 1 Conta: 4187198287-0"
     },
     {
       "id": 131,
@@ -835,7 +835,7 @@
       "especie": "P",
       "numdoc": "6a36b14f-af73-4cdb-b3aa-c19acbf064ef",
       "favorecido": "--",
-      "historico": "Transferência recebida pelo Pix - LUIZ MARTINS DE SOUZA - •••.871.706-•• - BCO DO BRASIL S.A. (0001) Agência: 3491 Conta: 37258-7"
+      "historico": "TransferÃªncia recebida pelo Pix - LUIZ MARTINS DE SOUZA - â¢â¢â¢.871.706-â¢â¢ - BCO DO BRASIL S.A. (0001) AgÃªncia: 3491 Conta: 37258-7"
     },
     {
       "id": 132,
@@ -846,7 +846,7 @@
       "especie": "P",
       "numdoc": "69f8b9aa-7656-41c0-ba22-9d58dcf6d726",
       "favorecido": "--",
-      "historico": "Transferência enviada pelo Pix - Luiz Martins de Souza - •••.871.706-•• - MERCADO PAGO IP LTDA. (0323) Agência: 1 Conta: 4187198287-0"
+      "historico": "TransferÃªncia enviada pelo Pix - Luiz Martins de Souza - â¢â¢â¢.871.706-â¢â¢ - MERCADO PAGO IP LTDA. (0323) AgÃªncia: 1 Conta: 4187198287-0"
     },
     {
       "id": 133,
@@ -857,7 +857,7 @@
       "especie": "P",
       "numdoc": "6a0b2b34-6dd4-4d5f-a8e1-6e8a6d359ef7",
       "favorecido": "--",
-      "historico": "Transferência enviada pelo Pix - LUIZ MARTINS DE SOUZA - •••.871.706-•• - Banco XP S.A. (0348) Agência: 1 Conta: 254987-5"
+      "historico": "TransferÃªncia enviada pelo Pix - LUIZ MARTINS DE SOUZA - â¢â¢â¢.871.706-â¢â¢ - Banco XP S.A. (0348) AgÃªncia: 1 Conta: 254987-5"
     },
     {
       "id": 134,
@@ -868,7 +868,7 @@
       "especie": "P",
       "numdoc": "69b07bec-e6d2-4e07-a958-bdac44f2f28a",
       "favorecido": "--",
-      "historico": "Transferência recebida pelo Pix - LUIZ MARTINS DE SOUZA - •••.871.706-•• - BCO DO BRASIL S.A. (0001) Agência: 3491 Conta: 37258-7"
+      "historico": "TransferÃªncia recebida pelo Pix - LUIZ MARTINS DE SOUZA - â¢â¢â¢.871.706-â¢â¢ - BCO DO BRASIL S.A. (0001) AgÃªncia: 3491 Conta: 37258-7"
     },
     {
       "id": 135,
@@ -879,7 +879,7 @@
       "especie": "P",
       "numdoc": "69f39f8d-47b6-4966-878a-ac89aec5b3cd",
       "favorecido": "--",
-      "historico": "Transferência recebida pelo Pix via Open Banking - LUIZ MARTINS DE SOUZA - •••.871.706-•• - BCO DO BRASIL S.A. (0001) Agência: 3491 Conta: 37258-7"
+      "historico": "TransferÃªncia recebida pelo Pix via Open Banking - LUIZ MARTINS DE SOUZA - â¢â¢â¢.871.706-â¢â¢ - BCO DO BRASIL S.A. (0001) AgÃªncia: 3491 Conta: 37258-7"
     },
     {
       "id": 136,
@@ -890,7 +890,7 @@
       "especie": "P",
       "numdoc": "69f3f2a5-993a-4bbe-8b1f-cd3619499f5e",
       "favorecido": "--",
-      "historico": "Transferência enviada pelo Pix - Luiz Martins de Souza - •••.871.706-•• - MERCADO PAGO IP LTDA. (0323) Agência: 1 Conta: 4187198287-0"
+      "historico": "TransferÃªncia enviada pelo Pix - Luiz Martins de Souza - â¢â¢â¢.871.706-â¢â¢ - MERCADO PAGO IP LTDA. (0323) AgÃªncia: 1 Conta: 4187198287-0"
     },
     {
       "id": 137,
@@ -2255,6 +2255,237 @@
       "numdoc": "161112339647",
       "favorecido": "Pix enviado Luiz Martins de Souza (Ref: 161112339647)",
       "historico": "Pix enviado Luiz Martins de Souza"
+    },
+    {
+      "id": 261,
+      "numbanco": 1,
+      "data": "2026-08-03",
+      "valor": 30,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.302",
+      "favorecido": "03/08 08:00 Luiz Martins de Souza",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 262,
+      "numbanco": 1,
+      "data": "2026-08-04",
+      "valor": 5166.4,
+      "operacao": "C",
+      "especie": "O",
+      "numdoc": "179.144.277",
+      "favorecido": "Luiz Martins de Souza",
+      "historico": "Beneficio INSS"
+    },
+    {
+      "id": 263,
+      "numbanco": 1,
+      "data": "2026-08-04",
+      "valor": 100,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "41.940.369.972.692",
+      "favorecido": "Luiz Martins de Souza",
+      "historico": "Pix - Recebido"
+    },
+    {
+      "id": 264,
+      "numbanco": 1,
+      "data": "2026-08-04",
+      "valor": 5000,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.401",
+      "favorecido": "04/08 10:34 Luiz Martins de Souza",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 265,
+      "numbanco": 1,
+      "data": "2026-08-04",
+      "valor": 140,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.402",
+      "favorecido": "04/08 12:13 Geisa Reck Brasil de Souz",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 266,
+      "numbanco": 1,
+      "data": "2026-08-04",
+      "valor": 71,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.403",
+      "favorecido": "04/08 15:42 ALEXIS XAVIER DA SILVA",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 267,
+      "numbanco": 1,
+      "data": "2026-08-05",
+      "valor": 145,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "51.514.261.663.612",
+      "favorecido": "Luiz Martins de Souza",
+      "historico": "Pix - Recebido"
+    },
+    {
+      "id": 268,
+      "numbanco": 1,
+      "data": "2026-08-05",
+      "valor": 145.17,
+      "operacao": "D",
+      "especie": "A",
+      "numdoc": "80.501",
+      "favorecido": "COOPERATIVA ORIGO GERACAO DIST",
+      "historico": "Pagamento de Boleto"
+    },
+    {
+      "id": 269,
+      "numbanco": 1,
+      "data": "2026-08-05",
+      "valor": 20,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.502",
+      "favorecido": "05/08 15:11 ALEXIS XAVIER DA SILVA",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 270,
+      "numbanco": 1,
+      "data": "2026-08-05",
+      "valor": 63.44,
+      "operacao": "D",
+      "especie": "A",
+      "numdoc": "2.534",
+      "favorecido": "CEMIG DISTRIBUICAO",
+      "historico": "Pagto Energia Eletrica"
+    },
+    {
+      "id": 271,
+      "numbanco": 1,
+      "data": "2026-08-06",
+      "valor": 100,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "61.926.428.719.632",
+      "favorecido": "Luiz Martins de Souza",
+      "historico": "Pix - Recebido"
+    },
+    {
+      "id": 272,
+      "numbanco": 1,
+      "data": "2026-08-06",
+      "valor": 66,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.601",
+      "favorecido": "06/08 14:20 CHAVE DE OURO LOTERIAS  E",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 273,
+      "numbanco": 1,
+      "data": "2026-08-06",
+      "valor": 24,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.602",
+      "favorecido": "06/08 19:23 ALEXIS XAVIER DA SILVA",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 274,
+      "numbanco": 1,
+      "data": "2026-08-07",
+      "valor": 90,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "70.824.498.098.922",
+      "favorecido": "Luiz Martins de Souza",
+      "historico": "Pix-Recebido QR Code"
+    },
+    {
+      "id": 275,
+      "numbanco": 1,
+      "data": "2026-08-07",
+      "valor": 18,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.701",
+      "favorecido": "07/08 07:06 CLAUDIO LAMEGO NASCIMENTO",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 276,
+      "numbanco": 1,
+      "data": "2026-08-07",
+      "valor": 78,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.702",
+      "favorecido": "07/08 18:21 ALEXIS XAVIER DA SILVA",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 277,
+      "numbanco": 1,
+      "data": "2026-08-07",
+      "valor": 200,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.703",
+      "favorecido": "07/08 19:40 Geisa Reck Brasil de Souz",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 278,
+      "numbanco": 1,
+      "data": "2026-08-10",
+      "valor": 0.5,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "81.031.530.106.432",
+      "favorecido": "Luiz Martins de Souza",
+      "historico": "Pix-Recebido QR Code"
+    },
+    {
+      "id": 279,
+      "numbanco": 1,
+      "data": "2026-08-10",
+      "valor": 22,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "81.001",
+      "favorecido": "08/08 16:01 EDGARD PAZOLINI FURTADO D",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 280,
+      "numbanco": 1,
+      "data": "2026-08-10",
+      "valor": 36,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "81.002",
+      "favorecido": "08/08 17:25 ALEXIS XAVIER DA SILVA",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 281,
+      "numbanco": 1,
+      "data": "2026-08-10",
+      "valor": 208,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "81.757.277.824.332",
+      "favorecido": "Luiz Martins de Souza",
+      "historico": "Pix - Recebido"
     }
   ]
 }
