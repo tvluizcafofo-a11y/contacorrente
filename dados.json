@@ -1,15 +1,5 @@
 {
-  "usuarios": [
-    {
-      "codigo": 2,
-      "nome": "Usuario1",
-      "nomeCompleto": "Usuário Teste",
-      "endereco": "Rua Exemplo, 123",
-      "telefone": "(11) 99999-9999",
-      "email": "usuario@teste.com",
-      "senha": "123"
-    }
-  ],
+  "usuarios": [],
   "bancos": [],
   "movimentos": []
 }
