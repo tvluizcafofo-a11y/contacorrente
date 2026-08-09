@@ -2266,6 +2266,17 @@
       "numdoc": "81.757.277.824.332",
       "favorecido": "Luiz M. de Souza",
       "historico": "Pix - Recebido"
+    },
+    {
+      "id": 203,
+      "numbanco": 260,
+      "data": "2026-04-30",
+      "valor": 0.08,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "000",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Rendimentos"
     }
   ]
 }
