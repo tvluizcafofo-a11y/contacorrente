@@ -1353,6 +1353,94 @@
       "numdoc": "166491558774",
       "favorecido": "Pix enviado Luiz Martins de Souza (Ref: 166491558774)",
       "historico": "Pix enviado Luiz Martins de Souza"
+    },
+    {
+      "id": 179,
+      "numbanco": 323,
+      "data": "2026-08-04",
+      "valor": 5000,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "172000978110",
+      "favorecido": "Administrador",
+      "historico": "Pix recebido LUIZ MARTINS DE SOUZA"
+    },
+    {
+      "id": 180,
+      "numbanco": 323,
+      "data": "2026-08-04",
+      "valor": 1000,
+      "operacao": "D",
+      "especie": "D",
+      "numdoc": "171137744077",
+      "favorecido": "Dinheiro reservado Geisa Aimores (Ref: 171137744077)",
+      "historico": "Dinheiro reservado Geisa Aimores"
+    },
+    {
+      "id": 181,
+      "numbanco": 323,
+      "data": "2026-08-04",
+      "valor": 3800,
+      "operacao": "D",
+      "especie": "D",
+      "numdoc": "171137891915",
+      "favorecido": "Dinheiro reservado Reserva Seguranca (Ref: 171137891915)",
+      "historico": "Dinheiro reservado Reserva Seguranca"
+    },
+    {
+      "id": 182,
+      "numbanco": 323,
+      "data": "2026-08-04",
+      "valor": 100,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "171192210279",
+      "favorecido": "Pix enviado Luiz Martins de Souza (Ref: 171192210279)",
+      "historico": "Pix enviado Luiz Martins de Souza"
+    },
+    {
+      "id": 183,
+      "numbanco": 323,
+      "data": "2026-08-04",
+      "valor": 10,
+      "operacao": "D",
+      "especie": "A",
+      "numdoc": "172091748072",
+      "favorecido": "Reserva por gastos Reforma Fusca (Ref: 172091748072)",
+      "historico": "Reserva por gastos Reforma Fusca"
+    },
+    {
+      "id": 184,
+      "numbanco": 323,
+      "data": "2026-08-05",
+      "valor": 0.04,
+      "operacao": "C",
+      "especie": "O",
+      "numdoc": "1747847425209",
+      "favorecido": "Administrador",
+      "historico": "Rendimentos"
+    },
+    {
+      "id": 185,
+      "numbanco": 323,
+      "data": "2026-08-05",
+      "valor": 50,
+      "operacao": "C",
+      "especie": "D",
+      "numdoc": "171315481113",
+      "favorecido": "Administrador",
+      "historico": "Dinheiro retirado Reserva Seguranca"
+    },
+    {
+      "id": 186,
+      "numbanco": 323,
+      "data": "2026-08-05",
+      "valor": 145,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "171314467141",
+      "favorecido": "Pix enviado Luiz Martins de Souza (Ref: 171314467141)",
+      "historico": "Pix enviado Luiz Martins de Souza"
     }
   ]
 }
