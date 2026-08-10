@@ -1529,6 +1529,248 @@
       "numdoc": "00000",
       "favorecido": "Luiz Martins de Souza",
       "historico": "Rendimento"
+    },
+    {
+      "id": 294,
+      "numbanco": 1,
+      "data": "2026-08-03",
+      "valor": 50,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.301",
+      "favorecido": "01/08 17:32 Geisa Reck Brasil de Souz",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 295,
+      "numbanco": 1,
+      "data": "2026-08-03",
+      "valor": 30,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.302",
+      "favorecido": "03/08 08:00 Luiz Martins de Souza",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 296,
+      "numbanco": 1,
+      "data": "2026-08-04",
+      "valor": 5166.4,
+      "operacao": "C",
+      "especie": "O",
+      "numdoc": "179.144.277",
+      "favorecido": "Luiz Martins de Souza",
+      "historico": "Beneficio INSS"
+    },
+    {
+      "id": 297,
+      "numbanco": 1,
+      "data": "2026-08-04",
+      "valor": 100,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "41.940.369.972.692",
+      "favorecido": "Luiz Martins de Souza",
+      "historico": "Pix - Recebido"
+    },
+    {
+      "id": 298,
+      "numbanco": 1,
+      "data": "2026-08-04",
+      "valor": 5000,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.401",
+      "favorecido": "04/08 10:34 Luiz Martins de Souza",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 299,
+      "numbanco": 1,
+      "data": "2026-08-04",
+      "valor": 140,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.402",
+      "favorecido": "04/08 12:13 Geisa Reck Brasil de Souz",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 300,
+      "numbanco": 1,
+      "data": "2026-08-04",
+      "valor": 71,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.403",
+      "favorecido": "04/08 15:42 ALEXIS XAVIER DA SILVA",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 301,
+      "numbanco": 1,
+      "data": "2026-08-05",
+      "valor": 145,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "51.514.261.663.612",
+      "favorecido": "Luiz Martins de Souza",
+      "historico": "Pix - Recebido"
+    },
+    {
+      "id": 302,
+      "numbanco": 1,
+      "data": "2026-08-05",
+      "valor": 145.17,
+      "operacao": "D",
+      "especie": "A",
+      "numdoc": "80.501",
+      "favorecido": "COOPERATIVA ORIGO GERACAO DIST",
+      "historico": "Pagamento de Boleto"
+    },
+    {
+      "id": 303,
+      "numbanco": 1,
+      "data": "2026-08-05",
+      "valor": 20,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.502",
+      "favorecido": "05/08 15:11 ALEXIS XAVIER DA SILVA",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 304,
+      "numbanco": 1,
+      "data": "2026-08-05",
+      "valor": 63.44,
+      "operacao": "D",
+      "especie": "A",
+      "numdoc": "2.534",
+      "favorecido": "CEMIG DISTRIBUICAO",
+      "historico": "Pagto Energia Eletrica"
+    },
+    {
+      "id": 305,
+      "numbanco": 1,
+      "data": "2026-08-06",
+      "valor": 100,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "61.926.428.719.632",
+      "favorecido": "Luiz Martins de Souza",
+      "historico": "Pix - Recebido"
+    },
+    {
+      "id": 306,
+      "numbanco": 1,
+      "data": "2026-08-06",
+      "valor": 66,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.601",
+      "favorecido": "06/08 14:20 CHAVE DE OURO LOTERIAS  E",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 307,
+      "numbanco": 1,
+      "data": "2026-08-06",
+      "valor": 24,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.602",
+      "favorecido": "06/08 19:23 ALEXIS XAVIER DA SILVA",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 308,
+      "numbanco": 1,
+      "data": "2026-08-07",
+      "valor": 90,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "70.824.498.098.922",
+      "favorecido": "Luiz Martins de Souza",
+      "historico": "Pix-Recebido QR Code"
+    },
+    {
+      "id": 309,
+      "numbanco": 1,
+      "data": "2026-08-07",
+      "valor": 18,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.701",
+      "favorecido": "07/08 07:06 CLAUDIO LAMEGO NASCIMENTO",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 310,
+      "numbanco": 1,
+      "data": "2026-08-07",
+      "valor": 78,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.702",
+      "favorecido": "07/08 18:21 ALEXIS XAVIER DA SILVA",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 311,
+      "numbanco": 1,
+      "data": "2026-08-07",
+      "valor": 200,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.703",
+      "favorecido": "07/08 19:40 Geisa Reck Brasil de Souz",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 312,
+      "numbanco": 1,
+      "data": "2026-08-10",
+      "valor": 0.5,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "81.031.530.106.432",
+      "favorecido": "Luiz Martins de Souza",
+      "historico": "Pix-Recebido QR Code"
+    },
+    {
+      "id": 313,
+      "numbanco": 1,
+      "data": "2026-08-10",
+      "valor": 22,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "81.001",
+      "favorecido": "08/08 16:01 EDGARD PAZOLINI FURTADO D",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 314,
+      "numbanco": 1,
+      "data": "2026-08-10",
+      "valor": 36,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "81.002",
+      "favorecido": "08/08 17:25 ALEXIS XAVIER DA SILVA",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 315,
+      "numbanco": 1,
+      "data": "2026-08-10",
+      "valor": 208,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "81.757.277.824.332",
+      "favorecido": "Luiz Martins de Souza",
+      "historico": "Pix - Recebido"
     }
   ]
 }
