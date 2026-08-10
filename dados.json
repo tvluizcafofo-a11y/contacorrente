@@ -2893,6 +2893,17 @@
       "numdoc": "42.151",
       "favorecido": "RFB - PAGAMENTO DARF/RFB",
       "historico": "Pagamento de DARF/RFB"
+    },
+    {
+      "id": 543,
+      "numbanco": 1,
+      "data": "2026-08-03",
+      "valor": 0.39,
+      "operacao": "D",
+      "especie": "O",
+      "numdoc": "S/N",
+      "favorecido": "Encargos",
+      "historico": "Encargos"
     }
   ]
 }
