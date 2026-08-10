@@ -2508,6 +2508,28 @@
       "numdoc": "42.151",
       "favorecido": "RFB - PAGAMENTO DARF/RFB",
       "historico": "Pagamento de DARF/RFB"
+    },
+    {
+      "id": 383,
+      "numbanco": 1,
+      "data": "2026-08-03",
+      "valor": 0.26,
+      "operacao": "D",
+      "especie": "O",
+      "numdoc": "511.058.923",
+      "favorecido": "Cobranca de Juros",
+      "historico": "Cobranca de Juros"
+    },
+    {
+      "id": 384,
+      "numbanco": 1,
+      "data": "2026-08-03",
+      "valor": 0.13,
+      "operacao": "D",
+      "especie": "O",
+      "numdoc": "391.100.701",
+      "favorecido": "Cobranca de I.O.F.",
+      "historico": "Cobranca de I.O.F."
     }
   ]
 }
