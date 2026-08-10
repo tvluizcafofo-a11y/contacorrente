@@ -1945,7 +1945,7 @@
       "operacao": "D",
       "especie": "A",
       "numdoc": "20260805163440",
-      "favorecido": "Pagto Energia El�trica - CEMIG DISTRIBUICAO",
+      "favorecido": "Pagto Energia Elï¿½trica - CEMIG DISTRIBUICAO",
       "historico": "--"
     },
     {
@@ -2045,17 +2045,6 @@
       "especie": "P",
       "numdoc": "20260810122000",
       "favorecido": "Pix - Enviado - 08/08 16:01 EDGARD PAZOLINI FURTADO D",
-      "historico": "--"
-    },
-    {
-      "id": 465,
-      "numbanco": 1,
-      "data": "2026-08-10",
-      "valor": 36,
-      "operacao": "D",
-      "especie": "P",
-      "numdoc": "20260810136000",
-      "favorecido": "Pix - Enviado - 08/08 17:25 ALEXIS XAVIER DA SILVA",
       "historico": "--"
     },
     {
