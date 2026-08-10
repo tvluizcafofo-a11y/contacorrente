@@ -2530,6 +2530,28 @@
       "numdoc": "391.100.701",
       "favorecido": "Cobranca de I.O.F.",
       "historico": "Cobranca de I.O.F."
+    },
+    {
+      "id": 385,
+      "numbanco": 1,
+      "data": "2026-08-10",
+      "valor": 130.99,
+      "operacao": "D",
+      "especie": "A",
+      "numdoc": "48.314",
+      "favorecido": "Pagamento de Telefone",
+      "historico": "Pagamento de Telefone"
+    },
+    {
+      "id": 386,
+      "numbanco": 1,
+      "data": "2026-08-10",
+      "valor": 1800,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "100.906.458.079.842",
+      "favorecido": "Luiz Martins de Souza",
+      "historico": "Pix-Recebido QR Code"
     }
   ]
 }
