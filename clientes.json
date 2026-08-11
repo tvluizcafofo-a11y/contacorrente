@@ -15,18 +15,18 @@
     "DataCadastro": "2013-12-20 00:00:00"
   },
   {
-    "CodCliente": 5268,
+    "CodCliente": "5268",
     "NomeCliente": "Abreu Eletroacústica Ltda.",
     "EndCliente": "Rua Gardênia, 235",
     "BairroCliente": "Caiçaras",
-    "CepCliente": 30770510,
-    "emailCliente": null,
-    "SiteCliente": null,
+    "CepCliente": "30770510",
+    "emailCliente": "",
+    "SiteCliente": "afamwah@gmail.com",
     "CidadeCliente": "Belo Horizonte",
     "EstadoCliente": "MG",
     "ContatoCliente": "Claudio",
-    "TelCliente1": null,
-    "CGCCPF": null,
+    "TelCliente1": "",
+    "CGCCPF": "",
     "DataCadastro": "2013-04-19 00:00:00"
   },
   {
