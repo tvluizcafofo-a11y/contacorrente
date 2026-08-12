@@ -2596,6 +2596,61 @@
       "numdoc": "100.906.458.079.842",
       "favorecido": "Luiz M. de Souza",
       "historico": "10/08 09:06 00025587170659 LUIZ MARTIN"
+    },
+    {
+      "id": 608,
+      "numbanco": 1,
+      "data": "2026-08-10",
+      "valor": 210,
+      "operacao": "C",
+      "especie": "O",
+      "numdoc": "101.500.043.308.551",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "10/08 15:00 25587170659 Luiz Martins d"
+    },
+    {
+      "id": 609,
+      "numbanco": 1,
+      "data": "2026-08-10",
+      "valor": 210,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "81.004",
+      "favorecido": "Pix - Enviado",
+      "historico": "10/08 14:57 Isa Dolores Barreto"
+    },
+    {
+      "id": 610,
+      "numbanco": 1,
+      "data": "2026-08-10",
+      "valor": 130.99,
+      "operacao": "D",
+      "especie": "A",
+      "numdoc": "48.314",
+      "favorecido": "Pagamento de Telefone",
+      "historico": "VIVO MOVEL - MG"
+    },
+    {
+      "id": 611,
+      "numbanco": 1,
+      "data": "2026-08-12",
+      "valor": 1300,
+      "operacao": "C",
+      "especie": "O",
+      "numdoc": "121.335.379.956.391",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "12/08 13:35 07600657000139 RECO IMOBIL"
+    },
+    {
+      "id": 612,
+      "numbanco": 1,
+      "data": "2026-08-12",
+      "valor": 1300,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "81.201",
+      "favorecido": "Pix - Enviado",
+      "historico": "12/08 13:40 Luiz Martins de Souza"
     }
   ]
 }
