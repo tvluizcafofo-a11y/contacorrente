@@ -2651,6 +2651,28 @@
       "numdoc": "81.201",
       "favorecido": "Pix - Enviado",
       "historico": "12/08 13:40 Luiz Martins de Souza"
+    },
+    {
+      "id": 613,
+      "numbanco": 1,
+      "data": "2026-08-03",
+      "valor": 0.26,
+      "operacao": "D",
+      "especie": "O",
+      "numdoc": "511.058.923",
+      "favorecido": "Cobranca de Juros",
+      "historico": "Cobranca de Juros"
+    },
+    {
+      "id": 614,
+      "numbanco": 1,
+      "data": "2026-08-03",
+      "valor": 0.13,
+      "operacao": "D",
+      "especie": "O",
+      "numdoc": "391.100.701",
+      "favorecido": "Cobranca de I.O.F.",
+      "historico": "Cobranca de I.O.F."
     }
   ]
 }
