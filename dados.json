@@ -2574,6 +2574,28 @@
       "numdoc": "81.003",
       "favorecido": "Pix - Enviado",
       "historico": "09/08 10:44 LUIZ MARTINS DE SOUZA"
+    },
+    {
+      "id": 606,
+      "numbanco": 1,
+      "data": "2026-08-10",
+      "valor": 130.99,
+      "operacao": "D",
+      "especie": "A",
+      "numdoc": "48.314",
+      "favorecido": "Pagamento de Telefone",
+      "historico": "Pagamento de Telefone"
+    },
+    {
+      "id": 607,
+      "numbanco": 1,
+      "data": "2026-08-10",
+      "valor": 1800,
+      "operacao": "C",
+      "especie": "O",
+      "numdoc": "100.906.458.079.842",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "10/08 09:06 00025587170659 LUIZ MARTIN"
     }
   ]
 }
