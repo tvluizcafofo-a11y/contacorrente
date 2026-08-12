@@ -2576,17 +2576,6 @@
       "historico": "09/08 10:44 LUIZ MARTINS DE SOUZA"
     },
     {
-      "id": 606,
-      "numbanco": 1,
-      "data": "2026-08-10",
-      "valor": 130.99,
-      "operacao": "D",
-      "especie": "A",
-      "numdoc": "48.314",
-      "favorecido": "Pagamento de Telefone",
-      "historico": "Pagamento de Telefone"
-    },
-    {
       "id": 607,
       "numbanco": 1,
       "data": "2026-08-10",
