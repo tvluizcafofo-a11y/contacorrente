@@ -2343,6 +2343,226 @@
       "numdoc": "80.302",
       "favorecido": "Pix - Enviado",
       "historico": "03/08 08:00 Luiz Martins de Souza"
+    },
+    {
+      "id": 585,
+      "numbanco": 1,
+      "data": "2026-08-04",
+      "valor": 5166.4,
+      "operacao": "C",
+      "especie": "O",
+      "numdoc": "179.144.277",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Beneficio INSS"
+    },
+    {
+      "id": 586,
+      "numbanco": 1,
+      "data": "2026-08-04",
+      "valor": 100,
+      "operacao": "C",
+      "especie": "O",
+      "numdoc": "41.940.369.972.692",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "04/08 19:40 00025587170659 LUIZ MARTIN"
+    },
+    {
+      "id": 587,
+      "numbanco": 1,
+      "data": "2026-08-04",
+      "valor": 5000,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.401",
+      "favorecido": "Pix - Enviado",
+      "historico": "04/08 10:34 Luiz Martins de Souza"
+    },
+    {
+      "id": 588,
+      "numbanco": 1,
+      "data": "2026-08-04",
+      "valor": 140,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.402",
+      "favorecido": "Pix - Enviado",
+      "historico": "04/08 12:13 Geisa Reck Brasil de Souz"
+    },
+    {
+      "id": 589,
+      "numbanco": 1,
+      "data": "2026-08-04",
+      "valor": 71,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.403",
+      "favorecido": "Pix - Enviado",
+      "historico": "04/08 15:42 ALEXIS XAVIER DA SILVA"
+    },
+    {
+      "id": 590,
+      "numbanco": 1,
+      "data": "2026-08-05",
+      "valor": 145,
+      "operacao": "C",
+      "especie": "O",
+      "numdoc": "51.514.261.663.612",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "05/08 15:14 00025587170659 LUIZ MARTIN"
+    },
+    {
+      "id": 591,
+      "numbanco": 1,
+      "data": "2026-08-05",
+      "valor": 145.17,
+      "operacao": "D",
+      "especie": "A",
+      "numdoc": "80.501",
+      "favorecido": "Pagamento de Boleto",
+      "historico": "COOPERATIVA ORIGO GERACAO DIST"
+    },
+    {
+      "id": 592,
+      "numbanco": 1,
+      "data": "2026-08-05",
+      "valor": 20,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.502",
+      "favorecido": "Pix - Enviado",
+      "historico": "05/08 15:11 ALEXIS XAVIER DA SILVA"
+    },
+    {
+      "id": 593,
+      "numbanco": 1,
+      "data": "2026-08-05",
+      "valor": 63.44,
+      "operacao": "D",
+      "especie": "A",
+      "numdoc": "2.534",
+      "favorecido": "Pagto Energia Eletrica",
+      "historico": "CEMIG DISTRIBUICAO"
+    },
+    {
+      "id": 594,
+      "numbanco": 1,
+      "data": "2026-08-06",
+      "valor": 100,
+      "operacao": "C",
+      "especie": "O",
+      "numdoc": "61.926.428.719.632",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "06/08 19:26 00025587170659 LUIZ MARTIN"
+    },
+    {
+      "id": 595,
+      "numbanco": 1,
+      "data": "2026-08-06",
+      "valor": 66,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.601",
+      "favorecido": "Pix - Enviado",
+      "historico": "06/08 14:20 CHAVE DE OURO LOTERIAS  E"
+    },
+    {
+      "id": 596,
+      "numbanco": 1,
+      "data": "2026-08-06",
+      "valor": 24,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.602",
+      "favorecido": "Pix - Enviado",
+      "historico": "06/08 19:23 ALEXIS XAVIER DA SILVA"
+    },
+    {
+      "id": 597,
+      "numbanco": 1,
+      "data": "2026-08-07",
+      "valor": 90,
+      "operacao": "C",
+      "especie": "O",
+      "numdoc": "70.824.498.098.922",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "07/08 08:24 00025587170659 LUIZ MARTIN"
+    },
+    {
+      "id": 598,
+      "numbanco": 1,
+      "data": "2026-08-07",
+      "valor": 18,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.701",
+      "favorecido": "Pix - Enviado",
+      "historico": "07/08 07:06 CLAUDIO LAMEGO NASCIMENTO"
+    },
+    {
+      "id": 599,
+      "numbanco": 1,
+      "data": "2026-08-07",
+      "valor": 78,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.702",
+      "favorecido": "Pix - Enviado",
+      "historico": "07/08 18:21 ALEXIS XAVIER DA SILVA"
+    },
+    {
+      "id": 600,
+      "numbanco": 1,
+      "data": "2026-08-07",
+      "valor": 200,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.703",
+      "favorecido": "Pix - Enviado",
+      "historico": "07/08 19:40 Geisa Reck Brasil de Souz"
+    },
+    {
+      "id": 601,
+      "numbanco": 1,
+      "data": "2026-08-10",
+      "valor": 0.5,
+      "operacao": "C",
+      "especie": "O",
+      "numdoc": "81.031.530.106.432",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "08/08 10:31 00025587170659 LUIZ MARTIN"
+    },
+    {
+      "id": 602,
+      "numbanco": 1,
+      "data": "2026-08-10",
+      "valor": 22,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "81.001",
+      "favorecido": "Pix - Enviado",
+      "historico": "08/08 16:01 EDGARD PAZOLINI FURTADO D"
+    },
+    {
+      "id": 603,
+      "numbanco": 1,
+      "data": "2026-08-10",
+      "valor": 36,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "81.002",
+      "favorecido": "Pix - Enviado",
+      "historico": "08/08 17:25 ALEXIS XAVIER DA SILVA"
+    },
+    {
+      "id": 604,
+      "numbanco": 1,
+      "data": "2026-08-10",
+      "valor": 208,
+      "operacao": "C",
+      "especie": "O",
+      "numdoc": "81.757.277.824.332",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "08/08 17:57 00016191684649 PEDRO JORGE"
     }
   ]
 }
