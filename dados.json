@@ -2310,6 +2310,39 @@
       "numdoc": "42.151",
       "favorecido": "Pagamento de DARF/RFB",
       "historico": "RFB - PAGAMENTO DARF/RFB"
+    },
+    {
+      "id": 582,
+      "numbanco": 1,
+      "data": "2026-08-03",
+      "valor": 0.39,
+      "operacao": "D",
+      "especie": "O",
+      "numdoc": "S/N",
+      "favorecido": "Encargos",
+      "historico": "Encargos"
+    },
+    {
+      "id": 583,
+      "numbanco": 1,
+      "data": "2026-08-03",
+      "valor": 50,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.301",
+      "favorecido": "Pix - Enviado",
+      "historico": "01/08 17:32 Geisa Reck Brasil de Souz"
+    },
+    {
+      "id": 584,
+      "numbanco": 1,
+      "data": "2026-08-03",
+      "valor": 30,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "80.302",
+      "favorecido": "Pix - Enviado",
+      "historico": "03/08 08:00 Luiz Martins de Souza"
     }
   ]
 }
