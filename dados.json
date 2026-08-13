@@ -2684,6 +2684,28 @@
       "numdoc": "81.202",
       "favorecido": "Pix - Enviado",
       "historico": "12/08 17:30 Luiz Martins de Souza"
+    },
+    {
+      "id": 617,
+      "numbanco": 1,
+      "data": "2026-08-13",
+      "valor": 2.4,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "81.301",
+      "favorecido": "Pix - Enviado",
+      "historico": "13/08 12:49 CHAVE DE OURO LOTERIAS  E"
+    },
+    {
+      "id": 618,
+      "numbanco": 1,
+      "data": "2026-08-13",
+      "valor": 24,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "81.302",
+      "favorecido": "Pix - Enviado",
+      "historico": "13/08 14:54 ALEXIS XAVIER DA SILVA"
     }
   ]
 }
