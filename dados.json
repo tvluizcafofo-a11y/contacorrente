@@ -2761,6 +2761,94 @@
       "numdoc": "181.301.531.250.701",
       "favorecido": "Luiz M. de Souza",
       "historico": "Pix - Recebido"
+    },
+    {
+      "id": 623,
+      "numbanco": 1,
+      "data": "2026-08-18",
+      "valor": 86.36,
+      "operacao": "C",
+      "especie": "A",
+      "numdoc": "33.673.934",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "TED-Credito em Conta"
+    },
+    {
+      "id": 624,
+      "numbanco": 1,
+      "data": "2026-08-19",
+      "valor": 2230,
+      "operacao": "C",
+      "especie": "O",
+      "numdoc": "551.614.000.000.553",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Transferencia recebida"
+    },
+    {
+      "id": 625,
+      "numbanco": 1,
+      "data": "2026-08-19",
+      "valor": 198.2,
+      "operacao": "C",
+      "especie": "A",
+      "numdoc": "33.605.174",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "TED-Credito em Conta"
+    },
+    {
+      "id": 626,
+      "numbanco": 1,
+      "data": "2026-08-19",
+      "valor": 5,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "191.402.426.412.601",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix-Recebido QR Code"
+    },
+    {
+      "id": 627,
+      "numbanco": 1,
+      "data": "2026-08-19",
+      "valor": 25,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "81.901",
+      "favorecido": "19/08 12:36 Luiz Martins de Souza",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 628,
+      "numbanco": 1,
+      "data": "2026-08-19",
+      "valor": 61,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "81.902",
+      "favorecido": "19/08 18:56 ALEXIS XAVIER DA SILVA",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 629,
+      "numbanco": 1,
+      "data": "2026-08-19",
+      "valor": 600,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "81.903",
+      "favorecido": "19/08 22:28 Geisa Reck Brasil de Souz",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 630,
+      "numbanco": 1,
+      "data": "2026-08-20",
+      "valor": 1500,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "82.001",
+      "favorecido": "20/08 09:55 Luiz Martins de Souza",
+      "historico": "Pix - Enviado"
     }
   ]
 }
