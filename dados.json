@@ -3067,7 +3067,7 @@
       "operacao": "D",
       "especie": "A",
       "numdoc": "20260805163440",
-      "favorecido": "Pagto Energia El�trica - CEMIG DISTRIBUICAO",
+      "favorecido": "Pagto Energia Elï¿½trica - CEMIG DISTRIBUICAO",
       "historico": "--"
     },
     {
@@ -3529,7 +3529,7 @@
       "operacao": "D",
       "especie": "A",
       "numdoc": "202608211350210",
-      "favorecido": "Pgto conta �gua - CIA DE SANEAMENTO DE MG",
+      "favorecido": "Pgto conta ï¿½gua - CIA DE SANEAMENTO DE MG",
       "historico": "--"
     },
     {
@@ -3630,6 +3630,50 @@
       "numdoc": "202608251107010",
       "favorecido": "Pagamento de Telefone - Data balanc.: 25/08/2026",
       "historico": "--"
+    },
+    {
+      "id": 702,
+      "numbanco": 1,
+      "data": "2026-08-24",
+      "valor": 1402.33,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "240.812.112.081.911",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Recebido"
+    },
+    {
+      "id": 703,
+      "numbanco": 1,
+      "data": "2026-08-24",
+      "valor": 1350,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "82.405",
+      "favorecido": "24/08 09:55 Luiz Martins de Souza",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 704,
+      "numbanco": 1,
+      "data": "2026-08-24",
+      "valor": 61,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "82.406",
+      "favorecido": "24/08 18:32 ALEXIS XAVIER DA SILVA",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 705,
+      "numbanco": 1,
+      "data": "2026-08-25",
+      "valor": 107.01,
+      "operacao": "D",
+      "especie": "A",
+      "numdoc": "48.314",
+      "favorecido": "Pagamento de Telefone",
+      "historico": "Pagamento de Telefone"
     }
   ]
 }
