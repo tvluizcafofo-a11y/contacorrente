@@ -1,0 +1,3431 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Conta Corrente - Sistema Web</title>
+
+  <!-- ===== PWA META TAGS ===== -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1a73e8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- ===== SCRIPTS ===== -->
+  <!-- jsQR carregado localmente para funcionamento offline -->
+  <script src="jsqr.min.js"></script>
+
+  <style>
+    /* ===== CSS COMPLETO (MANTIDO) ===== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: #e8ecf1;
+      font-family: 'Segoe UI', 'Microsoft Sans Serif', Arial, sans-serif;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+    .app {
+      max-width: 1100px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+      padding: 24px 28px;
+      transition: all 0.2s;
+    }
+    #mensagemGlobal {
+      position: fixed;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+      padding: 6px 16px;
+      border-radius: 6px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+      display: none;
+      max-width: 90%;
+      text-align: center;
+      transition: opacity 0.3s ease;
+      white-space: nowrap;
+      line-height: 1.4;
+    }
+    #mensagemGlobal.sucesso {
+      background: #28a745;
+      color: white;
+      border-left: 4px solid #1e7e34;
+    }
+    #mensagemGlobal.erro {
+      background: #dc3545;
+      color: white;
+      border-left: 4px solid #b02a37;
+    }
+    h1, h2, h3 {
+      font-weight: 400;
+      color: #1a2634;
+      margin: 0 0 12px 0;
+    }
+    h2 {
+      font-size: 1.6rem;
+      border-bottom: 2px solid #d0d7de;
+      padding-bottom: 8px;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.2s;
+      padding: 8px 12px;
+      border-radius: 6px;
+    }
+    h2:hover {
+      background: #f1f5f9;
+    }
+    h3 {
+      font-size: 1.2rem;
+      margin-top: 16px;
+    }
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #d0d7de;
+    }
+    .menu button {
+      background: #f0f2f5;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.2s, box-shadow 0.2s;
+      color: #1a2634;
+      font-weight: 500;
+    }
+    .menu button:hover {
+      background: #dbe0e8;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    .menu button.active {
+      background: #1a73e8;
+      color: white;
+      box-shadow: 0 2px 8px rgba(26,115,232,0.3);
+    }
+    .menu button.active:hover {
+      background: #1557b0;
+    }
+    .tela {
+      display: none;
+      animation: fadeIn 0.25s ease;
+    }
+    .tela.active { display: block; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .card {
+      background: #f8fafc;
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 12px 0;
+      border: 1px solid #e2e8f0;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 12px 0;
+    }
+    .banco-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 16px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+    .banco-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    }
+    .banco-card .logo {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      margin: 0 auto 8px auto;
+      display: block;
+      border-radius: 8px;
+      background: white;
+      padding: 4px;
+    }
+    .banco-card .icone {
+      font-size: 2.8rem;
+      margin-bottom: 8px;
+    }
+    .banco-card .nome {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #1a2634;
+    }
+    .banco-card .detalhe {
+      font-size: 0.85rem;
+      color: #4a5a6a;
+      margin-top: 4px;
+    }
+    .banco-card .saldo {
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-top: 6px;
+      transition: color 0.2s, letter-spacing 0.2s;
+    }
+    .banco-card .saldo.positivo { color: #1a73e8; }
+    .banco-card .saldo.negativo { color: #dc3545; }
+    .banco-card .saldo.oculto { color: #6b7a8a; letter-spacing: 2px; }
+    .banco-card .btn-ir {
+      margin-top: 10px;
+      background: #e2e8f0;
+      border: none;
+      padding: 4px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .banco-card .btn-ir:hover {
+      background: #d0d7de;
+    }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background: white;
+      min-width: 220px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      border-radius: 8px;
+      padding: 8px 0;
+      z-index: 100;
+      border: 1px solid #e2e8f0;
+    }
+    .dropdown-content button {
+      background: none;
+      border: none;
+      padding: 10px 18px;
+      width: 100%;
+      text-align: left;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.15s;
+      color: #1a2634;
+      border-radius: 0;
+    }
+    .dropdown-content button:hover {
+      background: #f1f5f9;
+    }
+    .dropdown-content .divider {
+      height: 1px;
+      background: #e2e8f0;
+      margin: 6px 0;
+    }
+    .dropdown.active .dropdown-content {
+      display: block;
+    }
+    .dropdown-btn {
+      background: #e2e8f0;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+    .dropdown-btn:hover {
+      background: #d0d7de;
+    }
+    .item-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 20px 16px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+    .item-card:hover {
+      background: #eef2f6;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .item-card .nome {
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: #1a2634;
+    }
+    .item-card .codigo {
+      font-size: 0.85rem;
+      color: #6b7a8a;
+      margin-top: 4px;
+    }
+    .item-card .btn-excluir-card {
+      margin-top: 12px;
+      background: #dc3545;
+      color: white;
+      border: none;
+      padding: 4px 14px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: background 0.2s;
+    }
+    .item-card .btn-excluir-card:hover {
+      background: #b02a37;
+    }
+    .form-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .form-group label {
+      width: 130px;
+      font-weight: 500;
+      color: #2c3e50;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 8px 10px;
+      border: 1px solid #cbd5e0;
+      border-radius: 6px;
+      flex: 1;
+      min-width: 150px;
+      background: white;
+      font-size: 14px;
+      transition: border 0.2s, box-shadow 0.2s;
+      font-family: inherit;
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 60px;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: #1a73e8;
+      box-shadow: 0 0 0 3px rgba(26,115,232,0.15);
+      outline: none;
+    }
+    .form-group input[type="file"] {
+      padding: 6px 0;
+      border: none;
+      flex: 0;
+    }
+    .form-group input[type="checkbox"] {
+      width: auto;
+      flex: 0;
+      margin-right: 6px;
+    }
+    .form-group input#txtSaldoInicial,
+    .form-group input#editBancoSaldo {
+      -moz-appearance: textfield;
+    }
+    .form-group input#txtSaldoInicial::-webkit-outer-spin-button,
+    .form-group input#txtSaldoInicial::-webkit-inner-spin-button,
+    .form-group input#editBancoSaldo::-webkit-outer-spin-button,
+    .form-group input#editBancoSaldo::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    .botoes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 12px 0;
+    }
+    .botoes button {
+      background: #e2e8f0;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+      color: #1a2634;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .botoes button:hover {
+      background: #d0d7de;
+      transform: scale(1.02);
+    }
+    .botoes button.primary {
+      background: #1a73e8;
+      color: white;
+      box-shadow: 0 2px 8px rgba(26,115,232,0.25);
+    }
+    .botoes button.primary:hover {
+      background: #1557b0;
+    }
+    .botoes button.danger {
+      background: #dc3545;
+      color: white;
+    }
+    .botoes button.danger:hover {
+      background: #b02a37;
+    }
+    .botoes button.success {
+      background: #28a745;
+      color: white;
+    }
+    .botoes button.success:hover {
+      background: #1e7e34;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    th {
+      background: #eef2f6;
+      font-weight: 600;
+      color: #1a2634;
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 2px solid #d0d7de;
+    }
+    td {
+      padding: 8px 12px;
+      border-bottom: 1px solid #e2e8f0;
+      vertical-align: middle;
+    }
+    tbody tr:hover {
+      background: #f1f5f9;
+    }
+    tbody tr:nth-child(even) {
+      background: #fafbfc;
+    }
+    tbody tr:nth-child(even):hover {
+      background: #f1f5f9;
+    }
+    .acoes {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-acao {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      padding: 4px 6px;
+      border-radius: 4px;
+      transition: background 0.15s, transform 0.1s;
+      line-height: 1;
+    }
+    .btn-acao:hover {
+      background: #e2e8f0;
+      transform: scale(1.15);
+    }
+    .btn-acao[data-acao="excluirMov"] {
+      color: #dc3545;
+    }
+    .btn-acao[data-acao="editarMov"] {
+      color: #1a73e8;
+    }
+    .saldo-real {
+      background: #f1f5f9;
+      border-radius: 8px;
+      padding: 12px 18px;
+      margin: 10px 0 16px 0;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .saldo-real .label {
+      font-weight: 500;
+      color: #2c3e50;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .saldo-real .valor {
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    .saldo-real .valor.positivo {
+      color: #1a73e8;
+    }
+    .saldo-real .valor.negativo {
+      color: #dc3545;
+    }
+    .saldo-real .valor.oculto {
+      color: #6b7a8a;
+      letter-spacing: 2px;
+    }
+    .saldo-real .btn-toggle-saldo-mov {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      transition: transform 0.2s;
+      font-size: 0;
+      line-height: 1;
+    }
+    .saldo-real .btn-toggle-saldo-mov:hover {
+      transform: scale(1.1);
+    }
+    .saldo-real .btn-toggle-saldo-mov img {
+      width: 28px;
+      height: 28px;
+      display: block;
+      border-radius: 4px;
+    }
+    .import-area {
+      background: #f1f5f9;
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin: 12px 0;
+      border: 1px dashed #b0c4de;
+    }
+    .toggle-section {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 16px 0 8px 0;
+      cursor: pointer;
+      user-select: none;
+    }
+    .toggle-section button {
+      background: #e2e8f0;
+      border: none;
+      border-radius: 4px;
+      padding: 2px 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .toggle-section button:hover {
+      background: #cbd5e0;
+    }
+    .collapsible-content {
+      overflow: hidden;
+      transition: max-height 0.3s ease, opacity 0.2s ease;
+      max-height: 2000px;
+      opacity: 1;
+    }
+    .collapsible-content.closed {
+      max-height: 0;
+      opacity: 0;
+      padding: 0;
+      margin: 0;
+      pointer-events: none;
+    }
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.45);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(2px);
+    }
+    .modal-overlay.active {
+      display: flex;
+    }
+    .modal-box {
+      background: white;
+      border-radius: 12px;
+      padding: 28px 32px;
+      max-width: 580px;
+      width: 95%;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+      max-height: 90vh;
+      overflow-y: auto;
+      animation: fadeIn 0.2s ease;
+    }
+    .modal-box h3 {
+      margin-top: 0;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 10px;
+    }
+    .modal-box .detalhe {
+      display: flex;
+      padding: 6px 0;
+      border-bottom: 1px solid #f0f2f5;
+    }
+    .modal-box .detalhe .rotulo {
+      font-weight: 500;
+      width: 120px;
+      color: #2c3e50;
+    }
+    .modal-box .detalhe .valor {
+      flex: 1;
+      color: #1a2634;
+    }
+    .modal-box .botoes {
+      margin-top: 20px;
+      justify-content: flex-end;
+    }
+    .footer {
+      margin-top: 28px;
+      font-size: 13px;
+      color: #6b7a8a;
+      text-align: center;
+      border-top: 1px solid #d0d7de;
+      padding-top: 14px;
+    }
+    .qrcode-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      padding: 10px 0;
+    }
+    .qrcode-container img {
+      max-width: 250px;
+      max-height: 250px;
+      border: 2px solid #d0d7de;
+      border-radius: 8px;
+      padding: 8px;
+      background: white;
+    }
+    .qrcode-upload-area {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+      padding: 16px;
+      border: 2px dashed #cbd5e0;
+      border-radius: 8px;
+      background: #fafbfc;
+    }
+    .qrcode-upload-area input[type="file"] {
+      max-width: 100%;
+    }
+    .btn-copiar-qr {
+      background: #f0f2f5;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: background 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-copiar-qr:hover {
+      background: #dbe0e8;
+    }
+    .btn-copiar-qr.copiado {
+      background: #28a745;
+      color: white;
+    }
+    .dropdown-icon {
+      margin-right: 6px;
+    }
+    .banco-vazio {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 30px 0;
+      color: #6b7a8a;
+    }
+    .banco-vazio button {
+      margin-top: 10px;
+    }
+    .logo-upload-area {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      width: 100%;
+    }
+    .logo-upload-area input[type="file"] {
+      padding: 4px 0;
+    }
+    .logo-preview {
+      max-width: 80px;
+      max-height: 80px;
+      border: 1px solid #d0d7de;
+      border-radius: 6px;
+      padding: 4px;
+      background: white;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 20px;
+      margin-bottom: 0;
+    }
+    .section-header h3 {
+      margin: 0;
+    }
+    .btn-toggle-saldo {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      transition: transform 0.2s;
+      font-size: 0;
+      line-height: 1;
+    }
+    .btn-toggle-saldo:hover {
+      transform: scale(1.1);
+    }
+    .btn-toggle-saldo img {
+      width: 32px;
+      height: 32px;
+      display: block;
+      border-radius: 4px;
+    }
+    .fluxo-table td.valor-direita {
+      text-align: right;
+    }
+    .fluxo-positivo {
+      color: #1a73e8 !important;
+      font-weight: 600;
+    }
+    .fluxo-negativo {
+      color: #dc3545 !important;
+      font-weight: 600;
+    }
+    .fluxo-zero {
+      color: #333;
+    }
+    .qr-selector-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      margin-bottom: 8px;
+      justify-content: center;
+    }
+    .qr-selector-group select {
+      flex: 0 1 250px;
+      padding: 4px 8px;
+      border: 1px solid #cbd5e0;
+      border-radius: 4px;
+      font-size: 0.9rem;
+    }
+    @media (max-width:700px) {
+      .app {
+        padding: 16px;
+      }
+      .form-group label {
+        width: 100%;
+      }
+      .saldo-real {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+      }
+      .menu button {
+        font-size: 13px;
+        padding: 6px 12px;
+      }
+      .card-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (max-width:450px) {
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div id="mensagemGlobal"></div>
+
+<div class="app" id="app">
+  <div class="menu">
+    <button data-tela="principal" class="active">Início</button>
+    <button data-tela="usuarios">Perfil</button>
+    <button data-tela="bancos">Bancos</button>
+    <button data-tela="movimentos">Movimentos</button>
+    <button data-tela="fluxo">Fluxo de Caixa</button>
+    <button data-tela="config" style="margin-left:auto;">⚙️ Configurações</button>
+  </div>
+
+  <!-- PRINCIPAL -->
+  <div id="tela-principal" class="tela active">
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:12px;">
+      <h2 style="border:none; padding:0; margin:0;">🏠 Início</h2>
+      <div class="dropdown" id="dropdownDados">
+        <button class="dropdown-btn" id="btnDropdownDados">☰ Dados</button>
+        <div class="dropdown-content">
+          <button id="btnCarregarJSON">📂 Carregar Dados (JSON)</button>
+          <button id="btnSalvarJSON">💾 Salvar Dados (JSON)</button>
+          <div class="divider"></div>
+          <button id="btnSalvarGitHub">💾 Salvar no GitHub</button>
+          <button id="btnConfigGitHub">⚙️ Configurar GitHub</button>
+          <div class="divider"></div>
+          <button id="btnQRCode">📱 QR Code PIX</button>
+        </div>
+        <input type="file" id="fileJSON" accept=".json" style="display:none;">
+      </div>
+    </div>
+    <p style="font-size:1.05rem; margin-bottom:8px;">Bem-vindo, <strong id="lblUsuario">---</strong></p>
+
+    <div class="section-header">
+      <h3>🏦 Meus Bancos</h3>
+      <button class="btn-toggle-saldo" id="btnToggleSaldo" title="Mostrar/Esconder saldos">
+        <img id="toggleSaldoImg" src="" alt="Olho">
+      </button>
+    </div>
+    <div id="bancoGridPrincipal" class="card-grid"></div>
+  </div>
+
+  <!-- CONFIGURAÇÕES -->
+  <div id="tela-config" class="tela">
+    <h2>⚙️ Configurações</h2>
+    <div class="card">
+      <h3>🔐 GitHub</h3>
+      <div class="form-group">
+        <label>Repositório:</label>
+        <input type="text" id="cfgRepo" placeholder="usuario/nome-do-repo" value="">
+      </div>
+      <div class="form-group">
+        <label>Token:</label>
+        <input type="password" id="cfgToken" placeholder="Personal Access Token (repo)" value="">
+        <small style="color:#666;">Gere em <a href="https://github.com/settings/tokens" target="_blank">github.com/settings/tokens</a> com permissão <code>repo</code></small>
+      </div>
+      <div class="form-group">
+        <label>Nome do arquivo:</label>
+        <input type="text" id="cfgFilename" placeholder="dados.json" value="dados.json">
+      </div>
+      <div class="botoes">
+        <button id="btnSalvarConfigGitHub" class="primary">Salvar Configuração</button>
+        <button id="btnTestarConfigGitHub">Testar Conexão</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- USUÁRIOS -->
+  <div id="tela-usuarios" class="tela">
+    <h2>👤 Perfil</h2>
+    <div class="botoes">
+      <button id="btnMostrarIncluirUsuario" class="primary">➕ Incluir Usuário</button>
+    </div>
+    <div id="formIncluirUsuario" class="card" style="display:none;">
+      <h3 style="margin-top:0;">Novo Usuário</h3>
+      <div class="form-group"><label>Nome de usuário:</label><input type="text" id="txtNovoUsuario" placeholder="Login"></div>
+      <div class="form-group"><label>Nome completo:</label><input type="text" id="txtNomeCompleto" placeholder="Nome completo"></div>
+      <div class="form-group"><label>Endereço:</label><input type="text" id="txtEndereco" placeholder="Endereço completo"></div>
+      <div class="form-group"><label>Telefone:</label><input type="text" id="txtTelefone" placeholder="(00) 00000-0000"></div>
+      <div class="form-group"><label>E-mail:</label><input type="email" id="txtEmail" placeholder="email@exemplo.com"></div>
+      <div class="form-group"><label>Senha:</label><input type="password" id="txtNovaSenha" placeholder="Senha"></div>
+      <div class="form-group"><label>Confirmar:</label><input type="password" id="txtConfirmaSenha" placeholder="Confirmar senha"></div>
+      <div class="botoes">
+        <button id="btnIncluirUsuario" class="primary">Salvar</button>
+        <button id="btnCancelarIncluirUsuario">Cancelar</button>
+      </div>
+    </div>
+    <h3>Lista de Usuários</h3>
+    <div id="usuarioGrid" class="card-grid"></div>
+  </div>
+
+  <!-- BANCOS -->
+  <div id="tela-bancos" class="tela">
+    <h2>🏦 Bancos</h2>
+    <div class="botoes">
+      <button id="btnMostrarIncluirBanco" class="primary">➕ Incluir Banco</button>
+    </div>
+    <div id="formIncluirBanco" class="card" style="display:none;">
+      <h3 style="margin-top:0;">Novo Banco</h3>
+      <div class="form-group"><label>Código:</label><input type="number" id="txtNumBanco" placeholder="Número do banco"></div>
+      <div class="form-group"><label>Nome:</label><input type="text" id="txtNomeBanco" placeholder="Nome do banco"></div>
+      <div class="form-group"><label>Agência:</label><input type="text" id="txtAgencia" placeholder="Agência"></div>
+      <div class="form-group"><label>Conta:</label><input type="text" id="txtContaBanco" placeholder="Nº conta"></div>
+      <div class="form-group"><label>Saldo Inicial:</label>
+        <input type="text" id="txtSaldoInicial" placeholder="0,00" onkeypress="return (event.charCode >= 45 && event.charCode <= 57) || event.key === '-'">
+      </div>
+      <div class="form-group">
+        <label>Logomarca URL:</label>
+        <input type="text" id="txtLogo" placeholder="https://exemplo.com/logo.png">
+      </div>
+      <div class="form-group">
+        <label>Ou upload:</label>
+        <div class="logo-upload-area">
+          <input type="file" id="logoFileInput" accept="image/*">
+          <img id="logoPreview" class="logo-preview" style="display:none;">
+        </div>
+      </div>
+      <div class="botoes">
+        <button id="btnIncluirBanco" class="primary">Salvar</button>
+        <button id="btnCancelarIncluirBanco">Cancelar</button>
+      </div>
+    </div>
+    <h3>Bancos Cadastrados</h3>
+    <div id="bancoGrid" class="card-grid"></div>
+  </div>
+
+  <!-- MOVIMENTOS -->
+  <div id="tela-movimentos" class="tela">
+    <h2 id="h2Movimentos">💳 Movimentos</h2>
+    <div class="card" style="padding:10px 16px;">
+      <div class="form-group" style="margin-bottom:4px;">
+        <label>Banco:</label>
+        <select id="selBancoMov" style="flex:0 1 300px;"></select>
+      </div>
+    </div>
+    <div class="toggle-section">
+      <button id="btnToggleCadastro" title="Abrir/Fechar formulário">▶</button>
+      <span style="font-weight:500;">Incluir movimento</span>
+    </div>
+    <div id="cadastroMovimentos" class="collapsible-content closed">
+      <div class="card">
+        <div class="form-group"><label>Data:</label><input type="date" id="txtDataMov"></div>
+        <div class="form-group"><label>Valor:</label><input type="number" step="0.01" id="txtValorMov" placeholder="0,00"></div>
+        <div class="form-group"><label>Operação:</label>
+          <select id="selOperacao">
+            <option value="C">Crédito</option>
+            <option value="D">Débito</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Espécie:</label>
+          <select id="selEspecie">
+            <option value="P">Pix</option>
+            <option value="D">Dinheiro</option>
+            <option value="A">Automático</option>
+            <option value="O">Outros</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Nº Documento:</label><input type="text" id="txtNumDoc" placeholder="Número"></div>
+        <div class="form-group"><label>Favorecido:</label><input type="text" id="txtFavorecido" placeholder="Favorecido"></div>
+        <div class="form-group"><label>Histórico:</label><input type="text" id="txtHistorico" placeholder="Histórico"></div>
+        <div class="botoes">
+          <button id="btnIncluirMov" class="primary">Incluir</button>
+          <button id="btnExcluirMov" class="danger">Excluir</button>
+        </div>
+      </div>
+    </div>
+    <div class="import-area">
+      <h4 style="margin:0 0 8px 0;">📂 Importar Extrato (CSV, OFX ou Mercado Pago)</h4>
+      <div class="form-group">
+        <label>Arquivo:</label>
+        <input type="file" id="fileExtrato" accept=".csv,.ofx,.qfx,.qbo">
+      </div>
+      <div class="botoes">
+        <button id="btnImportarExtrato" class="primary">Importar</button>
+      </div>
+    </div>
+    <div class="saldo-real">
+      <div>
+        <span class="label">
+          💰 Saldo
+          <button class="btn-toggle-saldo-mov" id="btnToggleSaldoMov" title="Mostrar/Esconder saldo">
+            <img id="toggleSaldoMovImg" src="" alt="Olho">
+          </button>
+        </span>
+        <span class="valor" id="lblSaldoReal">R$ 0,00</span>
+      </div>
+    </div>
+    <div class="movimentos-header">
+      <h3>📋 Movimentos</h3>
+      <span class="banco-info" id="bancoInfo">Banco: Nenhum selecionado</span>
+    </div>
+    <table id="tblMovimentos">
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Favorecido</th>
+          <th>Histórico</th>
+          <th class="valor-direita">Valor</th>
+          <th>Operação</th>
+          <th>Espécie</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody id="tbodyMovimentos"></tbody>
+    </table>
+    <div class="legenda">
+      <span style="font-weight:600; color:#1a2634;">Legenda:</span>
+      <div class="legenda-item"><span class="codigo">D</span><span class="descricao">= Débito</span></div>
+      <div class="legenda-item"><span class="codigo">C</span><span class="descricao">= Crédito</span></div>
+      <div class="legenda-item"><span class="codigo">P</span><span class="descricao">= Pix</span></div>
+      <div class="legenda-item"><span class="codigo">D</span><span class="descricao">= Dinheiro</span></div>
+      <div class="legenda-item"><span class="codigo">A</span><span class="descricao">= Automático</span></div>
+      <div class="legenda-item"><span class="codigo">O</span><span class="descricao">= Outros</span></div>
+    </div>
+  </div>
+
+  <!-- FLUXO DE CAIXA -->
+  <div id="tela-fluxo" class="tela">
+    <h2>📈 Fluxo de Caixa</h2>
+    <div class="card">
+      <div class="form-group"><label>Data Inicial:</label><input type="date" id="dtInicioFluxo"></div>
+      <div class="form-group"><label>Data Final:</label><input type="date" id="dtFimFluxo"></div>
+      <div class="botoes"><button id="btnGerarFluxo" class="primary">Gerar</button></div>
+    </div>
+    <h3>Resumo por data</h3>
+    <table id="tblFluxo" class="fluxo-table">
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th class="valor-direita">Créditos</th>
+          <th class="valor-direita">Débitos</th>
+          <th class="valor-direita">Saldo do Dia</th>
+          <th class="valor-direita">Saldo Acumulado</th>
+        </tr>
+      </thead>
+      <tbody id="tbodyFluxo"></tbody>
+    </table>
+  </div>
+
+  <!-- MODAL QR CODE PIX -->
+  <div id="modalQRCode" class="modal-overlay">
+    <div class="modal-box">
+      <h3>📱 QR Code PIX</h3>
+      <div class="qrcode-container">
+        <div class="qr-selector-group">
+          <label>📂 Selecionar:</label>
+          <select id="qrSelector">
+            <option value="">-- Nenhum --</option>
+          </select>
+          <button id="btnNovoQR" class="primary" style="padding:4px 12px; font-size:0.9rem;">➕ Novo</button>
+        </div>
+        <div id="qrcodeDisplay">
+          <img id="qrImage" src="" alt="QR Code PIX" style="display:none; max-width:250px; max-height:250px; border:2px solid #d0d7de; border-radius:8px; padding:8px; background:white;">
+          <p id="qrPlaceholder" style="color:#6b7a8a; text-align:center;">Nenhum QR Code selecionado.</p>
+        </div>
+        <button class="btn-copiar-qr" id="btnCopiarQR" title="Copiar QR Code">📋 Copiar QR Code</button>
+        <div class="qrcode-upload-area">
+          <label style="font-weight:500;">Faça upload da imagem do QR Code:</label>
+          <input type="file" id="qrFileInput" accept="image/*">
+          <div class="botoes" style="margin:0;">
+            <button id="btnSalvarQR" class="primary">Salvar</button>
+            <button id="btnRemoverQR" class="danger">Remover</button>
+          </div>
+          <div id="msgQR" class="msg oculto" style="margin-top:8px;"></div>
+        </div>
+      </div>
+      <div class="botoes">
+        <button id="btnFecharQR" class="primary">Fechar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL PARA LIMPAR MOVIMENTOS -->
+  <div id="modalLimparMovimentos" class="modal-overlay">
+    <div class="modal-box">
+      <h3>⚠️ Atenção!</h3>
+      <p style="font-size:1.1rem; margin:20px 0;">Deseja realmente <strong>limpar todos os movimentos</strong>?</p>
+      <p style="color:#6b7a8a; margin-bottom:20px;">Esta ação não pode ser desfeita. Os dados de bancos e usuários serão mantidos.</p>
+      <div class="botoes">
+        <button id="btnConfirmarLimpeza" class="danger">Sim</button>
+        <button id="btnCancelarLimpeza" class="primary">Não</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAIS DE EDIÇÃO -->
+  <div id="modalUsuario" class="modal-overlay">
+    <div class="modal-box">
+      <h3>👤 Editar Usuário</h3>
+      <input type="hidden" id="editUsuarioId">
+      <div class="detalhe"><span class="rotulo">Código:</span><span class="valor" id="editUsuarioCodigo"></span></div>
+      <div class="form-group"><label>Nome de usuário:</label><input type="text" id="editUsuarioNome"></div>
+      <div class="form-group"><label>Nome completo:</label><input type="text" id="editNomeCompleto"></div>
+      <div class="form-group"><label>Endereço:</label><input type="text" id="editEndereco"></div>
+      <div class="form-group"><label>Telefone:</label><input type="text" id="editTelefone"></div>
+      <div class="form-group"><label>E-mail:</label><input type="email" id="editEmail"></div>
+      <div class="form-group"><label>Senha:</label><input type="password" id="editUsuarioSenha"></div>
+      <div class="form-group"><label>Confirmar:</label><input type="password" id="editUsuarioConfirma"></div>
+      <div class="botoes">
+        <button id="btnSalvarUsuario" class="primary">Salvar</button>
+        <button id="btnCancelarUsuario">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="modalBanco" class="modal-overlay">
+    <div class="modal-box">
+      <h3>🏦 Editar Banco</h3>
+      <input type="hidden" id="editBancoNum">
+      <div class="form-group"><label>Código:</label><input type="number" id="editBancoNumero"></div>
+      <div class="form-group"><label>Nome:</label><input type="text" id="editBancoNome"></div>
+      <div class="form-group"><label>Agência:</label><input type="text" id="editBancoAgencia"></div>
+      <div class="form-group"><label>Conta:</label><input type="text" id="editBancoConta"></div>
+      <div class="form-group"><label>Saldo Inicial:</label>
+        <input type="text" id="editBancoSaldo" onkeypress="return (event.charCode >= 45 && event.charCode <= 57) || event.key === '-'">
+      </div>
+      <div class="form-group">
+        <label>Logomarca URL:</label>
+        <input type="text" id="editLogo" placeholder="https://exemplo.com/logo.png">
+      </div>
+      <div class="form-group">
+        <label>Ou upload:</label>
+        <div class="logo-upload-area">
+          <input type="file" id="editLogoFileInput" accept="image/*">
+          <img id="editLogoPreview" class="logo-preview" style="display:none;">
+        </div>
+      </div>
+      <div class="botoes">
+        <button id="btnSalvarBanco" class="primary">Salvar</button>
+        <button id="btnCancelarBanco">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="modalEditar" class="modal-overlay">
+    <div class="modal-box">
+      <h3>✏️ Editar Movimento</h3>
+      <input type="hidden" id="editId">
+      <div class="form-group"><label>Data:</label><input type="date" id="editData"></div>
+      <div class="form-group"><label>Valor:</label><input type="number" step="0.01" id="editValor"></div>
+      <div class="form-group"><label>Operação:</label>
+        <select id="editOperacao">
+          <option value="C">Crédito</option>
+          <option value="D">Débito</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Espécie:</label>
+        <select id="editEspecie">
+          <option value="P">Pix</option>
+          <option value="D">Dinheiro</option>
+          <option value="A">Automático</option>
+          <option value="O">Outros</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Nº Documento:</label><input type="text" id="editNumDoc"></div>
+      <div class="form-group"><label>Favorecido:</label><input type="text" id="editFavorecido"></div>
+      <div class="form-group"><label>Histórico:</label><input type="text" id="editHistorico"></div>
+      <div class="botoes">
+        <button id="btnSalvarEdicao" class="primary">Salvar</button>
+        <button id="btnCancelarEdicao">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    Sistema convertido de VB6 para HTML/JavaScript • Dados em JSON externo • Integração com GitHub<br>
+    <span id="versaoApp">v1.8.1</span>
+  </div>
+</div>
+
+<script>
+  // ============================================================
+  // REGISTRO DO SERVICE WORKER (PWA)
+  // ============================================================
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js')
+      .then(reg => console.log('Service Worker registrado com sucesso!', reg))
+      .catch(err => console.error('Falha ao registrar Service Worker', err));
+  }
+
+  // ============================================================
+  // VERSÃO DO SISTEMA
+  // ============================================================
+  const VERSAO = '1.8.1';
+
+  // ============================================================
+  // CÓDIGOS BASE64 DOS OLHOS FORNECIDOS PELO USUÁRIO
+  // ============================================================
+  const OLHO_ABERTO = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAF1klEQVR4nO2bfazWYxjHP8+J0tuO5GVKqAhhGMciYbOETeWtjjl5mUlmhqPmH4uMDYVeZFiYlrw1NlaM0cnLP2SWlj+at1AklZDidHrssuuxa9d+z3l+9+/3e57zS893u7ffnnPf133db9f1va77PlBHHXV0ERqASVrke6/D1UBRi0zCXod7zATI9x6N/YCpgSuZdAJuBu4H+pIj3GkGM76KE3CJaTODHOEWo1hbFSfgPdNGdlxusD+w3Sh3QhUm4Dhgt9b/CziEnOFZM6B5VZiAuab+InKI042Cv8UwUiET0AvYYuqPJKf4xCh5Y4YTMNnUXUWOcX2AoiET8KmpK5ORW/QCthplz+ik7iRTr6WTek2m3q9AH2qIAtCsRb7j4FGjsJCWcmjQgbdUiAWajbzZMXUYCrQCg2PWj9X580B34rnE14ClQH/SowfwOPBUTPYnLvhn1fmLLCegCLxd6y0YCOEKPxl916QVWAAedpOwUlc5bxgCbDB6/gKclJXwqYaFSZlG/jDP6Cec4ZSsO2gBdgK7gNEB7bopSRKD+LTGCt+qkru0yPc3wHJggdZt0rZxMQHo0JU/jSphoG61OIbrMuAFx+BCy2ZgsUaBcQzw4UAjXYgjgEdU8WLGRVZ2FjCIHOJI4DmgvYzyPwIvqW8eAwwD+gH7aOmnv12gdV521tyWvzXwktXucvQBZqpt8IqKRX5Iz3+SpGeDtp2pE+jl7wAeBHrTRbgIWBeh2Md6/mVls4LIukJdsO9PjOeF1BA9gfnOLUr5Chhbg/4l5fa163u35gskN1lVDNYoz3b+JzC9Fp27Rbhb+7a6fKaGuCo4B9jkOmxTA9hVkL7fdzpJHDAq647GqtGxW24OsC9dD7EPD7gjuVPtUCa4RtlaSfg24NKUMg8DrgRu19KsJCsNLtdUXElPcclXpZTJBDf49RpxJcW5wAcRBrS0q2Q7n51C/vHOZban2QljlHSUhP2gZCXpNrVZ3UpldmAcYHGMLlTRpNBDYpf/kgrbjJDvgKNIHlIvjiAxSzXUlrIsgkwtCshCeRwNfG9kbQ3ZuQcoubCMLk4AVA53uIFJgHRoRL0BSpdt3VtT9DvUHYcv4+QxCsDrbvucmUKJA91OmhOj/3lu5dKk1c7SMZTkvVppV93mVqBSbj9k9VfFPNdiL1abduIl0uAmNya5x4zEMMesniQ92oy8SYGut9ROLkTTYoGRtz3KnjUAHzpKGScBUQk2RzcwkCdY15sWPRyFX+GPwrXmjx0ahmYBe/66BypsWV0WGKFjK8mVJzr/oq9bqcdcQ0lSPJOQoCTdAYMc/0gSMS6KMODz3c7qKz9OcT82uqPxu6HA4qpCsDxqxmPgOtPu3cA+h5udt9b9rdEtymSUJXUoFR0XIXCN8+EhaDVtPw/wArZP8UxxUXCG952IOuPMeM+3zE9mLgqjnRsJoZX99UKz1HZuBT9ccNt0ixKzJE/v2ju5GJE7g5MD5PKiEbw28HrMc4tXytgDsfxL4vrsCBwMbDRt5ZI2MwxwjC7kiUpB6xedZX9TU+hS3nIeQ8rCgD666Xa3hjPzZ3Q3OAWnBCpor80rlVmB0eAM01bO9sVUCQtdRNfZA4gojFISEpUP6FADNjJBtsr6d0nFV/UFyGpnpIKMiTlSE01GaGKZCLESznOpuhUZp+PLJhw2uyRkmixRmkjvD3fuk0xiIjQ597ZRFaoVxhuCVtRrNFmYmmJERBKyszdBWaCg75Ltmd8U82VqVTBKb22tMZNL0oOqdCmzzPW1PqENyhRDIm6LNqvbzOI/QeTG6a6IW6CPannmK6G3Y4v2vrA14ZsiYYv3OXZXKk9klK/IHONcQrVUxFq/oZNxahmW1l9D7umaBbIp+aJ59iauL9foCdzrqHNU2aGp6w1lBlt0hm5aTq7iYqOPxtvePoSUlSpDCNgejRM1sluiltu6MetG1+mLVMlGH8v/GAV1lcN1oFk8qa2jjjrqIBT/AETJse/0mq8JAAAAAElFTkSuQmCC';
+  const OLHO_FECHADO = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAADJElEQVR4nO2Ze2jOYRTHP2zjdZ+ZFVZDLWm5pSXxBykpk2RYCRGSlOIvSyGFZMU/UhKi/KUkqZH9YYjl0jbN1ELkLom5zXh16vurp9V7+b37vRf6fepp7949zznPec5zOecMQkJCQkJCcoMIMBfYA5wHWoEPwHegG/gIPAHqgcPAUqCYHGIOcAr4DER9NjPwCrAa6J8tAxYBTc6k/gD3gDpgOTAVKJKn8oDhQDmwENgJXJW3vPEvge2ZNKhc28ObwBtgFzA+BVmFwHrggSOvQ8amlQ1ApxTa/t+iFQ+CBUCLY9AxYCABUwCccJScBkYErQTIB7Y5W+4+MCZIBZck2LxRQ/qZBDyWzhfAyCCE2kF9C7wCppM5ioBrwA+dy0CwQzmYzNMHGJQFvSEh/zr5iTrYNfcM2E/usgLoUtAZk1J1+g3MJPco0lNg70t1os516tiiFz2XOK653dLVHJdhek2jCgZzhfnaKV2KrJNingZZqyL7jAXea3F3+B28VwM/ARPJHkOBZs2lXiGTL/oCFyTgNVBB5ikEbmsO7fo9JQYADRL0DphG5ihWxmm6nwJlvRVY4+QhX4F1pJ9ZwHNH74wgCgtekuOtjrUzaaqA9ANqgV/S81M/rSJTkqrQSqcyclTfVausY999AXYHmOpaMaNDsu22PKLs0Et/HwGj/AqtUE5uAs7q4HtYkeGy4x1LuA4AE1KYfIkqJ22OvIfA7B59WlPxzDiVZmzgxTivuxXj7vSoUzXLe6uUTZYpIYtodScDi4GDQKOzdaKK8dbEuF59GzPacW9DEttmq+MVz4N+2jdVH+3zyQS6fBnjHWhb6SEJBEccz1Vp+1XqsNp2vOH83XuLmlRO3afoIaKt2i3vlPowxmTFpFEdkin1bHZus3gBnGdIPM6pz6Ek9JoxdxU49poC7WlTviRB32QMmaKSa2ea6mUx2ejcMO6NlqohOGXYWjJEgXNArVhNQIbYmYkqcbLQKO2slcK2JLzhxxDDCxA3kQHapWxlkv39GLLMiXTTzk21vDQYkqer3/7NkHP4MYRkcvFsYW/T9WxPIiQkhP+Dv586CF9EuOZSAAAAAElFTkSuQmCC';
+
+  // ============================================================
+  // BANCO DE DADOS - JSON EXTERNO
+  // ============================================================
+  let dados = {
+    usuarios: [],
+    bancos: [],
+    movimentos: []
+  };
+
+  // ============================================================
+  // QR CODE PIX - MÚLTIPLOS QR CODES
+  // ============================================================
+  let qrCodes = [];
+  let qrSelecionado = null;
+
+  function carregarQRCodesLocal() {
+    try {
+      const saved = localStorage.getItem('qr_codes');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          qrCodes = parsed;
+          return true;
+        }
+      }
+      const oldPayload = localStorage.getItem('qr_payload');
+      const oldImage = localStorage.getItem('qr_image');
+      const oldName = localStorage.getItem('qr_file_name');
+      if (oldPayload || oldImage) {
+        const novo = {
+          id: Date.now().toString(36) + Math.random().toString(36).substr(2, 5),
+          name: oldName || 'QR Code PIX',
+          payload: oldPayload || '',
+          imageData: oldImage || ''
+        };
+        qrCodes = [novo];
+        localStorage.setItem('qr_codes', JSON.stringify(qrCodes));
+        localStorage.removeItem('qr_payload');
+        localStorage.removeItem('qr_image');
+        localStorage.removeItem('qr_file_name');
+        return true;
+      }
+      return false;
+    } catch (e) {
+      console.error('Erro ao carregar QR Codes do localStorage:', e);
+      return false;
+    }
+  }
+
+  function salvarQRCodesLocal() {
+    try {
+      localStorage.setItem('qr_codes', JSON.stringify(qrCodes));
+      return true;
+    } catch (e) {
+      console.error('Erro ao salvar QR Codes no localStorage:', e);
+      return false;
+    }
+  }
+
+  async function carregarQRCodesDoGitHub() {
+    const { repo, token } = getGitHubConfig();
+    if (!repo || !token) return false;
+    try {
+      const url = `https://api.github.com/repos/${repo}/contents/qrcodes.json`;
+      const response = await fetch(url, {
+        headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json' }
+      });
+      if (!response.ok) {
+        if (response.status === 404) {
+          return await migrarQRCodeAntigo();
+        }
+        throw new Error('Erro ao carregar QR Codes: ' + response.statusText);
+      }
+      const data = await response.json();
+      const content = atob(data.content);
+      const json = JSON.parse(content);
+      if (Array.isArray(json) && json.length > 0) {
+        qrCodes = json;
+        salvarQRCodesLocal();
+        return true;
+      }
+      return false;
+    } catch (err) {
+      console.error('Erro ao carregar QR Codes do GitHub:', err);
+      return false;
+    }
+  }
+
+  async function migrarQRCodeAntigo() {
+    const { repo, token } = getGitHubConfig();
+    if (!repo || !token) return false;
+    try {
+      const url = `https://api.github.com/repos/${repo}/contents/qrcode.json`;
+      const response = await fetch(url, {
+        headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json' }
+      });
+      if (!response.ok) {
+        if (response.status === 404) return false;
+        throw new Error('Erro ao migrar QR Code antigo: ' + response.statusText);
+      }
+      const data = await response.json();
+      const content = atob(data.content);
+      const json = JSON.parse(content);
+      if (json.payload !== undefined) {
+        const novo = {
+          id: Date.now().toString(36) + Math.random().toString(36).substr(2, 5),
+          name: json.fileName || 'QR Code PIX',
+          payload: json.payload || '',
+          imageData: json.imagem || ''
+        };
+        qrCodes = [novo];
+        salvarQRCodesLocal();
+        await salvarQRCodesNoGitHub(false);
+        return true;
+      }
+      return false;
+    } catch (err) {
+      console.error('Erro ao migrar QR Code antigo:', err);
+      return false;
+    }
+  }
+
+  async function salvarQRCodesNoGitHub(keepalive = false) {
+    const { repo, token } = getGitHubConfig();
+    if (!repo || !token) {
+      if (!keepalive) exibirMsg('Configure o GitHub primeiro (⚙️ Configurar GitHub).', true);
+      return;
+    }
+    try {
+      const url = `https://api.github.com/repos/${repo}/contents/qrcodes.json`;
+      const content = btoa(unescape(encodeURIComponent(JSON.stringify(qrCodes, null, 2))));
+      let sha = null;
+      try {
+        const getResp = await fetch(url, {
+          headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json' },
+          keepalive
+        });
+        if (getResp.ok) {
+          const data = await getResp.json();
+          sha = data.sha;
+        }
+      } catch (e) { /* ignora */ }
+      const body = {
+        message: 'Atualização da lista de QR Codes PIX',
+        content,
+        branch: 'main'
+      };
+      if (sha) body.sha = sha;
+      const response = await fetch(url, {
+        method: 'PUT',
+        headers: {
+          'Authorization': 'token ' + token,
+          'Accept': 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body),
+        keepalive
+      });
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || response.statusText);
+      }
+      console.log('QR Codes salvos no GitHub com sucesso.');
+      if (!keepalive) exibirMsg('✅ QR Codes salvos no GitHub!', false);
+    } catch (err) {
+      console.error('Erro ao salvar QR Codes no GitHub:', err);
+      if (!keepalive) exibirMsg('❌ Erro ao salvar QR Codes no GitHub: ' + err.message, true);
+    }
+  }
+
+  // ============================================================
+  // FUNÇÕES DE UI DO QR CODE
+  // ============================================================
+  function carregarQRCodeUI() {
+    const selector = document.getElementById('qrSelector');
+    const img = document.getElementById('qrImage');
+    const placeholder = document.getElementById('qrPlaceholder');
+
+    selector.innerHTML = '<option value="">-- Nenhum --</option>';
+    qrCodes.forEach((q, index) => {
+      const opt = document.createElement('option');
+      opt.value = index;
+      opt.textContent = q.name || 'Sem nome';
+      selector.appendChild(opt);
+    });
+
+    if (qrSelecionado) {
+      const idx = qrCodes.indexOf(qrSelecionado);
+      if (idx !== -1) {
+        selector.value = idx;
+        if (qrSelecionado.imageData) {
+          img.src = qrSelecionado.imageData;
+          img.style.display = 'block';
+          placeholder.style.display = 'none';
+        } else {
+          img.style.display = 'none';
+          placeholder.style.display = 'block';
+          placeholder.textContent = 'Nenhuma imagem para este QR Code.';
+        }
+        return;
+      }
+    }
+    if (qrCodes.length > 0) {
+      qrSelecionado = qrCodes[0];
+      carregarQRCodeUI();
+    } else {
+      qrSelecionado = null;
+      img.style.display = 'none';
+      placeholder.style.display = 'block';
+      placeholder.textContent = 'Nenhum QR Code cadastrado.';
+      selector.value = '';
+    }
+  }
+
+  function selecionarQRCode() {
+    const selector = document.getElementById('qrSelector');
+    const idx = parseInt(selector.value);
+    if (isNaN(idx) || idx < 0 || idx >= qrCodes.length) {
+      qrSelecionado = null;
+      carregarQRCodeUI();
+      return;
+    }
+    qrSelecionado = qrCodes[idx];
+    carregarQRCodeUI();
+  }
+
+  function novoQRCode() {
+    const nome = prompt('Digite o nome do novo QR Code PIX:', 'Meu QR Code');
+    if (nome === null) return;
+    if (nome.trim() === '') {
+      exibirMsg('O nome não pode ser vazio.', true);
+      return;
+    }
+    const novo = {
+      id: Date.now().toString(36) + Math.random().toString(36).substr(2, 5),
+      name: nome.trim(),
+      payload: '',
+      imageData: ''
+    };
+    qrCodes.push(novo);
+    qrSelecionado = novo;
+    salvarQRCodesLocal();
+    carregarQRCodeUI();
+    salvarQRCodesNoGitHub(false);
+    exibirMsg('Novo QR Code criado!', false);
+  }
+
+  function decodificarQRCode(file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const img = new Image();
+      img.onload = function() {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        const scale = 4;
+        canvas.width = img.width * scale;
+        canvas.height = img.height * scale;
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const code = jsQR(imageData.data, canvas.width, canvas.height, {
+          inversionAttempts: "dontInvert",
+        });
+        if (code && code.data) {
+          if (qrSelecionado) {
+            qrSelecionado.payload = code.data;
+            qrSelecionado.imageData = e.target.result;
+            if (!qrSelecionado.name) {
+              qrSelecionado.name = file.name.replace(/\.[^/.]+$/, '') || 'QR Code';
+            }
+            salvarQRCodesLocal();
+            carregarQRCodeUI();
+            exibirMsg('✅ QR Code decodificado com sucesso!', false);
+          } else {
+            exibirMsg('Selecione ou crie um QR Code primeiro.', true);
+          }
+        } else {
+          exibirMsg('❌ Não foi possível ler o QR Code. Tente outra imagem.', true);
+        }
+      };
+      img.onerror = function() {
+        exibirMsg('❌ Erro ao carregar a imagem.', true);
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function salvarQRCodeAtual() {
+    if (!qrSelecionado) {
+      exibirMsg('Selecione ou crie um QR Code primeiro.', true);
+      return;
+    }
+    if (!qrSelecionado.payload) {
+      exibirMsg('Ainda não há payload. Faça upload de uma imagem para extrair o código.', true);
+      return;
+    }
+    salvarQRCodesLocal();
+    carregarQRCodeUI();
+    salvarQRCodesNoGitHub(false);
+    exibirMsg('QR Code salvo com sucesso!', false);
+  }
+
+  function removerQRCodeAtual() {
+    if (!qrSelecionado) {
+      exibirMsg('Selecione um QR Code para remover.', true);
+      return;
+    }
+    if (!confirm(`Remover o QR Code "${qrSelecionado.name}"?`)) return;
+    const idx = qrCodes.indexOf(qrSelecionado);
+    if (idx !== -1) {
+      qrCodes.splice(idx, 1);
+      qrSelecionado = qrCodes.length > 0 ? qrCodes[0] : null;
+      salvarQRCodesLocal();
+      carregarQRCodeUI();
+      salvarQRCodesNoGitHub(false);
+      exibirMsg('QR Code removido.', false);
+    }
+  }
+
+  function copiarPayloadQR() {
+    if (!qrSelecionado || !qrSelecionado.payload) {
+      exibirMsg('Nenhum QR Code selecionado ou payload vazio.', true);
+      return;
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(qrSelecionado.payload)
+        .then(() => {
+          exibirMsg('✅ QR Code copiado!', false);
+          const btn = document.getElementById('btnCopiarQR');
+          btn.classList.add('copiado');
+          setTimeout(() => btn.classList.remove('copiado'), 2000);
+        })
+        .catch(() => fallbackCopiarPayload());
+    } else {
+      fallbackCopiarPayload();
+    }
+  }
+
+  function fallbackCopiarPayload() {
+    const textArea = document.createElement('textarea');
+    textArea.value = qrSelecionado.payload;
+    document.body.appendChild(textArea);
+    textArea.select();
+    try {
+      document.execCommand('copy');
+      exibirMsg('✅ QR Code copiado!', false);
+    } catch (err) {
+      exibirMsg('❌ Erro ao copiar QR Code.', true);
+    }
+    document.body.removeChild(textArea);
+  }
+
+  // ============================================================
+  // FUNÇÕES DE ACESSO AOS DADOS
+  // ============================================================
+  function getUsuarios() { return dados.usuarios; }
+  function getBancos() { return dados.bancos; }
+  function getMovimentos() { return dados.movimentos; }
+
+  function setUsuarios(usuarios) { dados.usuarios = usuarios;
+    salvarDados(); }
+  function setBancos(bancos) { dados.bancos = bancos;
+    salvarDados(); }
+  function setMovimentos(movimentos) { dados.movimentos = movimentos;
+    salvarDados(); }
+
+  function obterBancoPorNum(num) { return dados.bancos.find(b => b.numbanco === parseInt(num)) || null; }
+  function obterUsuarioPorNome(nome) { return dados.usuarios.find(u => u.nome.toLowerCase() === nome.toLowerCase()) || null; }
+  function obterUsuarioPorId(id) { return dados.usuarios.find(u => u.codigo === id) || null; }
+
+  function proximoIdMovimento() {
+    const movs = dados.movimentos;
+    return movs.length ? Math.max(...movs.map(m => m.id)) + 1 : 1;
+  }
+
+  function proximoIdUsuario() {
+    const users = dados.usuarios;
+    return users.length ? Math.max(...users.map(u => u.codigo)) + 1 : 1;
+  }
+
+  function inicializarDados() {
+    if (dados.usuarios.length === 0) {
+      dados.usuarios = [
+        { codigo: 1, nome: 'Administrador', nomeCompleto: 'Administrador do Sistema', endereco: '', telefone: '', email: '', senha: '123' },
+        { codigo: 2, nome: 'Usuario1', nomeCompleto: 'Usuário Teste', endereco: 'Rua Exemplo, 123', telefone: '(11) 99999-9999', email: 'usuario@teste.com', senha: '123' }
+      ];
+    }
+    if (dados.bancos.length === 0) {
+      dados.bancos = [
+        { numbanco: 1, nomebanco: 'Banco do Brasil', agencia: '1234', numconta: '56789-0', saldoinicial: -100.00, logo: '' },
+        { numbanco: 2, nomebanco: 'Bradesco', agencia: '4321', numconta: '98765-0', saldoinicial: 500.00, logo: '' }
+      ];
+    }
+    if (dados.movimentos.length === 0) {
+      dados.movimentos = [
+        { id: 1, numbanco: 1, data: '2026-08-01', valor: 500.00, operacao: 'C', especie: 'P', numdoc: '1001', favorecido: 'Cliente A - Pix', historico: 'Pagto cliente via Pix' },
+        { id: 2, numbanco: 1, data: '2026-08-02', valor: 200.00, operacao: 'D', especie: 'D', numdoc: '2002', favorecido: 'Caixa Eletrônico', historico: 'Saque em dinheiro' },
+        { id: 3, numbanco: 1, data: '2026-08-03', valor: 300.00, operacao: 'C', especie: 'O', numdoc: '3003', favorecido: 'Cliente B', historico: 'Pagto cliente (TED)' },
+        { id: 4, numbanco: 1, data: '2026-08-04', valor: 100.00, operacao: 'D', especie: 'D', numdoc: '4004', favorecido: 'Fornecedor Y', historico: 'Compra material (dinheiro)' }
+      ];
+    }
+    salvarDados();
+    console.log('Dados inicializados:', dados);
+  }
+
+  function carregarDados() {
+    return new Promise((resolve) => {
+      try {
+        const saved = localStorage.getItem('dados_json');
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (parsed.usuarios && parsed.bancos && parsed.movimentos) {
+            dados = parsed;
+            console.log('Dados carregados do localStorage:', dados);
+            resolve(true);
+            return;
+          }
+        }
+        resolve(false);
+      } catch (e) {
+        console.error('Erro ao carregar dados do localStorage:', e);
+        resolve(false);
+      }
+    });
+  }
+
+  function salvarDados() {
+    localStorage.setItem('dados_json', JSON.stringify(dados));
+    console.log('Dados salvos no localStorage:', dados);
+  }
+
+  // ============================================================
+  // GITHUB INTEGRAÇÃO (dados principais)
+  // ============================================================
+  function getGitHubConfig() {
+    const repo = localStorage.getItem('github_repo') || '';
+    const token = localStorage.getItem('github_token') || '';
+    const filename = localStorage.getItem('github_filename') || 'dados.json';
+    return { repo, token, filename };
+  }
+
+  function setGitHubConfig(repo, token, filename) {
+    localStorage.setItem('github_repo', repo);
+    localStorage.setItem('github_token', token);
+    localStorage.setItem('github_filename', filename);
+  }
+
+  async function carregarDoGitHub() {
+    const { repo, token, filename } = getGitHubConfig();
+    if (!repo || !token) return false;
+    try {
+      const url = `https://api.github.com/repos/${repo}/contents/${filename}`;
+      const response = await fetch(url, {
+        headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json' }
+      });
+      if (!response.ok) {
+        if (response.status === 404) return false;
+        throw new Error('Erro ao carregar dados: ' + response.statusText);
+      }
+      const data = await response.json();
+      const content = atob(data.content);
+      const json = JSON.parse(content);
+      if (json.usuarios && json.bancos && json.movimentos) {
+        dados = json;
+        salvarDados();
+        console.log('Dados carregados do GitHub:', dados);
+        return true;
+      }
+      return false;
+    } catch (err) {
+      console.error('Erro ao carregar do GitHub:', err);
+      return false;
+    }
+  }
+
+  async function salvarNoGitHub(keepalive = false) {
+    const { repo, token, filename } = getGitHubConfig();
+    if (!repo || !token) {
+      if (!keepalive) exibirMsg('Configure o GitHub primeiro (⚙️ Configurar GitHub).', true);
+      return;
+    }
+    try {
+      const url = `https://api.github.com/repos/${repo}/contents/${filename}`;
+      const content = btoa(unescape(encodeURIComponent(JSON.stringify(dados, null, 2))));
+      let sha = null;
+      try {
+        const getResp = await fetch(url, {
+          headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json' },
+          keepalive
+        });
+        if (getResp.ok) {
+          const data = await getResp.json();
+          sha = data.sha;
+        }
+      } catch (e) { /* ignora */ }
+      const body = {
+        message: 'Atualização automática dos dados do sistema',
+        content,
+        branch: 'main'
+      };
+      if (sha) body.sha = sha;
+      const response = await fetch(url, {
+        method: 'PUT',
+        headers: {
+          'Authorization': 'token ' + token,
+          'Accept': 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body),
+        keepalive
+      });
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || response.statusText);
+      }
+      console.log('Dados salvos no GitHub com sucesso.');
+      if (!keepalive) exibirMsg('✅ Dados salvos com sucesso no GitHub!', false);
+    } catch (err) {
+      console.error('Erro ao salvar no GitHub:', err);
+      if (!keepalive) exibirMsg('❌ Erro ao salvar no GitHub: ' + err.message, true);
+    }
+  }
+
+  async function testarGitHub() {
+    const { repo, token } = getGitHubConfig();
+    if (!repo || !token) {
+      exibirMsg('Preencha os campos de configuração.', true);
+      return;
+    }
+    try {
+      const response = await fetch(`https://api.github.com/repos/${repo}`, {
+        headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json' }
+      });
+      if (response.ok) {
+        exibirMsg('✅ Conexão com GitHub estabelecida com sucesso!', false);
+      } else {
+        const error = await response.json();
+        exibirMsg('❌ Falha na conexão: ' + (error.message || response.statusText), true);
+      }
+    } catch (err) {
+      exibirMsg('❌ Erro de conexão: ' + err.message, true);
+    }
+  }
+
+  // ============================================================
+  // FUNÇÃO PARA REMOVER ACENTOS, CEDILHA E SUBSTITUIR BULLET POR *
+  // ============================================================
+  function sanitizarTexto(texto) {
+    if (!texto) return texto;
+    let normalizado = texto.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    normalizado = normalizado.replace(/ç/g, 'c').replace(/Ç/g, 'C');
+    normalizado = normalizado.replace(/•/g, '*');
+    return normalizado;
+  }
+
+  // ============================================================
+  // SISTEMA DE MENSAGENS
+  // ============================================================
+  let mensagemTimeout = null;
+
+  function exibirMsg(texto, erro = false) {
+    const el = document.getElementById('mensagemGlobal');
+    el.textContent = texto;
+    el.className = erro ? 'erro' : 'sucesso';
+    el.style.display = 'block';
+    el.style.opacity = '1';
+    if (mensagemTimeout) {
+      clearTimeout(mensagemTimeout);
+      mensagemTimeout = null;
+    }
+    mensagemTimeout = setTimeout(() => {
+      el.style.opacity = '0';
+      setTimeout(() => {
+        el.style.display = 'none';
+        el.style.opacity = '1';
+      }, 300);
+    }, 4000);
+  }
+
+  function exibirMsgTemporaria(texto, erro = false) {
+    exibirMsg(texto, erro);
+  }
+
+  // ============================================================
+  // VARIÁVEIS GLOBAIS
+  // ============================================================
+  let usuarioLogado = null;
+  let bancoSelecionado = null;
+  let cliqueMovimentos = 0;
+  let timerMovimentos = null;
+
+  // Variáveis para o segredo de limpeza do banco específico
+  let cliqueBancoInfo = 0;
+  let timerBancoInfo = null;
+
+  let saldoVisivel = localStorage.getItem('saldo_visivel') === 'true';
+
+  function formatCurrency(val) { return 'R$ ' + val.toFixed(2).replace('.', ','); }
+
+  // ============================================================
+  // CLASSIFICAÇÃO DE ESPÉCIE COM DETECÇÃO DE AUTOMÁTICO
+  // ============================================================
+  function classificarEspecie(favorecido, historico, operacao) {
+    const texto = (favorecido + ' ' + historico).toLowerCase();
+    if (texto.includes('pix')) return 'P';
+    if (texto.includes('dinheiro') || texto.includes('saque') ||
+      texto.includes('caixa eletrônico') || texto.includes('caixa eletronico') ||
+      texto.includes('retirado')) return 'D';
+    const autoKeywords = [
+      'luz', 'água', 'agua', 'telefone', 'energia', 'internet', 'gás', 'gas',
+      'condomínio', 'condominio', 'celular', 'tv', 'cable', 'net', 'fat',
+      'conta', 'boleto', 'mensalidade', 'plano', 'assinatura'
+    ];
+    if (autoKeywords.some(kw => texto.includes(kw))) return 'A';
+    return 'O';
+  }
+
+  // ============================================================
+  // FUNÇÕES DE UI
+  // ============================================================
+  function mostrarTela(nome) {
+    document.querySelectorAll('.tela').forEach(el => el.classList.remove('active'));
+    const tela = document.getElementById('tela-' + nome);
+    if (tela) tela.classList.add('active');
+    document.querySelectorAll('.menu button').forEach(btn => btn.classList.remove('active'));
+    const btnMenu = document.querySelector(`.menu button[data-tela="${nome}"]`);
+    if (btnMenu) btnMenu.classList.add('active');
+    if (nome === 'principal') {
+      renderizarBancosPrincipal();
+    }
+    if (nome === 'config') {
+      const { repo, token, filename } = getGitHubConfig();
+      document.getElementById('cfgRepo').value = repo;
+      document.getElementById('cfgToken').value = token;
+      document.getElementById('cfgFilename').value = filename;
+    }
+    if (nome === 'movimentos') {
+      // Atualiza o ícone do olho na tela de movimentos
+      atualizarBotaoVisibilidadeMov();
+    }
+  }
+
+  function calcularSaldoReal(numbanco) {
+    const movimentos = getMovimentos().filter(m => m.numbanco === numbanco);
+    let creditos = 0,
+      debitos = 0;
+    movimentos.forEach(m => {
+      if (m.operacao === 'C') creditos += m.valor;
+      else debitos += m.valor;
+    });
+    const banco = obterBancoPorNum(numbanco);
+    if (!banco) return 0;
+    return (banco.saldoinicial || 0) + creditos - debitos;
+  }
+
+  function atualizarBotaoVisibilidade() {
+    const img = document.getElementById('toggleSaldoImg');
+    if (saldoVisivel) {
+      img.src = OLHO_ABERTO;
+    } else {
+      img.src = OLHO_FECHADO;
+    }
+  }
+
+  function atualizarBotaoVisibilidadeMov() {
+    const img = document.getElementById('toggleSaldoMovImg');
+    if (img) {
+      if (saldoVisivel) {
+        img.src = OLHO_ABERTO;
+      } else {
+        img.src = OLHO_FECHADO;
+      }
+    }
+  }
+
+  function renderizarBancosPrincipal() {
+    const bancos = getBancos();
+    const grid = document.getElementById('bancoGridPrincipal');
+    grid.innerHTML = '';
+    if (!bancos || bancos.length === 0) {
+      grid.innerHTML = `<div class="banco-vazio">
+        <p>Nenhum banco cadastrado.</p>
+        <button class="primary" onclick="mostrarTela('bancos')">Ir para Cadastro</button>
+      </div>`;
+      return;
+    }
+    bancos.forEach(b => {
+      const saldo = calcularSaldoReal(b.numbanco);
+      const logo = b.logo || '';
+      const card = document.createElement('div');
+      card.className = 'banco-card';
+      let logoHtml = '';
+      if (logo) {
+        logoHtml = `<img src="${logo}" class="logo" alt="Logo ${b.nomebanco}" onerror="this.style.display='none'">`;
+      } else {
+        const icone = b.nomebanco.toLowerCase().includes('brasil') ? '🇧🇷' :
+          b.nomebanco.toLowerCase().includes('bradesco') ? '🏛️' :
+          b.nomebanco.toLowerCase().includes('itau') ? '🟠' :
+          b.nomebanco.toLowerCase().includes('santander') ? '🔴' :
+          b.nomebanco.toLowerCase().includes('caixa') ? '🟡' : '🏦';
+        logoHtml = `<div class="icone">${icone}</div>`;
+      }
+      let saldoDisplay = '';
+      if (saldoVisivel) {
+        saldoDisplay = formatCurrency(saldo);
+      } else {
+        saldoDisplay = 'R$ ***';
+      }
+      const classeSaldo = saldoVisivel ? (saldo < 0 ? 'saldo negativo' : 'saldo positivo') : 'saldo oculto';
+      card.innerHTML = `
+        ${logoHtml}
+        <div class="nome">${b.nomebanco}</div>
+        <div class="detalhe">Ag: ${b.agencia} | C/C: ${b.numconta}</div>
+        <div class="${classeSaldo}">${saldoDisplay}</div>
+        <button class="btn-ir" data-num="${b.numbanco}">Ir para Movimentos</button>
+      `;
+      card.addEventListener('click', function(e) {
+        if (e.target.classList.contains('btn-ir')) return;
+        const num = b.numbanco;
+        abrirModalBanco(num);
+      });
+      card.querySelector('.btn-ir').addEventListener('click', function(e) {
+        e.stopPropagation();
+        const num = parseInt(this.dataset.num);
+        // Carrega os bancos no select antes de definir o valor
+        carregarBancosNosSelects();
+        const bancos = getBancos();
+        bancoSelecionado = bancos.find(b => b.numbanco === num) || null;
+        if (bancoSelecionado) {
+          const sel = document.getElementById('selBancoMov');
+          sel.value = num;
+          carregarMovimentos();
+          mostrarTela('movimentos');
+        }
+      });
+      grid.appendChild(card);
+    });
+    atualizarBotaoVisibilidade();
+    atualizarBotaoVisibilidadeMov();
+  }
+
+  function toggleSaldo() {
+    saldoVisivel = !saldoVisivel;
+    localStorage.setItem('saldo_visivel', saldoVisivel);
+    renderizarBancosPrincipal();
+    // Atualiza a tela de movimentos se estiver ativa
+    if (document.getElementById('tela-movimentos').classList.contains('active')) {
+      calcularSaldo();
+    }
+    atualizarBotaoVisibilidadeMov();
+  }
+
+  // ============================================================
+  // FUNÇÕES PARA PREENCHER FAVORECIDO AUTOMATICAMENTE NO CRÉDITO
+  // ============================================================
+  function preencherFavorecidoCredito() {
+    if (!usuarioLogado) return;
+    const operacao = document.getElementById('selOperacao').value;
+    const campoFavorecido = document.getElementById('txtFavorecido');
+    if (operacao === 'C') {
+      campoFavorecido.value = usuarioLogado.nomeCompleto || usuarioLogado.nome;
+    } else {
+      campoFavorecido.value = '';
+    }
+  }
+
+  function preencherFavorecidoCreditoEdit() {
+    if (!usuarioLogado) return;
+    const operacao = document.getElementById('editOperacao').value;
+    const campoFavorecido = document.getElementById('editFavorecido');
+    if (operacao === 'C') {
+      campoFavorecido.value = usuarioLogado.nomeCompleto || usuarioLogado.nome;
+    }
+  }
+
+  // ============================================================
+  // USUÁRIOS (mantido)
+  // ============================================================
+  function carregarUsuariosGrid() {
+    const usuarios = getUsuarios();
+    const grid = document.getElementById('usuarioGrid');
+    grid.innerHTML = '';
+    if (usuarios.length === 0) {
+      grid.innerHTML = '<p style="color:#6b7a8a; grid-column:1/-1;">Nenhum usuário cadastrado.</p>';
+      return;
+    }
+    usuarios.forEach(u => {
+      const card = document.createElement('div');
+      card.className = 'item-card';
+      card.innerHTML = `
+        <div class="nome">${u.nome}</div>
+        <div class="codigo">Código: ${u.codigo}</div>
+        <button class="btn-excluir-card" data-codigo="${u.codigo}">Excluir</button>
+      `;
+      card.addEventListener('click', function(e) {
+        if (e.target.classList.contains('btn-excluir-card')) return;
+        abrirModalUsuario(u.codigo);
+      });
+      card.querySelector('.btn-excluir-card').addEventListener('click', function(e) {
+        e.stopPropagation();
+        excluirUsuario(parseInt(this.dataset.codigo));
+      });
+      grid.appendChild(card);
+    });
+  }
+
+  function abrirModalUsuario(codigo) {
+    const usuario = obterUsuarioPorId(codigo);
+    if (!usuario) return;
+    document.getElementById('editUsuarioId').value = codigo;
+    document.getElementById('editUsuarioCodigo').textContent = codigo;
+    document.getElementById('editUsuarioNome').value = usuario.nome;
+    document.getElementById('editNomeCompleto').value = usuario.nomeCompleto || '';
+    document.getElementById('editEndereco').value = usuario.endereco || '';
+    document.getElementById('editTelefone').value = usuario.telefone || '';
+    document.getElementById('editEmail').value = usuario.email || '';
+    document.getElementById('editUsuarioSenha').value = usuario.senha;
+    document.getElementById('editUsuarioConfirma').value = usuario.senha;
+    document.getElementById('modalUsuario').classList.add('active');
+  }
+
+  function fecharModalUsuario() {
+    document.getElementById('modalUsuario').classList.remove('active');
+  }
+
+  async function salvarUsuario() {
+    const id = parseInt(document.getElementById('editUsuarioId').value);
+    const nome = document.getElementById('editUsuarioNome').value.trim();
+    const nomeCompleto = document.getElementById('editNomeCompleto').value.trim();
+    const endereco = document.getElementById('editEndereco').value.trim();
+    const telefone = document.getElementById('editTelefone').value.trim();
+    const email = document.getElementById('editEmail').value.trim();
+    const senha = document.getElementById('editUsuarioSenha').value;
+    const confirma = document.getElementById('editUsuarioConfirma').value;
+    if (!nome) { exibirMsg('Digite o nome de usuário.', true); return; }
+    if (senha !== confirma) { exibirMsg('Senhas não conferem.', true); return; }
+    if (senha.length < 1) { exibirMsg('Senha não pode ser vazia.', true); return; }
+    let usuarios = getUsuarios();
+    const idx = usuarios.findIndex(u => u.codigo === id);
+    if (idx === -1) return;
+    const outro = usuarios.find((u, i) => i !== idx && u.nome.toLowerCase() === nome.toLowerCase());
+    if (outro) { exibirMsg('Este nome de usuário já está em uso.', true); return; }
+    usuarios[idx].nome = nome;
+    usuarios[idx].nomeCompleto = nomeCompleto;
+    usuarios[idx].endereco = endereco;
+    usuarios[idx].telefone = telefone;
+    usuarios[idx].email = email;
+    usuarios[idx].senha = senha;
+    setUsuarios(usuarios);
+    fecharModalUsuario();
+    carregarUsuariosGrid();
+    exibirMsg('Usuário atualizado!', false);
+    await salvarNoGitHub(false);
+  }
+
+  function mostrarIncluirUsuario() {
+    const form = document.getElementById('formIncluirUsuario');
+    if (form.style.display === 'none') {
+      form.style.display = 'block';
+      document.getElementById('txtNovoUsuario').value = '';
+      document.getElementById('txtNomeCompleto').value = '';
+      document.getElementById('txtEndereco').value = '';
+      document.getElementById('txtTelefone').value = '';
+      document.getElementById('txtEmail').value = '';
+      document.getElementById('txtNovaSenha').value = '';
+      document.getElementById('txtConfirmaSenha').value = '';
+    } else {
+      form.style.display = 'none';
+    }
+  }
+
+  async function incluirUsuario() {
+    const nome = document.getElementById('txtNovoUsuario').value.trim();
+    const nomeCompleto = document.getElementById('txtNomeCompleto').value.trim();
+    const endereco = document.getElementById('txtEndereco').value.trim();
+    const telefone = document.getElementById('txtTelefone').value.trim();
+    const email = document.getElementById('txtEmail').value.trim();
+    const senha = document.getElementById('txtNovaSenha').value;
+    const confirma = document.getElementById('txtConfirmaSenha').value;
+    if (!nome) { exibirMsg('Digite o nome de usuário.', true); return; }
+    if (senha !== confirma) { exibirMsg('Senhas não conferem.', true); return; }
+    if (senha.length < 1) { exibirMsg('Senha não pode ser vazia.', true); return; }
+    let usuarios = getUsuarios();
+    if (usuarios.find(u => u.nome.toLowerCase() === nome.toLowerCase())) {
+      exibirMsg('Nome de usuário já existe.', true);
+      return;
+    }
+    const novoCod = proximoIdUsuario();
+    usuarios.push({
+      codigo: novoCod,
+      nome,
+      nomeCompleto,
+      endereco,
+      telefone,
+      email,
+      senha
+    });
+    setUsuarios(usuarios);
+    document.getElementById('txtNovoUsuario').value = '';
+    document.getElementById('txtNomeCompleto').value = '';
+    document.getElementById('txtEndereco').value = '';
+    document.getElementById('txtTelefone').value = '';
+    document.getElementById('txtEmail').value = '';
+    document.getElementById('txtNovaSenha').value = '';
+    document.getElementById('txtConfirmaSenha').value = '';
+    document.getElementById('formIncluirUsuario').style.display = 'none';
+    carregarUsuariosGrid();
+    exibirMsg('Usuário incluído!', false);
+    await salvarNoGitHub(false);
+  }
+
+  function excluirUsuario(cod) {
+    if (!confirm('Excluir este usuário?')) return;
+    let usuarios = getUsuarios();
+    usuarios = usuarios.filter(u => u.codigo !== cod);
+    setUsuarios(usuarios);
+    carregarUsuariosGrid();
+    exibirMsg('Usuário excluído.', false);
+    salvarNoGitHub(false);
+  }
+
+  // ============================================================
+  // BANCOS (mantido)
+  // ============================================================
+  function carregarBancosGrid() {
+    const bancos = getBancos();
+    const grid = document.getElementById('bancoGrid');
+    grid.innerHTML = '';
+    if (bancos.length === 0) {
+      grid.innerHTML = '<p style="color:#6b7a8a; grid-column:1/-1;">Nenhum banco cadastrado.</p>';
+      return;
+    }
+    bancos.forEach(b => {
+      const card = document.createElement('div');
+      card.className = 'item-card';
+      const saldo = b.saldoinicial;
+      const corSaldo = saldo < 0 ? 'style="color:#dc3545;"' : '';
+      const logo = b.logo || '';
+      const logoHtml = logo ? `<img src="${logo}" style="max-width:40px; max-height:40px; display:block; margin:0 auto 6px;" onerror="this.style.display='none'">` : '';
+      card.innerHTML = `
+        ${logoHtml}
+        <div class="nome">${b.nomebanco}</div>
+        <div class="codigo">Código: ${b.numbanco}</div>
+        <div class="detalhe">Ag: ${b.agencia} | C/C: ${b.numconta}</div>
+        <div class="detalhe" ${corSaldo}>Saldo Inicial: ${formatCurrency(saldo)}</div>
+        <button class="btn-excluir-card" data-num="${b.numbanco}">Excluir</button>
+      `;
+      card.addEventListener('click', function(e) {
+        if (e.target.classList.contains('btn-excluir-card')) return;
+        abrirModalBanco(b.numbanco);
+      });
+      card.querySelector('.btn-excluir-card').addEventListener('click', function(e) {
+        e.stopPropagation();
+        excluirBanco(parseInt(this.dataset.num));
+      });
+      grid.appendChild(card);
+    });
+  }
+
+  function abrirModalBanco(num) {
+    const banco = obterBancoPorNum(num);
+    if (!banco) {
+      exibirMsg('Banco não encontrado.', true);
+      return;
+    }
+    document.getElementById('editBancoNum').value = num;
+    document.getElementById('editBancoNumero').value = banco.numbanco;
+    document.getElementById('editBancoNome').value = banco.nomebanco;
+    document.getElementById('editBancoAgencia').value = banco.agencia;
+    document.getElementById('editBancoConta').value = banco.numconta;
+    document.getElementById('editBancoSaldo').value = banco.saldoinicial;
+    document.getElementById('editLogo').value = banco.logo || '';
+    document.getElementById('editLogoPreview').style.display = 'none';
+    document.getElementById('editLogoFileInput').value = '';
+    document.getElementById('modalBanco').classList.add('active');
+  }
+
+  function fecharModalBanco() {
+    document.getElementById('modalBanco').classList.remove('active');
+  }
+
+  async function salvarBanco() {
+    const numOriginal = parseInt(document.getElementById('editBancoNum').value);
+    const numbanco = parseInt(document.getElementById('editBancoNumero').value);
+    const nomebanco = document.getElementById('editBancoNome').value.trim();
+    const agencia = document.getElementById('editBancoAgencia').value.trim();
+    const numconta = document.getElementById('editBancoConta').value.trim();
+    const saldoinicial = parseFloat(document.getElementById('editBancoSaldo').value) || 0;
+    let logo = document.getElementById('editLogo').value.trim();
+    const fileInput = document.getElementById('editLogoFileInput');
+    if (fileInput.files && fileInput.files.length > 0) {
+      const file = fileInput.files[0];
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        logo = e.target.result;
+        finalizarSalvarBanco(numOriginal, numbanco, nomebanco, agencia, numconta, saldoinicial, logo);
+      };
+      reader.readAsDataURL(file);
+      return;
+    }
+    finalizarSalvarBanco(numOriginal, numbanco, nomebanco, agencia, numconta, saldoinicial, logo);
+  }
+
+  async function finalizarSalvarBanco(numOriginal, numbanco, nomebanco, agencia, numconta, saldoinicial, logo) {
+    if (!numbanco || !nomebanco || !agencia || !numconta) {
+      exibirMsg('Preencha todos os campos.', true);
+      return;
+    }
+    let bancos = getBancos();
+    const idx = bancos.findIndex(b => b.numbanco === numOriginal);
+    if (idx === -1) return;
+    const outro = bancos.find((b, i) => i !== idx && b.numbanco === numbanco);
+    if (outro) { exibirMsg('Código de banco já existe.', true); return; }
+    bancos[idx] = { numbanco, nomebanco, agencia, numconta, saldoinicial, logo };
+    setBancos(bancos);
+    fecharModalBanco();
+    carregarBancosGrid();
+    carregarBancosNosSelects();
+    renderizarBancosPrincipal();
+    exibirMsg('Banco atualizado!', false);
+    console.log('Banco salvo:', bancos[idx]);
+    await salvarNoGitHub(false);
+  }
+
+  function mostrarIncluirBanco() {
+    const form = document.getElementById('formIncluirBanco');
+    if (form.style.display === 'none') {
+      form.style.display = 'block';
+      document.getElementById('txtNumBanco').value = '';
+      document.getElementById('txtNomeBanco').value = '';
+      document.getElementById('txtAgencia').value = '';
+      document.getElementById('txtContaBanco').value = '';
+      document.getElementById('txtSaldoInicial').value = '';
+      document.getElementById('txtLogo').value = '';
+      document.getElementById('logoPreview').style.display = 'none';
+      document.getElementById('logoFileInput').value = '';
+    } else {
+      form.style.display = 'none';
+    }
+  }
+
+  async function incluirBanco() {
+    const numbanco = parseInt(document.getElementById('txtNumBanco').value);
+    const nomebanco = document.getElementById('txtNomeBanco').value.trim();
+    const agencia = document.getElementById('txtAgencia').value.trim();
+    const numconta = document.getElementById('txtContaBanco').value.trim();
+    const saldoinicial = parseFloat(document.getElementById('txtSaldoInicial').value) || 0;
+    let logo = document.getElementById('txtLogo').value.trim();
+    const fileInput = document.getElementById('logoFileInput');
+    if (fileInput.files && fileInput.files.length > 0) {
+      const file = fileInput.files[0];
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        logo = e.target.result;
+        finalizarIncluirBanco(numbanco, nomebanco, agencia, numconta, saldoinicial, logo);
+      };
+      reader.readAsDataURL(file);
+      return;
+    }
+    finalizarIncluirBanco(numbanco, nomebanco, agencia, numconta, saldoinicial, logo);
+  }
+
+  async function finalizarIncluirBanco(numbanco, nomebanco, agencia, numconta, saldoinicial, logo) {
+    if (!numbanco || !nomebanco || !agencia || !numconta) {
+      exibirMsg('Preencha todos os campos.', true);
+      return;
+    }
+    let bancos = getBancos();
+    if (bancos.find(b => b.numbanco === numbanco)) {
+      exibirMsg('Código de banco já existe.', true);
+      return;
+    }
+    bancos.push({ numbanco, nomebanco, agencia, numconta, saldoinicial, logo });
+    setBancos(bancos);
+    document.getElementById('txtNumBanco').value = '';
+    document.getElementById('txtNomeBanco').value = '';
+    document.getElementById('txtAgencia').value = '';
+    document.getElementById('txtContaBanco').value = '';
+    document.getElementById('txtSaldoInicial').value = '';
+    document.getElementById('txtLogo').value = '';
+    document.getElementById('logoPreview').style.display = 'none';
+    document.getElementById('logoFileInput').value = '';
+    document.getElementById('formIncluirBanco').style.display = 'none';
+    carregarBancosGrid();
+    carregarBancosNosSelects();
+    renderizarBancosPrincipal();
+    exibirMsg('Banco incluído!', false);
+    console.log('Banco incluído:', bancos[bancos.length - 1]);
+    await salvarNoGitHub(false);
+  }
+
+  async function excluirBanco(num) {
+    if (!confirm('Excluir este banco e todos os seus movimentos?')) return;
+    let bancos = getBancos();
+    bancos = bancos.filter(b => b.numbanco !== num);
+    setBancos(bancos);
+    let movimentos = getMovimentos();
+    movimentos = movimentos.filter(m => m.numbanco !== num);
+    setMovimentos(movimentos);
+    carregarBancosGrid();
+    carregarBancosNosSelects();
+    carregarMovimentos();
+    renderizarBancosPrincipal();
+    exibirMsg('Banco excluído.', false);
+    await salvarNoGitHub(false);
+  }
+
+  function carregarBancosNosSelects() {
+    const bancos = getBancos();
+    const sel = document.getElementById('selBancoMov');
+    sel.innerHTML = '';
+    bancos.forEach(b => {
+      const opt = document.createElement('option');
+      opt.value = b.numbanco;
+      opt.textContent = b.nomebanco + ' (' + b.agencia + '/' + b.numconta + ')';
+      sel.appendChild(opt);
+    });
+    if (bancos.length > 0 && !bancoSelecionado) {
+      bancoSelecionado = bancos[0];
+      sel.value = bancos[0].numbanco;
+      atualizarBancoInfo();
+    } else if (bancos.length > 0 && bancoSelecionado) {
+      // Verifica se o banco selecionado ainda existe
+      const existe = bancos.some(b => b.numbanco === bancoSelecionado.numbanco);
+      if (!existe) {
+        bancoSelecionado = bancos[0];
+        sel.value = bancos[0].numbanco;
+        atualizarBancoInfo();
+      } else {
+        sel.value = bancoSelecionado.numbanco;
+      }
+    }
+  }
+
+  function atualizarBancoInfo() {
+    const info = document.getElementById('bancoInfo');
+    if (bancoSelecionado) {
+      info.textContent = 'Banco: ' + bancoSelecionado.nomebanco + ' (Ag: ' + bancoSelecionado.agencia + ' / C/C: ' + bancoSelecionado.numconta + ')';
+    } else {
+      info.textContent = 'Banco: Nenhum selecionado';
+    }
+  }
+
+  // ============================================================
+  // LIMPAR MOVIMENTOS
+  // ============================================================
+  function limparMovimentos() {
+    document.getElementById('modalLimparMovimentos').classList.add('active');
+  }
+
+  async function confirmarLimpezaMovimentos() {
+    setMovimentos([]);
+    document.getElementById('modalLimparMovimentos').classList.remove('active');
+    carregarMovimentos();
+    renderizarBancosPrincipal();
+    exibirMsg('Todos os movimentos foram removidos com sucesso!', false);
+    await salvarNoGitHub(false);
+  }
+
+  function cancelarLimpezaMovimentos() {
+    document.getElementById('modalLimparMovimentos').classList.remove('active');
+  }
+
+  // ============================================================
+  // MOVIMENTOS - EXIBIÇÃO CORRETA
+  // ============================================================
+  function carregarMovimentos() {
+    const movimentos = getMovimentos();
+    const tbody = document.getElementById('tbodyMovimentos');
+    tbody.innerHTML = '';
+    let filtrados = movimentos;
+    if (bancoSelecionado) {
+      filtrados = movimentos.filter(m => m.numbanco === bancoSelecionado.numbanco);
+    }
+    filtrados.sort((a, b) => (a.data < b.data ? 1 : -1));
+    filtrados.forEach(m => {
+      const tr = document.createElement('tr');
+      let especieDisplay = m.especie || classificarEspecie(m.favorecido, m.historico, m.operacao);
+      tr.innerHTML = `
+        <td>${m.data}</td>
+        <td>${m.favorecido || ''}</td>
+        <td>${m.historico || ''}</td>
+        <td class="valor-direita">${formatCurrency(m.valor)}</td>
+        <td>${m.operacao === 'C' ? 'C' : 'D'}</td>
+        <td>${especieDisplay}</td>
+        <td class="acoes">
+          <button class="btn-acao" data-id="${m.id}" data-acao="editarMov" title="Editar">✏️</button>
+          <button class="btn-acao" data-id="${m.id}" data-acao="excluirMov" title="Excluir">🗑️</button>
+        </td>
+      `;
+      tbody.appendChild(tr);
+    });
+    tbody.removeEventListener('click', handlerMovimentos);
+    tbody.addEventListener('click', handlerMovimentos);
+    calcularSaldo();
+    atualizarBancoInfo();
+    atualizarBotaoVisibilidadeMov();
+  }
+
+  function handlerMovimentos(e) {
+    const btn = e.target.closest('.btn-acao');
+    if (!btn) return;
+    const acao = btn.dataset.acao;
+    const id = parseInt(btn.dataset.id);
+    if (isNaN(id)) return;
+    if (acao === 'excluirMov') excluirMovimento(id);
+    else if (acao === 'editarMov') abrirModalEdicao(id);
+  }
+
+  // ============================================================
+  // INCLUIR MOVIMENTO MANUAL (CORRETO) - CORRIGIDO
+  // ============================================================
+  async function incluirMovimento() {
+    // Verifica se o usuário está logado
+    if (!usuarioLogado) {
+      exibirMsg('Usuário não definido. Recarregue a página.', true);
+      return;
+    }
+
+    // Verifica se um banco está selecionado
+    if (!bancoSelecionado) {
+      exibirMsg('Selecione um banco.', true);
+      return;
+    }
+
+    // Obtém os valores dos campos
+    const data = document.getElementById('txtDataMov').value;
+    const valor = parseFloat(document.getElementById('txtValorMov').value);
+    const operacao = document.getElementById('selOperacao').value;
+    let especie = document.getElementById('selEspecie').value;
+    let numdoc = document.getElementById('txtNumDoc').value.trim();
+    let favorecido = document.getElementById('txtFavorecido').value.trim();
+    let historico = document.getElementById('txtHistorico').value.trim();
+
+    // Valida os campos obrigatórios
+    if (!data) {
+      exibirMsg('Informe a data do movimento.', true);
+      return;
+    }
+    if (isNaN(valor) || valor <= 0) {
+      exibirMsg('Informe um valor válido (maior que zero).', true);
+      return;
+    }
+    if (!numdoc) {
+      exibirMsg('Informe o número do documento.', true);
+      return;
+    }
+    if (!favorecido) {
+      if (operacao === 'C') {
+        favorecido = usuarioLogado.nomeCompleto || usuarioLogado.nome;
+        document.getElementById('txtFavorecido').value = favorecido; // Atualiza o campo
+      } else {
+        exibirMsg('Informe o favorecido.', true);
+        return;
+      }
+    }
+    if (!historico) {
+      exibirMsg('Informe o histórico.', true);
+      return;
+    }
+
+    // Se for crédito, força o favorecido para o nome do usuário
+    if (operacao === 'C') {
+      favorecido = usuarioLogado.nomeCompleto || usuarioLogado.nome;
+      document.getElementById('txtFavorecido').value = favorecido;
+    }
+
+    // Classifica espécie automaticamente se for "Outros"
+    if (especie === 'O') {
+      const autoEspecie = classificarEspecie(favorecido, historico, operacao);
+      if (autoEspecie !== 'O') {
+        especie = autoEspecie;
+        document.getElementById('selEspecie').value = especie; // Atualiza o select
+      }
+    }
+
+    // Cria o movimento
+    let movimentos = getMovimentos();
+    const novoMov = {
+      id: proximoIdMovimento(),
+      numbanco: bancoSelecionado.numbanco,
+      data: data,
+      valor: valor,
+      operacao: operacao,
+      especie: especie,
+      numdoc: numdoc,
+      favorecido: favorecido,
+      historico: historico
+    };
+    movimentos.push(novoMov);
+    setMovimentos(movimentos);
+
+    // Limpa os campos (exceto data e favorecido que serão preenchidos novamente)
+    document.getElementById('txtValorMov').value = '';
+    document.getElementById('txtNumDoc').value = '';
+    document.getElementById('txtHistorico').value = '';
+    // Mantém a data atual e o favorecido para crédito
+    if (operacao === 'D') {
+      document.getElementById('txtFavorecido').value = '';
+    }
+
+    // Atualiza a interface
+    carregarMovimentos();
+    renderizarBancosPrincipal();
+    exibirMsg('Movimento incluído com sucesso!', false);
+    await salvarNoGitHub(false);
+  }
+
+  async function excluirMovimento(id) {
+    if (!confirm('Excluir este movimento?')) return;
+    let movimentos = getMovimentos();
+    movimentos = movimentos.filter(m => m.id !== id);
+    setMovimentos(movimentos);
+    carregarMovimentos();
+    renderizarBancosPrincipal();
+    exibirMsg('Movimento excluído.', false);
+    await salvarNoGitHub(false);
+  }
+
+  function calcularSaldo() {
+    if (!bancoSelecionado) {
+      document.getElementById('lblSaldoReal').textContent = 'R$ 0,00';
+      document.getElementById('lblSaldoReal').className = 'valor';
+      return;
+    }
+    const saldo = calcularSaldoReal(bancoSelecionado.numbanco);
+    const lblReal = document.getElementById('lblSaldoReal');
+    if (saldoVisivel) {
+      lblReal.textContent = formatCurrency(saldo);
+      lblReal.className = 'valor ' + (saldo >= 0 ? 'positivo' : 'negativo');
+    } else {
+      lblReal.textContent = 'R$ ***';
+      lblReal.className = 'valor oculto';
+    }
+  }
+
+  // ============================================================
+  // MODAL DE EDIÇÃO DE MOVIMENTO
+  // ============================================================
+  function abrirModalEdicao(id) {
+    const movimentos = getMovimentos();
+    const mov = movimentos.find(m => m.id === id);
+    if (!mov) return;
+    document.getElementById('editId').value = id;
+    document.getElementById('editData').value = mov.data;
+    document.getElementById('editValor').value = mov.valor;
+    document.getElementById('editOperacao').value = mov.operacao;
+    document.getElementById('editEspecie').value = mov.especie || 'O';
+    document.getElementById('editNumDoc').value = mov.numdoc;
+    document.getElementById('editFavorecido').value = mov.favorecido;
+    document.getElementById('editHistorico').value = mov.historico;
+    document.getElementById('modalEditar').classList.add('active');
+    if (mov.operacao === 'C' && usuarioLogado) {
+      document.getElementById('editFavorecido').value = usuarioLogado.nomeCompleto || usuarioLogado.nome;
+    }
+  }
+
+  function fecharModalEdicao() {
+    document.getElementById('modalEditar').classList.remove('active');
+  }
+
+  async function salvarEdicao() {
+    const id = parseInt(document.getElementById('editId').value);
+    if (isNaN(id)) return;
+    const data = document.getElementById('editData').value;
+    const valor = parseFloat(document.getElementById('editValor').value);
+    const operacao = document.getElementById('editOperacao').value;
+    let especie = document.getElementById('editEspecie').value;
+    let numdoc = document.getElementById('editNumDoc').value.trim();
+    let favorecido = document.getElementById('editFavorecido').value.trim();
+    let historico = document.getElementById('editHistorico').value.trim();
+    if (!data || isNaN(valor) || valor <= 0 || !numdoc || !favorecido || !historico) {
+      exibirMsg('Preencha todos os campos corretamente.', true);
+      return;
+    }
+    if (operacao === 'C') {
+      favorecido = usuarioLogado.nomeCompleto || usuarioLogado.nome;
+    }
+    if (especie === 'O') {
+      const autoEspecie = classificarEspecie(favorecido, historico, operacao);
+      if (autoEspecie !== 'O') {
+        especie = autoEspecie;
+      }
+    }
+    let movimentos = getMovimentos();
+    const idx = movimentos.findIndex(m => m.id === id);
+    if (idx === -1) return;
+    movimentos[idx].data = data;
+    movimentos[idx].valor = valor;
+    movimentos[idx].operacao = operacao;
+    movimentos[idx].especie = especie;
+    movimentos[idx].numdoc = numdoc;
+    movimentos[idx].favorecido = favorecido;
+    movimentos[idx].historico = historico;
+    setMovimentos(movimentos);
+    fecharModalEdicao();
+    carregarMovimentos();
+    renderizarBancosPrincipal();
+    exibirMsg('Movimento atualizado!', false);
+    await salvarNoGitHub(false);
+  }
+
+  // ============================================================
+  // PARSER OFX - COMPATÍVEL COM BANCO DO BRASIL E NUBANK
+  // ============================================================
+  function parseOFX(texto) {
+    let resultados = [];
+    try {
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(texto, "text/xml");
+      let transacoes = xmlDoc.getElementsByTagName("STMTTRN");
+      if (transacoes.length === 0) {
+        transacoes = xmlDoc.getElementsByTagName("stmttrn");
+      }
+      if (transacoes.length === 0) {
+        const all = xmlDoc.getElementsByTagName("*");
+        const temp = [];
+        for (let el of all) {
+          if (el.tagName.toUpperCase() === "STMTTRN") {
+            temp.push(el);
+          }
+        }
+        transacoes = temp;
+      }
+      if (transacoes.length > 0) {
+        for (let trn of transacoes) {
+          const getContent = (parent, tagName) => {
+            let el = parent.getElementsByTagName(tagName)[0];
+            if (!el) el = parent.getElementsByTagName(tagName.toLowerCase())[0];
+            if (!el) {
+              const children = parent.getElementsByTagName("*");
+              for (let child of children) {
+                if (child.tagName.toUpperCase() === tagName.toUpperCase()) {
+                  el = child;
+                  break;
+                }
+              }
+            }
+            return el ? el.textContent.trim() : '';
+          };
+          const trnType = getContent(trn, "TRNTYPE");
+          const dtPosted = getContent(trn, "DTPOSTED");
+          const trnAmt = getContent(trn, "TRNAMT");
+          const fitId = getContent(trn, "FITID");
+          const name = getContent(trn, "NAME");
+          const memo = getContent(trn, "MEMO");
+          if (!dtPosted || !trnAmt) continue;
+          let dataStr = dtPosted.substring(0, 8);
+          let dataISO = dataStr.substring(0, 4) + '-' + dataStr.substring(4, 6) + '-' + dataStr.substring(6, 8);
+          if (dataISO.length < 10) continue;
+          let valorStr = trnAmt.replace(',', '.');
+          let valor = parseFloat(valorStr);
+          if (isNaN(valor) || valor === 0) continue;
+          const nomeLower = name.toLowerCase();
+          const memoLower = memo.toLowerCase();
+          if (nomeLower.includes('saldo') || memoLower.includes('saldo') ||
+            nomeLower.includes('saldo do dia') || memoLower.includes('saldo do dia') ||
+            nomeLower.includes('s a l d o') || memoLower.includes('s a l d o') ||
+            nomeLower.includes('saldo anterior') || memoLower.includes('saldo anterior')) {
+            continue;
+          }
+          let operacao = 'C';
+          if (valor < 0) { operacao = 'D';
+            valor = Math.abs(valor); }
+          const tipo = trnType.toUpperCase();
+          if (tipo === 'DEBIT') operacao = 'D';
+          else if (tipo === 'CREDIT') operacao = 'C';
+          const numdoc = fitId || 'S/N';
+          const favorecido = name || '--';
+          const historico = memo || name || '';
+          resultados.push({
+            data: dataISO,
+            valor: valor,
+            operacao: operacao,
+            numdoc: numdoc,
+            favorecido: favorecido,
+            historico: historico
+          });
+        }
+        if (resultados.length > 0) return resultados;
+      }
+    } catch (e) {
+      console.warn('DOMParser falhou, usando fallback regex.', e);
+    }
+    const regexBloco = /<STMTTRN>([\s\S]*?)<\/STMTTRN>/gi;
+    let match;
+    while ((match = regexBloco.exec(texto)) !== null) {
+      const bloco = match[1];
+      const trnType = extrairTag(bloco, 'TRNTYPE');
+      const dtPosted = extrairTag(bloco, 'DTPOSTED');
+      const trnAmt = extrairTag(bloco, 'TRNAMT');
+      const fitId = extrairTag(bloco, 'FITID');
+      const name = extrairTag(bloco, 'NAME');
+      const memo = extrairTag(bloco, 'MEMO');
+      if (!dtPosted || !trnAmt) continue;
+      let dataStr = dtPosted.trim().substring(0, 8);
+      let dataISO = dataStr.substring(0, 4) + '-' + dataStr.substring(4, 6) + '-' + dataStr.substring(6, 8);
+      if (dataISO.length < 10) continue;
+      let valorStr = trnAmt.replace(',', '.');
+      let valor = parseFloat(valorStr);
+      if (isNaN(valor) || valor === 0) continue;
+      const nomeLower = (name || '').toLowerCase();
+      const memoLower = (memo || '').toLowerCase();
+      if (nomeLower.includes('saldo') || memoLower.includes('saldo') ||
+        nomeLower.includes('saldo do dia') || memoLower.includes('saldo do dia') ||
+        nomeLower.includes('s a l d o') || memoLower.includes('s a l d o') ||
+        nomeLower.includes('saldo anterior') || memoLower.includes('saldo anterior')) {
+        continue;
+      }
+      let operacao = 'C';
+      if (valor < 0) { operacao = 'D';
+        valor = Math.abs(valor); }
+      const tipo = trnType.toUpperCase();
+      if (tipo === 'DEBIT') operacao = 'D';
+      else if (tipo === 'CREDIT') operacao = 'C';
+      const numdoc = fitId || 'S/N';
+      const favorecido = name || '--';
+      const historico = memo || name || '';
+      resultados.push({
+        data: dataISO,
+        valor: valor,
+        operacao: operacao,
+        numdoc: numdoc,
+        favorecido: favorecido,
+        historico: historico
+      });
+    }
+    return resultados;
+  }
+
+  function extrairTag(texto, tag) {
+    const regex = new RegExp('<' + tag + '>([\\s\\S]*?)</' + tag + '>', 'i');
+    const match = texto.match(regex);
+    return match ? match[1].trim() : '';
+  }
+
+  // ============================================================
+  // IMPORTAÇÃO DE EXTRATO - COM VERIFICAÇÃO DE BANCO E DUPLICATAS
+  // E CORREÇÃO PARA BANCO DO BRASIL (inversão favorecido/histórico)
+  // ============================================================
+  async function importarExtrato() {
+    if (!bancoSelecionado) {
+      exibirMsg('Selecione um banco antes de importar.', true);
+      return;
+    }
+    if (!usuarioLogado) {
+      exibirMsg('Usuário padrão não encontrado. Verifique os dados.', true);
+      return;
+    }
+    const fileInput = document.getElementById('fileExtrato');
+    const file = fileInput.files[0];
+    if (!file) {
+      exibirMsg('Selecione um arquivo.', true);
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = async function(e) {
+      const conteudo = e.target.result;
+      const isOFX = conteudo.includes('<OFX>') || conteudo.includes('<?xml');
+      let transacoes = [];
+      let bancoIdentificado = null;
+      let bancoNomeIdentificado = null;
+
+      if (isOFX) {
+        try {
+          const parser = new DOMParser();
+          const xmlDoc = parser.parseFromString(conteudo, "text/xml");
+          let bankIdEl = xmlDoc.getElementsByTagName("BANKID")[0];
+          if (!bankIdEl) bankIdEl = xmlDoc.getElementsByTagName("bankid")[0];
+          if (bankIdEl) {
+            bancoIdentificado = parseInt(bankIdEl.textContent.trim());
+          }
+          let bankNameEl = xmlDoc.getElementsByTagName("BANKNAME")[0];
+          if (!bankNameEl) bankNameEl = xmlDoc.getElementsByTagName("bankname")[0];
+          if (bankNameEl) {
+            bancoNomeIdentificado = bankNameEl.textContent.trim();
+          }
+        } catch (err) {
+          const bankIdMatch = conteudo.match(/<BANKID>([^<]+)<\/BANKID>/i);
+          if (bankIdMatch && bankIdMatch[1]) {
+            bancoIdentificado = parseInt(bankIdMatch[1]);
+          }
+          const bankNameMatch = conteudo.match(/<BANKNAME>([^<]+)<\/BANKNAME>/i);
+          if (bankNameMatch && bankNameMatch[1]) {
+            bancoNomeIdentificado = bankNameMatch[1].trim();
+          }
+        }
+
+        if (bancoIdentificado !== null && bancoIdentificado !== bancoSelecionado.numbanco) {
+          const nomeArquivo = bancoNomeIdentificado || `código ${bancoIdentificado}`;
+          const confirmar = confirm(
+            `O arquivo parece ser do banco "${nomeArquivo}" (código ${bancoIdentificado}), mas você selecionou o banco "${bancoSelecionado.nomebanco}" (código ${bancoSelecionado.numbanco}).\n\nDeseja importar mesmo assim?`
+          );
+          if (!confirmar) {
+            exibirMsg('Importação cancelada pelo usuário.', false);
+            document.getElementById('fileExtrato').value = '';
+            return;
+          }
+        }
+
+        transacoes = parseOFX(conteudo);
+        if (transacoes.length === 0) {
+          exibirMsg('Nenhuma transação válida encontrada no arquivo OFX.', true);
+          return;
+        }
+
+        // === CORREÇÃO PARA BANCO DO BRASIL: inverter favorecido e histórico ===
+        if (bancoSelecionado.nomebanco.toLowerCase().includes('banco do brasil')) {
+          transacoes = transacoes.map(t => ({
+            ...t,
+            favorecido: t.historico || t.favorecido,
+            historico: t.favorecido || t.historico
+          }));
+        }
+      } else {
+        const linhas = conteudo.split(/\r?\n/);
+        let isMercadoPago = false;
+        for (let i = 0; i < Math.min(linhas.length, 10); i++) {
+          if (linhas[i].toUpperCase().includes('RELEASE_DATE') &&
+              linhas[i].toUpperCase().includes('TRANSACTION_TYPE')) {
+            isMercadoPago = true;
+            break;
+          }
+        }
+
+        let bancoNoArquivo = null;
+        if (!isMercadoPago) {
+          for (let i = 0; i < Math.min(linhas.length, 20); i++) {
+            const linha = linhas[i].toLowerCase();
+            if ((linha.includes('banco') || linha.includes('instituição') || linha.includes('instituicao')) &&
+                (linha.includes('nome') || linha.includes('descrição') || linha.includes('descricao'))) {
+              const colunas = linhas[i].split(/[;,]/).map(c => c.trim().toLowerCase());
+              const idxBanco = colunas.findIndex(c => c.includes('banco') || c.includes('instituição') || c.includes('instituicao'));
+              if (idxBanco !== -1 && i + 1 < linhas.length) {
+                const dadosLinha = linhas[i + 1].split(/[;,]/);
+                if (dadosLinha.length > idxBanco) {
+                  bancoNoArquivo = dadosLinha[idxBanco].trim().replace(/^"|"$/g, '');
+                }
+              }
+              break;
+            }
+          }
+        }
+
+        if (isMercadoPago) {
+          const confirmar = confirm(
+            `Você está importando um arquivo do Mercado Pago para o banco "${bancoSelecionado.nomebanco}" (código ${bancoSelecionado.numbanco}).\n\nDeseja continuar?`
+          );
+          if (!confirmar) {
+            exibirMsg('Importação cancelada pelo usuário.', false);
+            document.getElementById('fileExtrato').value = '';
+            return;
+          }
+          transacoes = parseMercadoPago(conteudo);
+          if (transacoes.length === 0) {
+            exibirMsg('Nenhuma transação válida encontrada no arquivo Mercado Pago.', true);
+            return;
+          }
+        } else {
+          if (bancoNoArquivo) {
+            const nomeSelecionado = bancoSelecionado.nomebanco.toLowerCase();
+            const nomeArquivo = bancoNoArquivo.toLowerCase();
+            if (!nomeArquivo.includes(nomeSelecionado) && !nomeSelecionado.includes(nomeArquivo)) {
+              const confirmar = confirm(
+                `O arquivo parece ser do banco "${bancoNoArquivo}", mas você selecionou o banco "${bancoSelecionado.nomebanco}" (código ${bancoSelecionado.numbanco}).\n\nDeseja importar mesmo assim?`
+              );
+              if (!confirmar) {
+                exibirMsg('Importação cancelada pelo usuário.', false);
+                document.getElementById('fileExtrato').value = '';
+                return;
+              }
+            }
+          } else {
+            const confirmar = confirm(
+              `Você está importando um arquivo CSV para o banco "${bancoSelecionado.nomebanco}" (código ${bancoSelecionado.numbanco}).\n\nDeseja continuar?`
+            );
+            if (!confirmar) {
+              exibirMsg('Importação cancelada pelo usuário.', false);
+              document.getElementById('fileExtrato').value = '';
+              return;
+            }
+          }
+          transacoes = parseCSV(conteudo);
+          if (transacoes.length === 0) {
+            exibirMsg('Nenhuma transação encontrada no arquivo CSV. Verifique o formato.', true);
+            return;
+          }
+        }
+      }
+
+      let movimentos = getMovimentos();
+      let importados = 0;
+      let duplicados = 0;
+
+      transacoes.forEach(t => {
+        if (!t.data || !t.valor) return;
+        let favorecidoNorm = sanitizarTexto(t.favorecido || '');
+        let historicoNorm = sanitizarTexto(t.historico || '');
+        const numdocNorm = sanitizarTexto(t.numdoc || '');
+
+        if (t.operacao === 'C') {
+          favorecidoNorm = usuarioLogado.nomeCompleto || usuarioLogado.nome;
+        }
+
+        const jaExiste = movimentos.some(m =>
+          m.numbanco === bancoSelecionado.numbanco &&
+          m.data === t.data &&
+          m.valor === t.valor &&
+          m.operacao === t.operacao &&
+          m.numdoc === numdocNorm &&
+          sanitizarTexto(m.favorecido || '') === favorecidoNorm &&
+          sanitizarTexto(m.historico || '') === historicoNorm
+        );
+        if (jaExiste) {
+          duplicados++;
+          return;
+        }
+
+        const especie = classificarEspecie(favorecidoNorm, historicoNorm, t.operacao);
+
+        movimentos.push({
+          id: proximoIdMovimento(),
+          numbanco: bancoSelecionado.numbanco,
+          data: t.data,
+          valor: t.valor,
+          operacao: t.operacao,
+          especie: especie,
+          numdoc: numdocNorm || 'S/N',
+          favorecido: favorecidoNorm,
+          historico: historicoNorm || ''
+        });
+        importados++;
+      });
+
+      setMovimentos(movimentos);
+      carregarMovimentos();
+      renderizarBancosPrincipal();
+      await salvarNoGitHub(false);
+
+      let msg = `Importados ${importados} movimentos.`;
+      if (duplicados > 0) msg += ` ${duplicados} duplicados ignorados.`;
+      exibirMsg(msg, false);
+      document.getElementById('fileExtrato').value = '';
+    };
+    reader.readAsText(file, 'UTF-8');
+  }
+
+  // ============================================================
+  // PARSERS (Mercado Pago, CSV) - mantidos
+  // ============================================================
+  function parseMercadoPago(conteudo) {
+    const linhas = conteudo.split(/\r?\n/);
+    const transacoes = [];
+    let inicio = -1;
+    for (let i = 0; i < linhas.length; i++) {
+      const linha = linhas[i].toUpperCase();
+      if (linha.includes('RELEASE_DATE') && linha.includes('TRANSACTION_TYPE') &&
+        linha.includes('REFERENCE_ID') && linha.includes('TRANSACTION_NET_AMOUNT')) {
+        inicio = i + 1;
+        break;
+      }
+    }
+    if (inicio === -1) return transacoes;
+    for (let i = inicio; i < linhas.length; i++) {
+      const linha = linhas[i].trim();
+      if (linha === '') continue;
+      const campos = linha.split(';');
+      if (campos.length < 5) continue;
+      const dataStr = campos[0].trim().replace(/"/g, '');
+      const tipoStr = campos[1].trim().replace(/"/g, '');
+      const refId = campos[2].trim().replace(/"/g, '');
+      let valorStr = campos[3].trim().replace(/"/g, '').replace(/\./g, '').replace(',', '.');
+      let dataISO = '';
+      if (dataStr.includes('-')) {
+        const partes = dataStr.split('-');
+        if (partes.length === 3) {
+          if (partes[0].length === 2 && partes[1].length === 2 && partes[2].length === 4) {
+            dataISO = partes[2] + '-' + partes[1].padStart(2, '0') + '-' + partes[0].padStart(2, '0');
+          } else if (partes[0].length === 4) {
+            dataISO = dataStr;
+          } else {
+            dataISO = partes[2] + '-' + partes[0].padStart(2, '0') + '-' + partes[1].padStart(2, '0');
+          }
+        }
+      }
+      if (!dataISO || dataISO.length < 10) continue;
+      let valor = parseFloat(valorStr);
+      if (isNaN(valor)) continue;
+      if (valor === 0) continue;
+      let operacao = 'C';
+      let tipoDisplay = tipoStr.toLowerCase();
+      if (tipoDisplay.includes('saida') || tipoDisplay.includes('debit') ||
+        tipoDisplay.includes('pagamento') || tipoDisplay.includes('transferencia enviada') ||
+        tipoDisplay.includes('transferência enviada') || tipoDisplay.includes('enviado')) {
+        operacao = 'D';
+      } else if (tipoDisplay.includes('entrada') || tipoDisplay.includes('credit') ||
+        tipoDisplay.includes('recebimento') || tipoDisplay.includes('transferencia recebida') ||
+        tipoDisplay.includes('transferência recebida') || tipoDisplay.includes('recebido')) {
+        operacao = 'C';
+      } else {
+        if (valor < 0) { operacao = 'D';
+          valor = Math.abs(valor); } else { operacao = 'C'; }
+      }
+      const favorecido = tipoStr || '--';
+      const historico = tipoStr + (refId ? ' (Ref: ' + refId + ')' : '');
+      transacoes.push({
+        data: dataISO,
+        valor: Math.abs(valor),
+        operacao: operacao,
+        numdoc: refId || 'S/N',
+        favorecido: favorecido,
+        historico: historico
+      });
+    }
+    return transacoes;
+  }
+
+  function parseCSV(conteudo) {
+    const linhas = conteudo.split(/\r?\n/);
+    let cabecalhoIndex = -1;
+    for (let i = 0; i < linhas.length; i++) {
+      const normal = linhas[i].replace(/"/g, '').toLowerCase();
+      if (normal.includes('data') && normal.includes('lançamento') && normal.includes('valor')) {
+        cabecalhoIndex = i;
+        break;
+      }
+    }
+    if (cabecalhoIndex === -1) {
+      for (let i = 0; i < linhas.length; i++) {
+        const normal = linhas[i].replace(/"/g, '').toLowerCase();
+        if (normal.includes('valor') && normal.includes('tipo lançamento')) {
+          cabecalhoIndex = i;
+          break;
+        }
+      }
+    }
+    if (cabecalhoIndex === -1) return [];
+    const transacoes = [];
+    for (let i = cabecalhoIndex + 1; i < linhas.length; i++) {
+      const linha = linhas[i].trim();
+      if (linha === '') continue;
+      const campos = parseCSVLinha(linha);
+      if (campos.length < 6) {
+        const alt = linha.split(',').map(c => c.replace(/^"|"$/g, '').trim());
+        if (alt.length >= 6) {
+          campos.length = 0;
+          alt.forEach(c => campos.push(c));
+        } else continue;
+      }
+      if (campos.length < 6) continue;
+      const dataStr = campos[0].trim();
+      const tipo = campos[5].trim();
+      if (dataStr === '00/00/0000' || tipo === 'Saldo do dia' || tipo === 'S A L D O') continue;
+      const partes = dataStr.split('/');
+      if (partes.length !== 3) continue;
+      const dataISO = partes[2] + '-' + partes[1].padStart(2, '0') + '-' + partes[0].padStart(2, '0');
+      let valorStr = campos[4].trim().replace(/\./g, '').replace(',', '.');
+      let valor = parseFloat(valorStr);
+      if (isNaN(valor)) continue;
+      let operacao = 'C';
+      if (tipo === 'Saída' || tipo === 'Saida') { operacao = 'D';
+        valor = Math.abs(valor); } else if (tipo === 'Entrada') { operacao = 'C';
+        valor = Math.abs(valor); } else {
+        if (valor < 0) { operacao = 'D';
+          valor = Math.abs(valor); } else operacao = 'C'; }
+      const numdoc = campos[3].trim() || 'S/N';
+      const favorecido = campos[2].trim() || campos[1].trim() || '--';
+      const historico = (campos[1] + ' - ' + campos[2]).replace(/"/g, '').trim();
+      transacoes.push({
+        data: dataISO,
+        valor: valor,
+        operacao: operacao,
+        numdoc: numdoc,
+        favorecido: favorecido,
+        historico: historico
+      });
+    }
+    return transacoes;
+  }
+
+  function parseCSVLinha(linha) {
+    const campos = [];
+    let atual = '';
+    let dentroAspas = false;
+    for (let i = 0; i < linha.length; i++) {
+      const ch = linha[i];
+      if (ch === '"') {
+        if (i + 1 < linha.length && linha[i + 1] === '"') {
+          atual += '"';
+          i++;
+        } else {
+          dentroAspas = !dentroAspas;
+        }
+      } else if (ch === ',' && !dentroAspas) {
+        campos.push(atual.trim());
+        atual = '';
+      } else {
+        atual += ch;
+      }
+    }
+    if (atual) campos.push(atual.trim());
+    return campos;
+  }
+
+  // ============================================================
+  // FLUXO DE CAIXA
+  // ============================================================
+  function gerarFluxo() {
+    const dtIni = document.getElementById('dtInicioFluxo').value;
+    const dtFim = document.getElementById('dtFimFluxo').value;
+    if (!dtIni || !dtFim) { exibirMsg('Selecione o período.', true); return; }
+    const movimentos = getMovimentos().filter(m => m.data >= dtIni && m.data <= dtFim);
+    if (movimentos.length === 0) { exibirMsg('Nenhum movimento no período.', true); return; }
+    const agrupado = {};
+    movimentos.forEach(m => {
+      if (!agrupado[m.data]) agrupado[m.data] = { creditos: 0, debitos: 0 };
+      if (m.operacao === 'C') agrupado[m.data].creditos += m.valor;
+      else agrupado[m.data].debitos += m.valor;
+    });
+    const datas = Object.keys(agrupado).sort();
+    let saldoAcum = 0;
+    const tbody = document.getElementById('tbodyFluxo');
+    tbody.innerHTML = '';
+    datas.forEach(d => {
+      const cred = agrupado[d].creditos;
+      const deb = agrupado[d].debitos;
+      const saldoDia = cred - deb;
+      saldoAcum += saldoDia;
+      const tr = document.createElement('tr');
+      let classeSaldoDia = 'fluxo-zero';
+      if (saldoDia > 0) classeSaldoDia = 'fluxo-positivo';
+      else if (saldoDia < 0) classeSaldoDia = 'fluxo-negativo';
+      let classeSaldoAcum = 'fluxo-zero';
+      if (saldoAcum > 0) classeSaldoAcum = 'fluxo-positivo';
+      else if (saldoAcum < 0) classeSaldoAcum = 'fluxo-negativo';
+      tr.innerHTML = `
+        <td>${d}</td>
+        <td class="valor-direita">${formatCurrency(cred)}</td>
+        <td class="valor-direita">${formatCurrency(deb)}</td>
+        <td class="valor-direita ${classeSaldoDia}">${formatCurrency(saldoDia)}</td>
+        <td class="valor-direita ${classeSaldoAcum}">${formatCurrency(saldoAcum)}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  // ============================================================
+  // FUNÇÕES FALTANTES
+  // ============================================================
+  function toggleCadastro() {
+    const container = document.getElementById('cadastroMovimentos');
+    const btn = document.getElementById('btnToggleCadastro');
+    if (container.classList.contains('closed')) {
+      container.classList.remove('closed');
+      btn.textContent = '▼';
+    } else {
+      container.classList.add('closed');
+      btn.textContent = '▶';
+    }
+  }
+
+  function setupLogoPreview(inputId, previewId) {
+    const input = document.getElementById(inputId);
+    const preview = document.getElementById(previewId);
+    input.addEventListener('change', function(e) {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(ev) {
+          preview.src = ev.target.result;
+          preview.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+      } else {
+        preview.style.display = 'none';
+      }
+    });
+  }
+
+  function processarJSON(file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      try {
+        const json = JSON.parse(e.target.result);
+        if (json.usuarios && json.bancos && json.movimentos) {
+          dados = json;
+          salvarDados();
+          carregarUsuariosGrid();
+          carregarBancosGrid();
+          carregarBancosNosSelects();
+          carregarMovimentos();
+          renderizarBancosPrincipal();
+          exibirMsg('Dados importados com sucesso!', false);
+        } else {
+          exibirMsg('Arquivo JSON inválido.', true);
+        }
+      } catch (err) {
+        exibirMsg('Erro ao ler JSON: ' + err.message, true);
+      }
+    };
+    reader.readAsText(file);
+  }
+
+  function salvarJSON() {
+    const json = JSON.stringify(dados, null, 2);
+    const blob = new Blob([json], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'dados.json';
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  function carregarJSON() {
+    document.getElementById('fileJSON').click();
+  }
+
+  // ============================================================
+  // EVENTOS E INICIALIZAÇÃO
+  // ============================================================
+  document.addEventListener('DOMContentLoaded', async function() {
+    document.getElementById('versaoApp').textContent = 'v' + VERSAO;
+
+    // 1. Carregar dados do localStorage
+    const hasData = await carregarDados();
+    if (!hasData) {
+      inicializarDados();
+    }
+
+    // 2. Tentar carregar dados do GitHub (se configurado)
+    const githubLoaded = await carregarDoGitHub();
+    if (githubLoaded) {
+      carregarUsuariosGrid();
+      carregarBancosGrid();
+      carregarBancosNosSelects();
+      carregarMovimentos();
+      renderizarBancosPrincipal();
+      exibirMsg('✅ Dados carregados do GitHub com sucesso!', false);
+    } else {
+      console.log('Nenhum dado do GitHub carregado. Usando dados locais.');
+    }
+
+    // Define usuário padrão
+    const usuarios = getUsuarios();
+    if (usuarios && usuarios.length > 0) {
+      usuarioLogado = usuarios[0];
+      document.getElementById('lblUsuario').textContent = usuarioLogado.nome;
+    } else {
+      usuarioLogado = { codigo: 1, nome: 'Administrador', nomeCompleto: 'Administrador', senha: '123' };
+      dados.usuarios.push(usuarioLogado);
+      salvarDados();
+      document.getElementById('lblUsuario').textContent = 'Administrador';
+    }
+
+    // Inicializar QR Codes
+    if (!carregarQRCodesLocal()) {
+      await carregarQRCodesDoGitHub();
+    }
+    carregarQRCodeUI();
+
+    // ============================================================
+    // EVENTOS QR CODE
+    // ============================================================
+    document.getElementById('qrSelector').addEventListener('change', selecionarQRCode);
+    document.getElementById('btnNovoQR').addEventListener('click', novoQRCode);
+    document.getElementById('btnCopiarQR').addEventListener('click', copiarPayloadQR);
+    document.getElementById('qrFileInput').addEventListener('change', function(e) {
+      if (this.files && this.files.length > 0) {
+        decodificarQRCode(this.files[0]);
+      }
+    });
+    document.getElementById('btnSalvarQR').addEventListener('click', salvarQRCodeAtual);
+    document.getElementById('btnRemoverQR').addEventListener('click', removerQRCodeAtual);
+
+    // ============================================================
+    // EVENTOS MOVIMENTOS (INCLUIR E IMPORTAR)
+    // ============================================================
+    document.getElementById('btnIncluirMov').addEventListener('click', incluirMovimento);
+    document.getElementById('btnImportarExtrato').addEventListener('click', importarExtrato);
+
+    // ============================================================
+    // OUTROS EVENTOS
+    // ============================================================
+    setupLogoPreview('logoFileInput', 'logoPreview');
+    setupLogoPreview('editLogoFileInput', 'editLogoPreview');
+
+    document.getElementById('selOperacao').addEventListener('change', preencherFavorecidoCredito);
+    document.getElementById('editOperacao').addEventListener('change', preencherFavorecidoCreditoEdit);
+
+    document.getElementById('btnDropdownDados').addEventListener('click', function(e) {
+      e.stopPropagation();
+      document.getElementById('dropdownDados').classList.toggle('active');
+    });
+    document.addEventListener('click', function() {
+      document.getElementById('dropdownDados').classList.remove('active');
+    });
+
+    document.querySelectorAll('.menu button[data-tela]').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const tela = this.dataset.tela;
+        if (tela === 'movimentos') {
+          carregarBancosNosSelects();
+          carregarMovimentos();
+          document.getElementById('txtDataMov').value = new Date().toISOString().slice(0, 10);
+          preencherFavorecidoCredito();
+          atualizarBotaoVisibilidadeMov();
+        }
+        if (tela === 'fluxo') {
+          document.getElementById('dtInicioFluxo').value = new Date().toISOString().slice(0, 10);
+          const fim = new Date();
+          fim.setDate(fim.getDate() + 30);
+          document.getElementById('dtFimFluxo').value = fim.toISOString().slice(0, 10);
+        }
+        if (tela === 'principal') {
+          carregarQRCodesDoGitHub().then(() => carregarQRCodeUI());
+        }
+        mostrarTela(tela);
+      });
+    });
+
+    document.getElementById('btnToggleSaldo').addEventListener('click', toggleSaldo);
+    document.getElementById('btnToggleSaldoMov').addEventListener('click', toggleSaldo);
+
+    document.getElementById('btnSalvarGitHub').addEventListener('click', function() { salvarNoGitHub(false); });
+    document.getElementById('btnConfigGitHub').addEventListener('click', function() { mostrarTela('config'); });
+    document.getElementById('btnSalvarConfigGitHub').addEventListener('click', function() {
+      const repo = document.getElementById('cfgRepo').value.trim();
+      const token = document.getElementById('cfgToken').value.trim();
+      const filename = document.getElementById('cfgFilename').value.trim() || 'dados.json';
+      if (!repo || !token) {
+        exibirMsg('Preencha todos os campos.', true);
+        return;
+      }
+      setGitHubConfig(repo, token, filename);
+      exibirMsg('Configurações salvas com sucesso!', false);
+    });
+    document.getElementById('btnTestarConfigGitHub').addEventListener('click', testarGitHub);
+
+    const { repo, token, filename } = getGitHubConfig();
+    document.getElementById('cfgRepo').value = repo;
+    document.getElementById('cfgToken').value = token;
+    document.getElementById('cfgFilename').value = filename;
+
+    document.getElementById('btnQRCode').addEventListener('click', function() {
+      carregarQRCodesDoGitHub().then(() => {
+        carregarQRCodeUI();
+        document.getElementById('modalQRCode').classList.add('active');
+      });
+    });
+    document.getElementById('btnFecharQR').addEventListener('click', function() {
+      document.getElementById('modalQRCode').classList.remove('active');
+    });
+    document.getElementById('modalQRCode').addEventListener('click', function(e) {
+      if (e.target === this) this.classList.remove('active');
+    });
+
+    document.getElementById('btnCarregarJSON').addEventListener('click', carregarJSON);
+    document.getElementById('btnSalvarJSON').addEventListener('click', salvarJSON);
+    document.getElementById('fileJSON').addEventListener('change', function(e) {
+      if (this.files.length > 0) {
+        processarJSON(this.files[0]);
+        this.value = '';
+      }
+    });
+
+    document.getElementById('h2Movimentos').addEventListener('click', function(e) {
+      cliqueMovimentos++;
+      clearTimeout(timerMovimentos);
+      timerMovimentos = setTimeout(() => {
+        cliqueMovimentos = 0;
+      }, 2000);
+      if (cliqueMovimentos >= 7) {
+        cliqueMovimentos = 0;
+        clearTimeout(timerMovimentos);
+        limparMovimentos();
+      }
+    });
+
+    document.getElementById('bancoInfo').addEventListener('click', function(e) {
+      cliqueBancoInfo++;
+      clearTimeout(timerBancoInfo);
+      timerBancoInfo = setTimeout(() => {
+        cliqueBancoInfo = 0;
+      }, 2000);
+      if (cliqueBancoInfo >= 7) {
+        cliqueBancoInfo = 0;
+        clearTimeout(timerBancoInfo);
+        if (bancoSelecionado) {
+          if (confirm(`Limpar todos os movimentos do banco "${bancoSelecionado.nomebanco}"?`)) {
+            let movimentos = getMovimentos();
+            movimentos = movimentos.filter(m => m.numbanco !== bancoSelecionado.numbanco);
+            setMovimentos(movimentos);
+            carregarMovimentos();
+            renderizarBancosPrincipal();
+            exibirMsg(`Movimentos do banco "${bancoSelecionado.nomebanco}" removidos!`, false);
+            salvarNoGitHub(false);
+          }
+        } else {
+          exibirMsg('Nenhum banco selecionado.', true);
+        }
+      }
+    });
+
+    document.getElementById('btnConfirmarLimpeza').addEventListener('click', confirmarLimpezaMovimentos);
+    document.getElementById('btnCancelarLimpeza').addEventListener('click', cancelarLimpezaMovimentos);
+    document.getElementById('modalLimparMovimentos').addEventListener('click', function(e) {
+      if (e.target === this) cancelarLimpezaMovimentos();
+    });
+
+    document.getElementById('btnMostrarIncluirUsuario').addEventListener('click', mostrarIncluirUsuario);
+    document.getElementById('btnIncluirUsuario').addEventListener('click', incluirUsuario);
+    document.getElementById('btnCancelarIncluirUsuario').addEventListener('click', function() {
+      document.getElementById('formIncluirUsuario').style.display = 'none';
+    });
+    carregarUsuariosGrid();
+
+    document.getElementById('btnSalvarUsuario').addEventListener('click', salvarUsuario);
+    document.getElementById('btnCancelarUsuario').addEventListener('click', fecharModalUsuario);
+    document.getElementById('modalUsuario').addEventListener('click', function(e) {
+      if (e.target === this) fecharModalUsuario();
+    });
+
+    document.getElementById('btnMostrarIncluirBanco').addEventListener('click', mostrarIncluirBanco);
+    document.getElementById('btnIncluirBanco').addEventListener('click', incluirBanco);
+    document.getElementById('btnCancelarIncluirBanco').addEventListener('click', function() {
+      document.getElementById('formIncluirBanco').style.display = 'none';
+    });
+    carregarBancosGrid();
+
+    document.getElementById('btnSalvarBanco').addEventListener('click', salvarBanco);
+    document.getElementById('btnCancelarBanco').addEventListener('click', fecharModalBanco);
+    document.getElementById('modalBanco').addEventListener('click', function(e) {
+      if (e.target === this) fecharModalBanco();
+    });
+
+    document.getElementById('btnExcluirMov').addEventListener('click', function() { alert('Clique no ícone 🗑️ na linha desejada.'); });
+    document.getElementById('selBancoMov').addEventListener('change', function() {
+      const num = parseInt(this.value);
+      const bancos = getBancos();
+      bancoSelecionado = bancos.find(b => b.numbanco === num) || null;
+      carregarMovimentos();
+    });
+    document.getElementById('txtDataMov').value = new Date().toISOString().slice(0, 10);
+
+    document.getElementById('btnSalvarEdicao').addEventListener('click', salvarEdicao);
+    document.getElementById('btnCancelarEdicao').addEventListener('click', fecharModalEdicao);
+    document.getElementById('modalEditar').addEventListener('click', function(e) {
+      if (e.target === this) fecharModalEdicao();
+    });
+
+    document.getElementById('btnToggleCadastro').addEventListener('click', toggleCadastro);
+
+    document.getElementById('btnGerarFluxo').addEventListener('click', gerarFluxo);
+    const hoje = new Date().toISOString().slice(0, 10);
+    document.getElementById('dtInicioFluxo').value = hoje;
+    const fim = new Date();
+    fim.setDate(fim.getDate() + 30);
+    document.getElementById('dtFimFluxo').value = fim.toISOString().slice(0, 10);
+
+    window.addEventListener('beforeunload', function() {
+      salvarNoGitHub(true);
+    });
+
+    saldoVisivel = localStorage.getItem('saldo_visivel') === 'true';
+    renderizarBancosPrincipal();
+    mostrarTela('principal');
+  });
+</script>
+</body>
+</html>
