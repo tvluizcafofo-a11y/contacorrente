@@ -2,21 +2,11 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Conta Corrente - Sistema Web</title>
-
-  <!-- ===== PWA META TAGS ===== -->
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#1a73e8">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-  <!-- ===== SCRIPTS ===== -->
-  <!-- jsQR carregado localmente para funcionamento offline -->
-  <script src="jsqr.min.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
   <style>
-    /* ===== CSS COMPLETO (MANTIDO) ===== */
+    /* CSS completo (mantido) */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -936,7 +926,7 @@
       <h4 style="margin:0 0 8px 0;">📂 Importar Extrato (CSV, OFX ou Mercado Pago)</h4>
       <div class="form-group">
         <label>Arquivo:</label>
-        <input type="file" id="fileExtrato" accept=".csv,.ofx,.qfx,.qbo">
+        <input type="file" id="fileExtrato" accept=".csv,.ofx,.qfx,.qbo,application/x-ofx,application/vnd.ofx,application/x-qfx,application/x-qbo">
       </div>
       <div class="botoes">
         <button id="btnImportarExtrato" class="primary">Importar</button>
@@ -1138,15 +1128,6 @@
 
 <script>
   // ============================================================
-  // REGISTRO DO SERVICE WORKER (PWA)
-  // ============================================================
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js')
-      .then(reg => console.log('Service Worker registrado com sucesso!', reg))
-      .catch(err => console.error('Falha ao registrar Service Worker', err));
-  }
-
-  // ============================================================
   // VERSÃO DO SISTEMA
   // ============================================================
   const VERSAO = '1.8.1';
@@ -1154,7 +1135,7 @@
   // ============================================================
   // CÓDIGOS BASE64 DOS OLHOS FORNECIDOS PELO USUÁRIO
   // ============================================================
-  const OLHO_ABERTO = 'data:image/png;base64,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';
+  const OLHO_ABERTO = 'data:image/png;base64,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';
   const OLHO_FECHADO = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAADJElEQVR4nO2Ze2jOYRTHP2zjdZ+ZFVZDLWm5pSXxBykpk2RYCRGSlOIvSyGFZMU/UhKi/KUkqZH9YYjl0jbN1ELkLom5zXh16vurp9V7+b37vRf6fepp7949zznPec5zOecMQkJCQkJCcoMIMBfYA5wHWoEPwHegG/gIPAHqgcPAUqCYHGIOcAr4DER9NjPwCrAa6J8tAxYBTc6k/gD3gDpgOTAVKJKn8oDhQDmwENgJXJW3vPEvge2ZNKhc28ObwBtgFzA+BVmFwHrggSOvQ8amlQ1ApxTa/t+iFQ+CBUCLY9AxYCABUwCccJScBkYErQTIB7Y5W+4+MCZIBZck2LxRQ/qZBDyWzhfAyCCE2kF9C7wCppM5ioBrwA+dy0CwQzmYzNMHGJQFvSEh/zr5iTrYNfcM2E/usgLoUtAZk1J1+g3MJPco0lNg70t1os516tiiFz2XOK653dLVHJdhek2jCgZzhfnaKV2KrJNingZZqyL7jAXea3F3+B28VwM/ARPJHkOBZs2lXiGTL/oCFyTgNVBB5ikEbmsO7fo9JQYADRL0DphG5ihWxmm6nwJlvRVY4+QhX4F1pJ9ZwHNH74wgCgtekuOtjrUzaaqA9ANqgV/S81M/rSJTkqrQSqcyclTfVausY999AXYHmOpaMaNDsu22PKLs0Et/HwGj/AqtUE5uAs7q4HtYkeGy4x1LuA4AE1KYfIkqJ22OvIfA7B59WlPxzDiVZmzgxTivuxXj7vSoUzXLe6uUTZYpIYtodScDi4GDQKOzdaKK8dbEuF59GzPacW9DEttmq+MVz4N+2jdVH+3zyQS6fBnjHWhb6SEJBEccz1Vp+1XqsNp2vOH83XuLmlRO3afoIaKt2i3vlPowxmTFpFEdkin1bHZus3gBnGdIPM6pz6Ek9JoxdxU49poC7WlTviRB32QMmaKSa2ea6mUx2ejcMO6NlqohOGXYWjJEgXNArVhNQIbYmYkqcbLQKO2slcK2JLzhxxDDCxA3kQHapWxlkv39GLLMiXTTzk21vDQYkqer3/7NkHP4MYRkcvFsYW/T9WxPIiQkhP+Dv586CF9EuOZSAAAAAElFTkSuQmCC';
 
   // ============================================================
