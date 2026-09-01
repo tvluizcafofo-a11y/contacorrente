@@ -3157,6 +3157,50 @@
       "numdoc": "90.101",
       "favorecido": "01/09 13:25 Geisa Reck Brasil de Souz",
       "historico": "Pix - Enviado"
+    },
+    {
+      "id": 660,
+      "numbanco": 1,
+      "data": "2026-09-01",
+      "valor": 20,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "90.102",
+      "favorecido": "01/09 14:24 CHAVE DE OURO LOTERIAS  E",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 661,
+      "numbanco": 1,
+      "data": "2026-09-01",
+      "valor": 0.01,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "90.103",
+      "favorecido": "01/09 14:37 WILSON VIEIRA MOURA",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 662,
+      "numbanco": 1,
+      "data": "2026-09-01",
+      "valor": 42,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "90.104",
+      "favorecido": "01/09 16:21 ALEXIS XAVIER DA SILVA",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 663,
+      "numbanco": 1,
+      "data": "2026-09-01",
+      "valor": 52.38,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "11.846.382.691.522",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Recebido"
     }
   ]
 }
