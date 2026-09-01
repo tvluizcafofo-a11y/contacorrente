@@ -1476,17 +1476,6 @@
       "historico": "Pix - Enviado"
     },
     {
-      "id": 506,
-      "numbanco": 1,
-      "data": "2026-08-25",
-      "valor": 107.01,
-      "operacao": "D",
-      "especie": "A",
-      "numdoc": "48.314",
-      "favorecido": "Pagamento de Telefone",
-      "historico": "Pagamento de Telefone"
-    },
-    {
       "id": 507,
       "numbanco": 1,
       "data": "2026-06-01",
