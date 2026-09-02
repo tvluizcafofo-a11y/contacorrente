@@ -3201,6 +3201,61 @@
       "numdoc": "11.846.382.691.522",
       "favorecido": "Luiz M. de Souza",
       "historico": "Pix - Recebido"
+    },
+    {
+      "id": 664,
+      "numbanco": 1,
+      "data": "2026-09-01",
+      "valor": 1.53,
+      "operacao": "D",
+      "especie": "O",
+      "numdoc": "511.058.923",
+      "favorecido": "Cobranca de Juros",
+      "historico": "Cobranca de Juros"
+    },
+    {
+      "id": 665,
+      "numbanco": 1,
+      "data": "2026-09-01",
+      "valor": 0.87,
+      "operacao": "D",
+      "especie": "O",
+      "numdoc": "391.100.701",
+      "favorecido": "Cobranca de I.O.F.",
+      "historico": "Cobranca de I.O.F."
+    },
+    {
+      "id": 666,
+      "numbanco": 1,
+      "data": "2026-09-02",
+      "valor": 5166.4,
+      "operacao": "C",
+      "especie": "O",
+      "numdoc": "179.144.277",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Beneficio INSS"
+    },
+    {
+      "id": 667,
+      "numbanco": 1,
+      "data": "2026-09-02",
+      "valor": 5000,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "90.201",
+      "favorecido": "02/09 09:40 Luiz Martins de Souza",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 668,
+      "numbanco": 1,
+      "data": "2026-09-02",
+      "valor": 30,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "90.202",
+      "favorecido": "02/09 10:55 Geisa Reck Brasil de Souz",
+      "historico": "Pix - Enviado"
     }
   ]
 }
