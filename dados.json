@@ -3137,17 +3137,6 @@
       "historico": "Pagamento de DARF/RFB"
     },
     {
-      "id": 658,
-      "numbanco": 1,
-      "data": "2026-09-01",
-      "valor": 2.4,
-      "operacao": "D",
-      "especie": "O",
-      "numdoc": "S/N",
-      "favorecido": "Encargos",
-      "historico": "Encargos"
-    },
-    {
       "id": 659,
       "numbanco": 1,
       "data": "2026-09-01",
