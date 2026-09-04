@@ -3245,6 +3245,50 @@
       "numdoc": "90.202",
       "favorecido": "02/09 10:55 Geisa Reck Brasil de Souz",
       "historico": "Pix - Enviado"
+    },
+    {
+      "id": 669,
+      "numbanco": 1,
+      "data": "2026-09-02",
+      "valor": 30,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "90.203",
+      "favorecido": "02/09 15:36 ALEXIS XAVIER DA SILVA",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 670,
+      "numbanco": 1,
+      "data": "2026-09-02",
+      "valor": 26,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "90.204",
+      "favorecido": "02/09 21:38 DUBAI INTERMEDIACOES",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 671,
+      "numbanco": 1,
+      "data": "2026-09-03",
+      "valor": 174.9,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "90.301",
+      "favorecido": "03/09 13:20 CDD BELO HORIZONTE",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 672,
+      "numbanco": 1,
+      "data": "2026-09-03",
+      "valor": 200,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "31.654.238.976.032",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Recebido"
     }
   ]
 }
