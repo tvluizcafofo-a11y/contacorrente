@@ -3289,6 +3289,127 @@
       "numdoc": "31.654.238.976.032",
       "favorecido": "Luiz M. de Souza",
       "historico": "Pix - Recebido"
+    },
+    {
+      "id": 673,
+      "numbanco": 1,
+      "data": "2026-09-04",
+      "valor": 200,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "90.401",
+      "favorecido": "04/09 09:00 Geisa Reck Brasil de Souz",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 674,
+      "numbanco": 1,
+      "data": "2026-09-04",
+      "valor": 90,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "90.402",
+      "favorecido": "04/09 13:09 58.345.972 RICHARD DA SIL",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 675,
+      "numbanco": 1,
+      "data": "2026-09-04",
+      "valor": 85,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "90.403",
+      "favorecido": "04/09 13:15 58.345.972 RICHARD DA SIL",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 676,
+      "numbanco": 1,
+      "data": "2026-09-08",
+      "valor": 61.25,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "90.801",
+      "favorecido": "05/09 17:53 ESPETARIA SANTOS ANJOS LT",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 677,
+      "numbanco": 1,
+      "data": "2026-09-08",
+      "valor": 50,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "90.802",
+      "favorecido": "05/09 19:30 Bruno Geraldo Brasil Mart",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 678,
+      "numbanco": 1,
+      "data": "2026-09-08",
+      "valor": 50,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "90.803",
+      "favorecido": "05/09 19:47 Geisa Reck Brasil de Souz",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 679,
+      "numbanco": 1,
+      "data": "2026-09-08",
+      "valor": 44,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "90.804",
+      "favorecido": "06/09 19:46 Meep",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 680,
+      "numbanco": 1,
+      "data": "2026-09-08",
+      "valor": 10,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "90.805",
+      "favorecido": "06/09 19:47 DEYSIANE DOS SANTOS QUINT",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 681,
+      "numbanco": 1,
+      "data": "2026-09-08",
+      "valor": 300,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "90.806",
+      "favorecido": "07/09 12:30 Geisa Reck Brasil de Souz",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 682,
+      "numbanco": 1,
+      "data": "2026-09-08",
+      "valor": 57.66,
+      "operacao": "D",
+      "especie": "A",
+      "numdoc": "2.534",
+      "favorecido": "Pagto Energia Eletrica",
+      "historico": "Pagto Energia Eletrica"
+    },
+    {
+      "id": 683,
+      "numbanco": 1,
+      "data": "2026-09-08",
+      "valor": 1000,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "80.853.471.161.471",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Recebido"
     }
   ]
 }
