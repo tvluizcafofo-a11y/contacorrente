@@ -3431,7 +3431,7 @@
       "especie": "A",
       "numdoc": "90.808",
       "favorecido": "MULTIPLIKE SECURITIZADORA S.A.",
-      "historico": "Pagamento de Boleto para Lekão"
+      "historico": "Pagamento de Boleto para LekÃ£o"
     },
     {
       "id": 687,
@@ -3443,6 +3443,336 @@
       "numdoc": "2.534",
       "favorecido": "CEMIG DISTRIBUICAO",
       "historico": "Pagto Energia Eletrica"
+    },
+    {
+      "id": 688,
+      "numbanco": 1,
+      "data": "2026-09-01",
+      "valor": 50,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "90.101",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 689,
+      "numbanco": 1,
+      "data": "2026-09-01",
+      "valor": 20,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "90.102",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 690,
+      "numbanco": 1,
+      "data": "2026-09-01",
+      "valor": 0.01,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "90.103",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 691,
+      "numbanco": 1,
+      "data": "2026-09-01",
+      "valor": 42,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "90.104",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 692,
+      "numbanco": 1,
+      "data": "2026-09-02",
+      "valor": 5000,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "90.201",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 693,
+      "numbanco": 1,
+      "data": "2026-09-02",
+      "valor": 30,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "90.202",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 694,
+      "numbanco": 1,
+      "data": "2026-09-02",
+      "valor": 30,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "90.203",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 695,
+      "numbanco": 1,
+      "data": "2026-09-02",
+      "valor": 26,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "90.204",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 696,
+      "numbanco": 1,
+      "data": "2026-09-03",
+      "valor": 174.9,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "90.301",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 697,
+      "numbanco": 1,
+      "data": "2026-09-04",
+      "valor": 200,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "90.401",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 698,
+      "numbanco": 1,
+      "data": "2026-09-04",
+      "valor": 90,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "90.402",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 699,
+      "numbanco": 1,
+      "data": "2026-09-04",
+      "valor": 85,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "90.403",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 700,
+      "numbanco": 1,
+      "data": "2026-09-08",
+      "valor": 61.25,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "90.801",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 701,
+      "numbanco": 1,
+      "data": "2026-09-08",
+      "valor": 50,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "90.802",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 702,
+      "numbanco": 1,
+      "data": "2026-09-08",
+      "valor": 50,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "90.803",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 703,
+      "numbanco": 1,
+      "data": "2026-09-08",
+      "valor": 44,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "90.804",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 704,
+      "numbanco": 1,
+      "data": "2026-09-08",
+      "valor": 10,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "90.805",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 705,
+      "numbanco": 1,
+      "data": "2026-09-08",
+      "valor": 300,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "90.806",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 706,
+      "numbanco": 1,
+      "data": "2026-09-08",
+      "valor": 200,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "90.807",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 707,
+      "numbanco": 1,
+      "data": "2026-09-08",
+      "valor": 159.19,
+      "operacao": "C",
+      "especie": "A",
+      "numdoc": "90.808",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pagamento de Boleto"
+    },
+    {
+      "id": 708,
+      "numbanco": 1,
+      "data": "2026-09-08",
+      "valor": 57.66,
+      "operacao": "C",
+      "especie": "A",
+      "numdoc": "2.534",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pagto Energia Eletrica"
+    },
+    {
+      "id": 709,
+      "numbanco": 1,
+      "data": "2026-09-09",
+      "valor": 23,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "90.901",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 710,
+      "numbanco": 1,
+      "data": "2026-09-10",
+      "valor": 1900,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "100.927.347.049.292",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Recebido"
+    },
+    {
+      "id": 711,
+      "numbanco": 1,
+      "data": "2026-09-10",
+      "valor": 240,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "101.354.509.109.841",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Recebido"
+    },
+    {
+      "id": 712,
+      "numbanco": 1,
+      "data": "2026-09-10",
+      "valor": 1579,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "91.001",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 713,
+      "numbanco": 1,
+      "data": "2026-09-10",
+      "valor": 142.57,
+      "operacao": "C",
+      "especie": "A",
+      "numdoc": "91.002",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pagamento de Boleto"
+    },
+    {
+      "id": 714,
+      "numbanco": 1,
+      "data": "2026-09-10",
+      "valor": 250,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "91.003",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 715,
+      "numbanco": 1,
+      "data": "2026-09-10",
+      "valor": 10,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "91.004",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 716,
+      "numbanco": 1,
+      "data": "2026-09-10",
+      "valor": 130.99,
+      "operacao": "C",
+      "especie": "A",
+      "numdoc": "48.314",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pagamento de Telefone"
+    },
+    {
+      "id": 717,
+      "numbanco": 1,
+      "data": "2026-09-11",
+      "valor": 58,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "91.101",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Enviado"
     }
   ]
 }
