@@ -3696,6 +3696,17 @@
       "numdoc": "33.748.458",
       "favorecido": "Luiz M. de Souza",
       "historico": "TED Transf.Eletr.Disponiv"
+    },
+    {
+      "id": 708,
+      "numbanco": 1,
+      "data": "2026-09-15",
+      "valor": 2.4,
+      "operacao": "D",
+      "especie": "O",
+      "numdoc": "000002",
+      "favorecido": "Banco",
+      "historico": "Acerto de Saldo"
     }
   ]
 }
