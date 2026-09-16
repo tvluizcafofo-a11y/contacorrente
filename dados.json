@@ -3707,6 +3707,39 @@
       "numdoc": "000002",
       "favorecido": "Banco",
       "historico": "Acerto de Saldo"
+    },
+    {
+      "id": 709,
+      "numbanco": 1,
+      "data": "2026-09-15",
+      "valor": 1098.95,
+      "operacao": "C",
+      "especie": "A",
+      "numdoc": "33.748.458",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "TED-Credito em Conta"
+    },
+    {
+      "id": 710,
+      "numbanco": 1,
+      "data": "2026-09-16",
+      "valor": 150,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "91.601",
+      "favorecido": "16/09 09:23 FELIPE JUNIOR DOS SANTOS",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 711,
+      "numbanco": 1,
+      "data": "2026-09-16",
+      "valor": 300,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "91.602",
+      "favorecido": "16/09 09:24 Geisa Reck Brasil de Souz",
+      "historico": "Pix - Enviado"
     }
   ]
 }
