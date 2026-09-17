@@ -3729,6 +3729,17 @@
       "numdoc": "91.602",
       "favorecido": "16/09 09:24 Geisa Reck Brasil de Souz",
       "historico": "Pix - Enviado"
+    },
+    {
+      "id": 712,
+      "numbanco": 1,
+      "data": "2026-09-16",
+      "valor": 395.65,
+      "operacao": "C",
+      "especie": "A",
+      "numdoc": "33.544.195",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "TED-Credito em Conta"
     }
   ]
 }
