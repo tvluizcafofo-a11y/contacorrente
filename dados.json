@@ -3740,6 +3740,39 @@
       "numdoc": "33.544.195",
       "favorecido": "Luiz M. de Souza",
       "historico": "TED-Credito em Conta"
+    },
+    {
+      "id": 713,
+      "numbanco": 1,
+      "data": "2026-09-18",
+      "valor": 395.57,
+      "operacao": "C",
+      "especie": "A",
+      "numdoc": "34.023.087",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "TED-Credito em Conta"
+    },
+    {
+      "id": 714,
+      "numbanco": 1,
+      "data": "2026-09-18",
+      "valor": 355.5,
+      "operacao": "D",
+      "especie": "A",
+      "numdoc": "91.801",
+      "favorecido": "PJBANK PAGAMENTOS S A",
+      "historico": "Pagamento de Boleto"
+    },
+    {
+      "id": 715,
+      "numbanco": 1,
+      "data": "2026-09-21",
+      "valor": 2370,
+      "operacao": "C",
+      "especie": "O",
+      "numdoc": "1.614.000.000.553",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Transferencia recebida"
     }
   ]
 }
