@@ -4830,6 +4830,17 @@
       "numdoc": "202609301146450",
       "favorecido": "RFB - PAGAMENTO DARF/RFB",
       "historico": "Pagamento de DARF/RFB"
+    },
+    {
+      "id": 813,
+      "numbanco": 1,
+      "data": "2026-10-02",
+      "valor": 4900,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "2026100214900000",
+      "favorecido": "02/10 09:11 Luiz Martins de Souza",
+      "historico": "Pix - Enviado"
     }
   ]
 }
