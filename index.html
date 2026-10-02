@@ -776,6 +776,114 @@
     .legenda-item .descricao {
       color: #4a5a6a;
     }
+
+    /* ===== Foto do usuário ===== */
+    .item-card .foto-usuario {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto 8px auto;
+      border: 2px solid #d0d7de;
+      background: #fff;
+    }
+    .item-card .foto-usuario-placeholder {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 8px auto;
+      background: #e2e8f0;
+      color: #6b7a8a;
+      font-size: 1.8rem;
+      border: 2px solid #d0d7de;
+    }
+    .logo-preview.foto-preview {
+      width: 90px;
+      height: 90px;
+      max-width: 90px;
+      max-height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .avatar-usuario {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #d0d7de;
+      vertical-align: middle;
+      margin-right: 6px;
+      background: #fff;
+    }
+
+    /* ===== Fluxo de caixa: linhas clicáveis e detalhe inline ===== */
+    .fluxo-table tbody tr.linha-data {
+      cursor: pointer;
+    }
+    .fluxo-table tbody tr.linha-selecionada,
+    .fluxo-table tbody tr.linha-selecionada:hover {
+      background: #dbeafe !important;
+    }
+    .fluxo-table tbody tr.linha-detalhe,
+    .fluxo-table tbody tr.linha-detalhe:hover {
+      background: #f8fafc !important;
+      cursor: default;
+    }
+    .fluxo-table tbody tr.linha-detalhe > td {
+      padding: 0;
+      border-bottom: 2px solid #d0d7de;
+    }
+    .detalhe-dia-wrap {
+      padding: 14px 16px 16px 16px;
+      background: #f8fafc;
+      border-left: 4px solid #1a73e8;
+      animation: fadeIn 0.2s ease;
+    }
+    .detalhe-dia-wrap .cabecalho-dia {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .detalhe-dia-wrap .cabecalho-dia strong {
+      font-size: 1rem;
+      color: #1a2634;
+    }
+    .detalhe-dia-wrap .resumo-dia {
+      font-size: 0.9rem;
+      color: #4a5a6a;
+    }
+    .detalhe-dia-wrap .btn-fechar-detalhe {
+      background: #e2e8f0;
+      border: none;
+      padding: 4px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      transition: background 0.2s;
+    }
+    .detalhe-dia-wrap .btn-fechar-detalhe:hover {
+      background: #d0d7de;
+    }
+    .detalhe-dia-wrap table {
+      margin-top: 4px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    .detalhe-dia-wrap table th {
+      background: #e8eef6;
+      font-size: 0.85rem;
+    }
+    .detalhe-dia-wrap table td {
+      font-size: 0.88rem;
+      padding: 6px 10px;
+    }
+
     @media (max-width:700px) {
       .app {
         padding: 16px;
@@ -886,6 +994,13 @@
       <div class="form-group"><label>E-mail:</label><input type="email" id="txtEmail" placeholder="email@exemplo.com"></div>
       <div class="form-group"><label>Senha:</label><input type="password" id="txtNovaSenha" placeholder="Senha"></div>
       <div class="form-group"><label>Confirmar:</label><input type="password" id="txtConfirmaSenha" placeholder="Confirmar senha"></div>
+      <div class="form-group">
+        <label>Foto:</label>
+        <div class="logo-upload-area">
+          <input type="file" id="fotoFileInput" accept="image/*">
+          <img id="fotoPreview" class="logo-preview foto-preview" style="display:none;" alt="Pré-visualização da foto">
+        </div>
+      </div>
       <div class="botoes">
         <button id="btnIncluirUsuario" class="primary">Salvar</button>
         <button id="btnCancelarIncluirUsuario">Cancelar</button>
@@ -1029,6 +1144,7 @@
       <div class="botoes"><button id="btnGerarFluxo" class="primary">Gerar</button></div>
     </div>
     <h3>Resumo por data</h3>
+    <p style="font-size:0.85rem; color:#6b7a8a; margin-bottom:8px;">👆 Clique em uma data para expandir os lançamentos do dia logo abaixo.</p>
     <table id="tblFluxo" class="fluxo-table">
       <thead>
         <tr>
@@ -1102,6 +1218,13 @@
       <div class="form-group"><label>E-mail:</label><input type="email" id="editEmail"></div>
       <div class="form-group"><label>Senha:</label><input type="password" id="editUsuarioSenha"></div>
       <div class="form-group"><label>Confirmar:</label><input type="password" id="editUsuarioConfirma"></div>
+      <div class="form-group">
+        <label>Foto:</label>
+        <div class="logo-upload-area">
+          <input type="file" id="editFotoFileInput" accept="image/*">
+          <img id="editFotoPreview" class="logo-preview foto-preview" style="display:none;" alt="Pré-visualização da foto">
+        </div>
+      </div>
       <div class="botoes">
         <button id="btnSalvarUsuario" class="primary">Salvar</button>
         <button id="btnCancelarUsuario">Cancelar</button>
@@ -1170,7 +1293,7 @@
 
   <div class="footer">
     Sistema convertido de VB6 para HTML/JavaScript • Dados em JSON externo • Integração com GitHub<br>
-    <span id="versaoApp">v1.8.1</span>
+    <span id="versaoApp">v1.9.0</span>
   </div>
 </div>
 
@@ -1178,13 +1301,13 @@
   // ============================================================
   // VERSÃO DO SISTEMA
   // ============================================================
-  const VERSAO = '1.8.1';
+  const VERSAO = '1.9.0';
 
   // ============================================================
-  // CÓDIGOS BASE64 DOS OLHOS FORNECIDOS PELO USUÁRIO
+  // CÓDIGOS BASE64 DOS OLHOS
   // ============================================================
   const OLHO_ABERTO = 'data:image/png;base64,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';
-  const OLHO_FECHADO = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAADJElEQVR4nO2Ze2jOYRTHP2zjdZ+ZFVZDLWm5pSXxBykpk2RYCRGSlOIvSyGFZMU/UhKi/KUkqZH9YYjl0jbN1ELkLom5zXh16vurp9V7+b37vRf6fepp7949zznPec5zOecMQkJCQkJCcoMIMBfYA5wHWoEPwHegG/gIPAHqgcPAUqCYHGIOcAr4CER9NjPwCrAa6J8tAxYBTc6k/gD3gDpgOTAVKJKn8oDhQDmwENgJXJW3vPEvge2ZNKhc28ObwBtgFzA+BVmFwHrggSOvQ8amlQ1ApxTa/t+iFQ+CBUCLY9AxYCABUwCccJScBkYErQTIB7Y5W+4+MCZIBZck2LxRQ/qZBDyWzhfAyCCE2kF9C7wCppM5ioBrwA+dy0CwQzmYzNMHGJQFvSEh/zr5iTrYNfcM2E/usgLoUtAZk1J1+g3MJPco0lNg70t1os516tiiFz2XOK653dLVHJdhek2jCgZzhfnaKV2KrJNingZZqyL7jAXea3F3+B28VwM/ARPJHkOBZs2lXiGTL/oCFyTgNVBB5ikEbmsO7fo9JQYADRL0DphG5ihWxmm6nwJlvRVY4+QhX4F1pJ9ZwHNH74wgCgtekuOtjrUzaaqA9ANqgV/S81M/rSJTkqrQSqcyclTfVausY999AXYHmOpaMaNDsu22PKLs0Et/HwGj/AqtUE5uAs7q4HtYkeGy4x1LuA4AE1KYfIkqJ22OvIfA7B59WlPxzDiVZmzgxTivuxXj7vSoUzXLe6uUTZYpIYtodScDi4GDQKOzdaKK8dbEuF59GzPacW9DEttmq+MVz4N+2jdVH+3zyQS6fBnjHWhb6SEJBEccz1Vp+1XqsNp2vOH83XuLmlRO3afoIaKt2i3vlPowxmTFpFEdkin1bHZus3gBnGdIPM6pz6Ek9JoxdxU49poC7WlTviRB32QMmaKSa2ea6mUx2ejcMO6NlqohOGXYWjJEgXNArVhNQIbYmYkqcbLQKO2slcK2JLzhxxDDCxA3kQHapWxlkv39GLLMiXTTzk21vDQYkqer3/7NkHP4MYRkcvFsYW/T9WxPIiQkhP+Dv586CF9EuOZSAAAAAElFTkSuQmCC';
+  const OLHO_FECHADO = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAADJElEQVR4nO2Ze2jOYRTHP2zjdZ+ZFVZDLWm5pSXxBykpk2RYCRGSlOIvSyGFZMU/UhKi/KUkqZH9YYjl0jbN1ELkLom5zXh16vurp9V7+b37vRf6fepp7949zznPec5zOucMQkJCQkJCcoMIMBfYA5wHWoEPwHegG/gIPAHqgcPAUqCYHGIOcAr4CER9NjPwCrAa6J8tAxYBTc6k/gD3gDpgOTAVKJKn8oDhQDmwENgJXJW3vPEvge2ZNKhc28ObwBtgFzA+BVmFwHrggSOvQ8amlQ1ApxTa/t+iFQ+CBUCLY9AxYCABUwCccJScBkYErQTIB7Y5W+4+MCZIBZck2LxRQ/qZBDyWzhfAyCCE2kF9C7wCppM5ioBrwA+dy0CwQzmYzNMHGJQFvSEh/zr5iTrYNfcM2E/usgLoUtAZk1J1+g3MJPco0lNg70t1os516tiiFz2XOK653dLVHJdhek2jCgZzhfnaKV2KrJNingZZqyL7jAXea3F3+B28VwM/ARPJHkOBZs2lXiGTL/oCFyTgNVBB5ikEbmsO7fo9JQYADRL0DphG5ihWxmm6nwJlvRVY4+QhX4F1pJ9ZwHNH74wgCgtekuOtjrUzaaqA9ANqgV/S81M/rSJTkqrQSqcyclTfVausY999AXYHmOpaMaNDsu22PKLs0Et/HwGj/AqtUE5uAs7q4HtYkeGy4x1LuA4AE1KYfIkqJ22OvIfA7B59WlPxzDiVZmzgxTivuxXj7vSoUzXLe6uUTZYpIYtodScDi4GDQKOzdaKK8dbEuF59GzPacW9DEttmq+MVz4N+2jdVH+3zyQS6fBnjHWhb6SEJBEccz1Vp+1XqsNp2vOH83XuLmlRO3afoIaKt2i3vlPowxmTFpFEdkin1bHZus3gBnGdIPM6pz6Ek9JoxdxU49poC7WlTviRB32QMmaKSa2ea6mUx2ejcMO6NlqohOGXYWjJEgXNArVhNQIbYmYkqcbLQKO2slcK2JLzhxxDDCxA3kQHapWxlkv39GLLMiXTTzk21vDQYkqer3/7NkHP4MYRkcvFsYW/T9WxPIiQkhP+Dv586CF9EuOZSAAAAAElFTkSuQmCC';
 
   // ============================================================
   // BANCO DE DADOS - JSON EXTERNO
@@ -1545,12 +1668,9 @@
   function getBancos() { return dados.bancos; }
   function getMovimentos() { return dados.movimentos; }
 
-  function setUsuarios(usuarios) { dados.usuarios = usuarios;
-    salvarDados(); }
-  function setBancos(bancos) { dados.bancos = bancos;
-    salvarDados(); }
-  function setMovimentos(movimentos) { dados.movimentos = movimentos;
-    salvarDados(); }
+  function setUsuarios(usuarios) { dados.usuarios = usuarios; salvarDados(); }
+  function setBancos(bancos) { dados.bancos = bancos; salvarDados(); }
+  function setMovimentos(movimentos) { dados.movimentos = movimentos; salvarDados(); }
 
   function obterBancoPorNum(num) { return dados.bancos.find(b => b.numbanco === parseInt(num)) || null; }
   function obterUsuarioPorNome(nome) { return dados.usuarios.find(u => u.nome.toLowerCase() === nome.toLowerCase()) || null; }
@@ -1569,8 +1689,8 @@
   function inicializarDados() {
     if (dados.usuarios.length === 0) {
       dados.usuarios = [
-        { codigo: 1, nome: 'Administrador', nomeCompleto: 'Administrador do Sistema', endereco: '', telefone: '', email: '', senha: '123' },
-        { codigo: 2, nome: 'Usuario1', nomeCompleto: 'Usuário Teste', endereco: 'Rua Exemplo, 123', telefone: '(11) 99999-9999', email: 'usuario@teste.com', senha: '123' }
+        { codigo: 1, nome: 'Administrador', nomeCompleto: 'Administrador do Sistema', endereco: '', telefone: '', email: '', senha: '123', foto: '' },
+        { codigo: 2, nome: 'Usuario1', nomeCompleto: 'Usuário Teste', endereco: 'Rua Exemplo, 123', telefone: '(11) 99999-9999', email: 'usuario@teste.com', senha: '123', foto: '' }
       ];
     }
     if (dados.bancos.length === 0) {
@@ -1731,7 +1851,7 @@
   }
 
   // ============================================================
-  // FUNÇÃO PARA REMOVER ACENTOS, CEDILHA E SUBSTITUIR BULLET POR *
+  // SANITIZAÇÃO
   // ============================================================
   function sanitizarTexto(texto) {
     if (!texto) return texto;
@@ -1777,7 +1897,6 @@
   let cliqueMovimentos = 0;
   let timerMovimentos = null;
 
-  // Variáveis para o segredo de limpeza do banco específico
   let cliqueBancoInfo = 0;
   let timerBancoInfo = null;
 
@@ -1786,7 +1905,20 @@
   function formatCurrency(val) { return 'R$ ' + val.toFixed(2).replace('.', ','); }
 
   // ============================================================
-  // CLASSIFICAÇÃO DE ESPÉCIE COM DETECÇÃO DE AUTOMÁTICO
+  // AUXILIAR: LER ARQUIVO COMO DATA URL (usado para fotos/logos)
+  // ============================================================
+  function lerArquivoComoDataURL(file) {
+    return new Promise((resolve) => {
+      if (!file) { resolve(''); return; }
+      const reader = new FileReader();
+      reader.onload = (e) => resolve(e.target.result || '');
+      reader.onerror = () => resolve('');
+      reader.readAsDataURL(file);
+    });
+  }
+
+  // ============================================================
+  // CLASSIFICAÇÃO DE ESPÉCIE
   // ============================================================
   function classificarEspecie(favorecido, historico, operacao) {
     const texto = (favorecido + ' ' + historico).toLowerCase();
@@ -1823,15 +1955,13 @@
       document.getElementById('cfgFilename').value = filename;
     }
     if (nome === 'movimentos') {
-      // Atualiza o ícone do olho na tela de movimentos
       atualizarBotaoVisibilidadeMov();
     }
   }
 
   function calcularSaldoReal(numbanco) {
     const movimentos = getMovimentos().filter(m => m.numbanco === numbanco);
-    let creditos = 0,
-      debitos = 0;
+    let creditos = 0, debitos = 0;
     movimentos.forEach(m => {
       if (m.operacao === 'C') creditos += m.valor;
       else debitos += m.valor;
@@ -1910,7 +2040,6 @@
       card.querySelector('.btn-ir').addEventListener('click', function(e) {
         e.stopPropagation();
         const num = parseInt(this.dataset.num);
-        // Carrega os bancos no select antes de definir o valor
         carregarBancosNosSelects();
         const bancos = getBancos();
         bancoSelecionado = bancos.find(b => b.numbanco === num) || null;
@@ -1931,7 +2060,6 @@
     saldoVisivel = !saldoVisivel;
     localStorage.setItem('saldo_visivel', saldoVisivel);
     renderizarBancosPrincipal();
-    // Atualiza a tela de movimentos se estiver ativa
     if (document.getElementById('tela-movimentos').classList.contains('active')) {
       calcularSaldo();
     }
@@ -1939,7 +2067,7 @@
   }
 
   // ============================================================
-  // FUNÇÕES PARA PREENCHER FAVORECIDO AUTOMATICAMENTE NO CRÉDITO
+  // PREENCHER FAVORECIDO AUTOMÁTICO
   // ============================================================
   function preencherFavorecidoCredito() {
     if (!usuarioLogado) return;
@@ -1962,7 +2090,7 @@
   }
 
   // ============================================================
-  // USUÁRIOS (mantido)
+  // USUÁRIOS
   // ============================================================
   function carregarUsuariosGrid() {
     const usuarios = getUsuarios();
@@ -1975,7 +2103,11 @@
     usuarios.forEach(u => {
       const card = document.createElement('div');
       card.className = 'item-card';
+      const fotoHtml = u.foto
+        ? `<img src="${u.foto}" class="foto-usuario" alt="Foto de ${u.nome}">`
+        : `<div class="foto-usuario-placeholder">👤</div>`;
       card.innerHTML = `
+        ${fotoHtml}
         <div class="nome">${u.nome}</div>
         <div class="codigo">Código: ${u.codigo}</div>
         <button class="btn-excluir-card" data-codigo="${u.codigo}">Excluir</button>
@@ -2004,6 +2136,18 @@
     document.getElementById('editEmail').value = usuario.email || '';
     document.getElementById('editUsuarioSenha').value = usuario.senha;
     document.getElementById('editUsuarioConfirma').value = usuario.senha;
+
+    const fotoPreview = document.getElementById('editFotoPreview');
+    const fotoInput = document.getElementById('editFotoFileInput');
+    fotoInput.value = '';
+    if (usuario.foto) {
+      fotoPreview.src = usuario.foto;
+      fotoPreview.style.display = 'block';
+    } else {
+      fotoPreview.src = '';
+      fotoPreview.style.display = 'none';
+    }
+
     document.getElementById('modalUsuario').classList.add('active');
   }
 
@@ -2028,12 +2172,20 @@
     if (idx === -1) return;
     const outro = usuarios.find((u, i) => i !== idx && u.nome.toLowerCase() === nome.toLowerCase());
     if (outro) { exibirMsg('Este nome de usuário já está em uso.', true); return; }
+
+    let foto = usuarios[idx].foto || '';
+    const fotoInput = document.getElementById('editFotoFileInput');
+    if (fotoInput.files && fotoInput.files.length > 0) {
+      foto = await lerArquivoComoDataURL(fotoInput.files[0]);
+    }
+
     usuarios[idx].nome = nome;
     usuarios[idx].nomeCompleto = nomeCompleto;
     usuarios[idx].endereco = endereco;
     usuarios[idx].telefone = telefone;
     usuarios[idx].email = email;
     usuarios[idx].senha = senha;
+    usuarios[idx].foto = foto;
     setUsuarios(usuarios);
     fecharModalUsuario();
     carregarUsuariosGrid();
@@ -2052,6 +2204,9 @@
       document.getElementById('txtEmail').value = '';
       document.getElementById('txtNovaSenha').value = '';
       document.getElementById('txtConfirmaSenha').value = '';
+      document.getElementById('fotoFileInput').value = '';
+      document.getElementById('fotoPreview').src = '';
+      document.getElementById('fotoPreview').style.display = 'none';
     } else {
       form.style.display = 'none';
     }
@@ -2073,6 +2228,13 @@
       exibirMsg('Nome de usuário já existe.', true);
       return;
     }
+
+    let foto = '';
+    const fotoInput = document.getElementById('fotoFileInput');
+    if (fotoInput.files && fotoInput.files.length > 0) {
+      foto = await lerArquivoComoDataURL(fotoInput.files[0]);
+    }
+
     const novoCod = proximoIdUsuario();
     usuarios.push({
       codigo: novoCod,
@@ -2081,7 +2243,8 @@
       endereco,
       telefone,
       email,
-      senha
+      senha,
+      foto
     });
     setUsuarios(usuarios);
     document.getElementById('txtNovoUsuario').value = '';
@@ -2091,6 +2254,9 @@
     document.getElementById('txtEmail').value = '';
     document.getElementById('txtNovaSenha').value = '';
     document.getElementById('txtConfirmaSenha').value = '';
+    document.getElementById('fotoFileInput').value = '';
+    document.getElementById('fotoPreview').src = '';
+    document.getElementById('fotoPreview').style.display = 'none';
     document.getElementById('formIncluirUsuario').style.display = 'none';
     carregarUsuariosGrid();
     exibirMsg('Usuário incluído!', false);
@@ -2108,7 +2274,7 @@
   }
 
   // ============================================================
-  // BANCOS (mantido)
+  // BANCOS
   // ============================================================
   function carregarBancosGrid() {
     const bancos = getBancos();
@@ -2308,7 +2474,6 @@
       sel.value = bancos[0].numbanco;
       atualizarBancoInfo();
     } else if (bancos.length > 0 && bancoSelecionado) {
-      // Verifica se o banco selecionado ainda existe
       const existe = bancos.some(b => b.numbanco === bancoSelecionado.numbanco);
       if (!existe) {
         bancoSelecionado = bancos[0];
@@ -2350,7 +2515,7 @@
   }
 
   // ============================================================
-  // MOVIMENTOS - EXIBIÇÃO CORRETA
+  // MOVIMENTOS - EXIBIÇÃO COM CORES (CRÉDITO AZUL / DÉBITO VERMELHO)
   // ============================================================
   function carregarMovimentos() {
     const movimentos = getMovimentos();
@@ -2363,13 +2528,15 @@
     filtrados.sort((a, b) => (a.data < b.data ? 1 : -1));
     filtrados.forEach(m => {
       const tr = document.createElement('tr');
+      const ehCredito = m.operacao === 'C';
+      const classeCor = ehCredito ? 'fluxo-positivo' : 'fluxo-negativo';
       let especieDisplay = m.especie || classificarEspecie(m.favorecido, m.historico, m.operacao);
       tr.innerHTML = `
         <td>${m.data}</td>
         <td>${m.favorecido || ''}</td>
         <td>${m.historico || ''}</td>
-        <td class="valor-direita">${formatCurrency(m.valor)}</td>
-        <td>${m.operacao === 'C' ? 'C' : 'D'}</td>
+        <td class="valor-direita ${classeCor}">${formatCurrency(m.valor)}</td>
+        <td class="${classeCor}">${ehCredito ? 'C' : 'D'}</td>
         <td>${especieDisplay}</td>
         <td class="acoes">
           <button class="btn-acao" data-id="${m.id}" data-acao="editarMov" title="Editar">✏️</button>
@@ -2396,22 +2563,18 @@
   }
 
   // ============================================================
-  // INCLUIR MOVIMENTO MANUAL (CORRETO) - CORRIGIDO
+  // INCLUIR MOVIMENTO MANUAL
   // ============================================================
   async function incluirMovimento() {
-    // Verifica se o usuário está logado
     if (!usuarioLogado) {
       exibirMsg('Usuário não definido. Recarregue a página.', true);
       return;
     }
-
-    // Verifica se um banco está selecionado
     if (!bancoSelecionado) {
       exibirMsg('Selecione um banco.', true);
       return;
     }
 
-    // Obtém os valores dos campos
     const data = document.getElementById('txtDataMov').value;
     const valor = parseFloat(document.getElementById('txtValorMov').value);
     const operacao = document.getElementById('selOperacao').value;
@@ -2420,7 +2583,6 @@
     let favorecido = document.getElementById('txtFavorecido').value.trim();
     let historico = document.getElementById('txtHistorico').value.trim();
 
-    // Valida os campos obrigatórios
     if (!data) {
       exibirMsg('Informe a data do movimento.', true);
       return;
@@ -2436,7 +2598,7 @@
     if (!favorecido) {
       if (operacao === 'C') {
         favorecido = usuarioLogado.nomeCompleto || usuarioLogado.nome;
-        document.getElementById('txtFavorecido').value = favorecido; // Atualiza o campo
+        document.getElementById('txtFavorecido').value = favorecido;
       } else {
         exibirMsg('Informe o favorecido.', true);
         return;
@@ -2447,22 +2609,19 @@
       return;
     }
 
-    // Se for crédito, força o favorecido para o nome do usuário
     if (operacao === 'C') {
       favorecido = usuarioLogado.nomeCompleto || usuarioLogado.nome;
       document.getElementById('txtFavorecido').value = favorecido;
     }
 
-    // Classifica espécie automaticamente se for "Outros"
     if (especie === 'O') {
       const autoEspecie = classificarEspecie(favorecido, historico, operacao);
       if (autoEspecie !== 'O') {
         especie = autoEspecie;
-        document.getElementById('selEspecie').value = especie; // Atualiza o select
+        document.getElementById('selEspecie').value = especie;
       }
     }
 
-    // Cria o movimento
     let movimentos = getMovimentos();
     const novoMov = {
       id: proximoIdMovimento(),
@@ -2478,16 +2637,13 @@
     movimentos.push(novoMov);
     setMovimentos(movimentos);
 
-    // Limpa os campos (exceto data e favorecido que serão preenchidos novamente)
     document.getElementById('txtValorMov').value = '';
     document.getElementById('txtNumDoc').value = '';
     document.getElementById('txtHistorico').value = '';
-    // Mantém a data atual e o favorecido para crédito
     if (operacao === 'D') {
       document.getElementById('txtFavorecido').value = '';
     }
 
-    // Atualiza a interface
     carregarMovimentos();
     renderizarBancosPrincipal();
     exibirMsg('Movimento incluído com sucesso!', false);
@@ -2589,7 +2745,7 @@
   }
 
   // ============================================================
-  // PARSER OFX - COMPATÍVEL COM BANCO DO BRASIL E NUBANK
+  // PARSER OFX
   // ============================================================
   function parseOFX(texto) {
     let resultados = [];
@@ -2723,8 +2879,7 @@
   }
 
   // ============================================================
-  // IMPORTAÇÃO DE EXTRATO - COM VERIFICAÇÃO DE BANCO E DUPLICATAS
-  // E CORREÇÃO PARA BANCO DO BRASIL (inversão favorecido/histórico)
+  // IMPORTAÇÃO DE EXTRATO
   // ============================================================
   async function importarExtrato() {
     if (!bancoSelecionado) {
@@ -2793,7 +2948,6 @@
           return;
         }
 
-        // === CORREÇÃO PARA BANCO DO BRASIL: inverter favorecido e histórico ===
         if (bancoSelecionado.nomebanco.toLowerCase().includes('banco do brasil')) {
           transacoes = transacoes.map(t => ({
             ...t,
@@ -2935,7 +3089,7 @@
   }
 
   // ============================================================
-  // PARSERS (Mercado Pago, CSV) - mantidos
+  // PARSERS (Mercado Pago, CSV)
   // ============================================================
   function parseMercadoPago(conteudo) {
     const linhas = conteudo.split(/\r?\n/);
@@ -3092,7 +3246,7 @@
   }
 
   // ============================================================
-  // FLUXO DE CAIXA
+  // FLUXO DE CAIXA (DETALHE INLINE, ABAIXO DA DATA CLICADA)
   // ============================================================
   function gerarFluxo() {
     const dtIni = document.getElementById('dtInicioFluxo').value;
@@ -3100,6 +3254,7 @@
     if (!dtIni || !dtFim) { exibirMsg('Selecione o período.', true); return; }
     const movimentos = getMovimentos().filter(m => m.data >= dtIni && m.data <= dtFim);
     if (movimentos.length === 0) { exibirMsg('Nenhum movimento no período.', true); return; }
+
     const agrupado = {};
     movimentos.forEach(m => {
       if (!agrupado[m.data]) agrupado[m.data] = { creditos: 0, debitos: 0 };
@@ -3110,18 +3265,24 @@
     let saldoAcum = 0;
     const tbody = document.getElementById('tbodyFluxo');
     tbody.innerHTML = '';
+
     datas.forEach(d => {
       const cred = agrupado[d].creditos;
       const deb = agrupado[d].debitos;
       const saldoDia = cred - deb;
       saldoAcum += saldoDia;
+
       const tr = document.createElement('tr');
+      tr.dataset.data = d;
+      tr.className = 'linha-data';
+
       let classeSaldoDia = 'fluxo-zero';
       if (saldoDia > 0) classeSaldoDia = 'fluxo-positivo';
       else if (saldoDia < 0) classeSaldoDia = 'fluxo-negativo';
       let classeSaldoAcum = 'fluxo-zero';
       if (saldoAcum > 0) classeSaldoAcum = 'fluxo-positivo';
       else if (saldoAcum < 0) classeSaldoAcum = 'fluxo-negativo';
+
       tr.innerHTML = `
         <td>${d}</td>
         <td class="valor-direita">${formatCurrency(cred)}</td>
@@ -3129,8 +3290,112 @@
         <td class="valor-direita ${classeSaldoDia}">${formatCurrency(saldoDia)}</td>
         <td class="valor-direita ${classeSaldoAcum}">${formatCurrency(saldoAcum)}</td>
       `;
+
+      tr.title = 'Clique para expandir os lançamentos deste dia';
+      tr.addEventListener('click', function () {
+        const proximo = this.nextElementSibling;
+        if (proximo && proximo.classList.contains('linha-detalhe') &&
+            proximo.dataset.data === this.dataset.data) {
+          proximo.remove();
+          this.classList.remove('linha-selecionada');
+          return;
+        }
+        tbody.querySelectorAll('tr.linha-detalhe').forEach(r => r.remove());
+        tbody.querySelectorAll('tr.linha-selecionada').forEach(r => r.classList.remove('linha-selecionada'));
+        this.classList.add('linha-selecionada');
+        const trDetalhe = document.createElement('tr');
+        trDetalhe.className = 'linha-detalhe';
+        trDetalhe.dataset.data = d;
+        trDetalhe.innerHTML = `<td colspan="5"></td>`;
+        const celula = trDetalhe.querySelector('td');
+        celula.appendChild(montarDetalheDia(d));
+        this.parentNode.insertBefore(trDetalhe, this.nextSibling);
+      });
+
       tbody.appendChild(tr);
     });
+  }
+
+  // Constrói o bloco de detalhe do dia (retorna um elemento DOM)
+  function montarDetalheDia(data) {
+    const wrap = document.createElement('div');
+    wrap.className = 'detalhe-dia-wrap';
+
+    const movs = getMovimentos()
+      .filter(m => m.data === data)
+      .sort((a, b) => a.id - b.id);
+
+    if (movs.length === 0) {
+      wrap.innerHTML = `<em style="color:#6b7a8a;">Nenhum lançamento neste dia.</em>`;
+      return wrap;
+    }
+
+    let totalCreditos = 0;
+    let totalDebitos = 0;
+    let linhas = '';
+    movs.forEach(m => {
+      const banco = obterBancoPorNum(m.numbanco);
+      const nomeBanco = banco ? banco.nomebanco : ('Banco ' + m.numbanco);
+      const ehCredito = m.operacao === 'C';
+      const classeCor = ehCredito ? 'fluxo-positivo' : 'fluxo-negativo';
+      const especie = m.especie || classificarEspecie(m.favorecido, m.historico, m.operacao);
+      if (ehCredito) totalCreditos += m.valor; else totalDebitos += m.valor;
+      linhas += `
+        <tr>
+          <td>${nomeBanco}</td>
+          <td>${m.favorecido || ''}</td>
+          <td>${m.historico || ''}</td>
+          <td>${m.numdoc || ''}</td>
+          <td>${especie}</td>
+          <td class="${classeCor}">${ehCredito ? 'C' : 'D'}</td>
+          <td class="valor-direita ${classeCor}">${formatCurrency(m.valor)}</td>
+        </tr>
+      `;
+    });
+
+    const saldoDia = totalCreditos - totalDebitos;
+    const classeSaldoDia = saldoDia > 0 ? 'fluxo-positivo' : (saldoDia < 0 ? 'fluxo-negativo' : 'fluxo-zero');
+    const dataBR = data.split('-').reverse().join('/');
+
+    wrap.innerHTML = `
+      <div class="cabecalho-dia">
+        <strong>📅 ${dataBR} — ${movs.length} lançamento(s)</strong>
+        <span class="resumo-dia">
+          Créditos: <span class="fluxo-positivo">${formatCurrency(totalCreditos)}</span> &nbsp;|&nbsp;
+          Débitos: <span class="fluxo-negativo">${formatCurrency(totalDebitos)}</span> &nbsp;|&nbsp;
+          Saldo do dia: <span class="${classeSaldoDia}">${formatCurrency(saldoDia)}</span>
+        </span>
+        <button class="btn-fechar-detalhe" type="button">Fechar</button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Banco</th>
+            <th>Favorecido</th>
+            <th>Histórico</th>
+            <th>Nº Doc</th>
+            <th>Espécie</th>
+            <th>Operação</th>
+            <th class="valor-direita">Valor</th>
+          </tr>
+        </thead>
+        <tbody>${linhas}</tbody>
+      </table>
+    `;
+
+    wrap.querySelector('.btn-fechar-detalhe').addEventListener('click', function (e) {
+      e.stopPropagation();
+      const trDetalhe = wrap.closest('tr.linha-detalhe');
+      const trData = trDetalhe ? trDetalhe.previousElementSibling : null;
+      if (trData) trData.classList.remove('linha-selecionada');
+      if (trDetalhe) trDetalhe.remove();
+    });
+
+    wrap.addEventListener('click', function (e) {
+      e.stopPropagation();
+    });
+
+    return wrap;
   }
 
   // ============================================================
@@ -3151,6 +3416,7 @@
   function setupLogoPreview(inputId, previewId) {
     const input = document.getElementById(inputId);
     const preview = document.getElementById(previewId);
+    if (!input || !preview) return;
     input.addEventListener('change', function(e) {
       const file = this.files[0];
       if (file) {
@@ -3236,7 +3502,7 @@
       usuarioLogado = usuarios[0];
       document.getElementById('lblUsuario').textContent = usuarioLogado.nome;
     } else {
-      usuarioLogado = { codigo: 1, nome: 'Administrador', nomeCompleto: 'Administrador', senha: '123' };
+      usuarioLogado = { codigo: 1, nome: 'Administrador', nomeCompleto: 'Administrador', senha: '123', foto: '' };
       dados.usuarios.push(usuarioLogado);
       salvarDados();
       document.getElementById('lblUsuario').textContent = 'Administrador';
@@ -3263,7 +3529,7 @@
     document.getElementById('btnRemoverQR').addEventListener('click', removerQRCodeAtual);
 
     // ============================================================
-    // EVENTOS MOVIMENTOS (INCLUIR E IMPORTAR)
+    // EVENTOS MOVIMENTOS
     // ============================================================
     document.getElementById('btnIncluirMov').addEventListener('click', incluirMovimento);
     document.getElementById('btnImportarExtrato').addEventListener('click', importarExtrato);
@@ -3273,6 +3539,8 @@
     // ============================================================
     setupLogoPreview('logoFileInput', 'logoPreview');
     setupLogoPreview('editLogoFileInput', 'editLogoPreview');
+    setupLogoPreview('fotoFileInput', 'fotoPreview');
+    setupLogoPreview('editFotoFileInput', 'editFotoPreview');
 
     document.getElementById('selOperacao').addEventListener('change', preencherFavorecidoCredito);
     document.getElementById('editOperacao').addEventListener('change', preencherFavorecidoCreditoEdit);
