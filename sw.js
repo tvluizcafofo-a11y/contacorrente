@@ -1,63 +1,63 @@
-// sw.js - Service Worker para PWA
-
 const CACHE_NAME = 'conta-corrente-v1';
-const urlsToCache = [
+const PRECACHE = [
   '/',
   '/index.html',
   '/manifest.json',
-  '/jsqr.min.js',            // se você baixar localmente
-  '/icons/icon-192x192.png',
-  '/icons/icon-512x512.png'
+  '/icons/icon-192.png',
+  '/icons/icon-512.png',
+  '/icons/maskable-512.png',
+  'https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js'
 ];
 
-// Instalação – cache dos recursos
+// Instala e pré-cacheia
 self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => {
-        console.log('Cache aberto');
-        return cache.addAll(urlsToCache);
-      })
+    caches.open(CACHE_NAME).then(cache => cache.addAll(PRECACHE))
   );
+  self.skipWaiting();
 });
 
-// Ativação – limpa caches antigos
+// Ativa e limpa caches antigos
 self.addEventListener('activate', event => {
-  const cacheWhitelist = [CACHE_NAME];
   event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cacheName => {
-          if (cacheWhitelist.indexOf(cacheName) === -1) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
+    caches.keys().then(keys =>
+      Promise.all(
+        keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k))
+      )
+    )
   );
+  self.clients.claim();
 });
 
-// Interceptação de requisições – serve do cache quando possível
+// Estratégia: cache-first para assets estáticos, network-first para API
 self.addEventListener('fetch', event => {
+  const { request } = event;
+  const url = new URL(request.url);
+
+  // Ignora requisições não-GET e chamadas à API do GitHub
+  if (request.method !== 'GET' || url.hostname === 'api.github.com') {
+    return;
+  }
+
+  // Cache-first para recursos pré-cacheados
+  if (PRECACHE.some(p => url.pathname === p || url.href === p)) {
+    event.respondWith(
+      caches.match(request).then(cached => cached || fetch(request))
+    );
+    return;
+  }
+
+  // Network-first com fallback para cache (para o resto)
   event.respondWith(
-    caches.match(event.request)
+    fetch(request)
       .then(response => {
-        if (response) {
-          return response;
+        // Cache dinâmico de recursos bem-sucedidos
+        if (response.ok && url.origin === self.location.origin) {
+          const clone = response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(request, clone));
         }
-        return fetch(event.request).then(
-          response => {
-            if (!response || response.status !== 200 || response.type !== 'basic') {
-              return response;
-            }
-            const responseToCache = response.clone();
-            caches.open(CACHE_NAME)
-              .then(cache => {
-                cache.put(event.request, responseToCache);
-              });
-            return response;
-          }
-        );
+        return response;
       })
+      .catch(() => caches.match(request))
   );
 });
