@@ -4664,6 +4664,182 @@
       "numdoc": "2026100214900000",
       "favorecido": "02/10 09:11 Luiz Martins de Souza",
       "historico": "Pix - Enviado"
+    },
+    {
+      "id": 797,
+      "numbanco": 1,
+      "data": "2026-09-28",
+      "valor": 250,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "202609280250000",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Recebido"
+    },
+    {
+      "id": 798,
+      "numbanco": 1,
+      "data": "2026-09-28",
+      "valor": 143,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "202609281143000",
+      "favorecido": "28/09 19:28 ALEXIS XAVIER DA SILVA",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 799,
+      "numbanco": 1,
+      "data": "2026-09-29",
+      "valor": 24,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "20260929024000",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Recebido"
+    },
+    {
+      "id": 800,
+      "numbanco": 1,
+      "data": "2026-09-29",
+      "valor": 262,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "202609290262000",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Recebido"
+    },
+    {
+      "id": 801,
+      "numbanco": 1,
+      "data": "2026-09-29",
+      "valor": 32,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "20260929132000",
+      "favorecido": "29/09 15:05 ALEXIS XAVIER DA SILVA",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 802,
+      "numbanco": 1,
+      "data": "2026-09-30",
+      "valor": 465.82,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "202609300465820",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Rejeitado"
+    },
+    {
+      "id": 803,
+      "numbanco": 1,
+      "data": "2026-09-30",
+      "valor": 465.82,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "2026093004658202",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Rejeitado"
+    },
+    {
+      "id": 804,
+      "numbanco": 1,
+      "data": "2026-09-30",
+      "valor": 1100,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "2026093001100000",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix-Recebido QR Code"
+    },
+    {
+      "id": 805,
+      "numbanco": 1,
+      "data": "2026-09-30",
+      "valor": 244.12,
+      "operacao": "D",
+      "especie": "A",
+      "numdoc": "202609301244120",
+      "favorecido": "CONSELHO REGIONAL DE ADMINISTRACAO DE",
+      "historico": "Pagamento de Boleto"
+    },
+    {
+      "id": 806,
+      "numbanco": 1,
+      "data": "2026-09-30",
+      "valor": 70,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "20260930170000",
+      "favorecido": "30/09 00:23 LUIZ MARTINS DE SOUZA",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 807,
+      "numbanco": 1,
+      "data": "2026-09-30",
+      "valor": 465.82,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "202609301465820",
+      "favorecido": "30/09 00:36 MUNICIPIO DE BELO HORIZON",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 808,
+      "numbanco": 1,
+      "data": "2026-09-30",
+      "valor": 465.82,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "2026093014658202",
+      "favorecido": "30/09 00:37 MUNICIPIO DE BELO HORIZON",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 809,
+      "numbanco": 1,
+      "data": "2026-09-30",
+      "valor": 329.62,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "202609301329620",
+      "favorecido": "30/09 00:39 MUNICIPIO DE BELO HORIZON",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 810,
+      "numbanco": 1,
+      "data": "2026-09-30",
+      "valor": 523.23,
+      "operacao": "D",
+      "especie": "O",
+      "numdoc": "202609301523230",
+      "favorecido": "PREF. MUN. BELO HORIZONTE",
+      "historico": "Pagamento de Impostos"
+    },
+    {
+      "id": 811,
+      "numbanco": 1,
+      "data": "2026-09-30",
+      "valor": 48,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "20260930148000",
+      "favorecido": "30/09 14:49 Geisa Reck Brasil de Souz",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 812,
+      "numbanco": 1,
+      "data": "2026-09-30",
+      "valor": 146.45,
+      "operacao": "D",
+      "especie": "O",
+      "numdoc": "202609301146450",
+      "favorecido": "RFB - PAGAMENTO DARF/RFB",
+      "historico": "Pagamento de DARF/RFB"
     }
   ]
 }
