@@ -1575,17 +1575,6 @@
       "historico": "Pix - Enviado"
     },
     {
-      "id": 515,
-      "numbanco": 1,
-      "data": "2026-10-01",
-      "valor": 2.91,
-      "operacao": "D",
-      "especie": "O",
-      "numdoc": "2026100112910",
-      "favorecido": "Cobranca de Juros",
-      "historico": "Cobranca de Juros"
-    },
-    {
       "id": 521,
       "numbanco": 1,
       "data": "2026-08-03",
