@@ -1619,28 +1619,6 @@
       "historico": "Pix - Enviado"
     },
     {
-      "id": 519,
-      "numbanco": 1,
-      "data": "2026-10-02",
-      "valor": 4900,
-      "operacao": "D",
-      "especie": "P",
-      "numdoc": "2026100214900000",
-      "favorecido": "02/10 09:11 Luiz Martins de Souza",
-      "historico": "Pix - Enviado"
-    },
-    {
-      "id": 520,
-      "numbanco": 1,
-      "data": "2026-10-02",
-      "valor": 10,
-      "operacao": "D",
-      "especie": "P",
-      "numdoc": "20261002110000",
-      "favorecido": "02/10 18:56 Anderson Marcos Barbosa",
-      "historico": "Pix - Enviado"
-    },
-    {
       "id": 521,
       "numbanco": 1,
       "data": "2026-08-03",
@@ -3442,17 +3420,6 @@
       "especie": "P",
       "numdoc": "20261001154000",
       "favorecido": "Pix - Enviado - 01/10 20:38 ALEXIS XAVIER DA SILVA",
-      "historico": "--"
-    },
-    {
-      "id": 685,
-      "numbanco": 1,
-      "data": "2026-10-02",
-      "valor": 5166.4,
-      "operacao": "C",
-      "especie": "O",
-      "numdoc": "2026100205166400",
-      "favorecido": "Luiz M. de Souza",
       "historico": "--"
     }
   ]
