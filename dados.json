@@ -1586,17 +1586,6 @@
       "historico": "Cobranca de Juros"
     },
     {
-      "id": 516,
-      "numbanco": 1,
-      "data": "2026-10-01",
-      "valor": 1.19,
-      "operacao": "D",
-      "especie": "O",
-      "numdoc": "2026100111190",
-      "favorecido": "Cobranca de I.O.F.",
-      "historico": "Cobranca de I.O.F."
-    },
-    {
       "id": 521,
       "numbanco": 1,
       "data": "2026-08-03",
