@@ -3454,28 +3454,6 @@
       "numdoc": "2026100205166400",
       "favorecido": "Luiz M. de Souza",
       "historico": "--"
-    },
-    {
-      "id": 686,
-      "numbanco": 1,
-      "data": "2026-10-02",
-      "valor": 152,
-      "operacao": "D",
-      "especie": "P",
-      "numdoc": "202610021152000",
-      "favorecido": "Pix - Enviado - 02/10 09:09 Geisa Reck Brasil de Souz",
-      "historico": "--"
-    },
-    {
-      "id": 687,
-      "numbanco": 1,
-      "data": "2026-10-02",
-      "valor": 4900,
-      "operacao": "D",
-      "especie": "P",
-      "numdoc": "2026100214900000",
-      "favorecido": "Pix - Enviado - 02/10 09:11 Luiz Martins de Souza",
-      "historico": "--"
     }
   ]
 }
