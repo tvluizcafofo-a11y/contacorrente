@@ -1597,28 +1597,6 @@
       "historico": "Cobranca de I.O.F."
     },
     {
-      "id": 517,
-      "numbanco": 1,
-      "data": "2026-10-02",
-      "valor": 5166.4,
-      "operacao": "C",
-      "especie": "O",
-      "numdoc": "2026100205166400",
-      "favorecido": "Luiz M. de Souza",
-      "historico": "Beneficio INSS"
-    },
-    {
-      "id": 518,
-      "numbanco": 1,
-      "data": "2026-10-02",
-      "valor": 152,
-      "operacao": "D",
-      "especie": "P",
-      "numdoc": "202610021152000",
-      "favorecido": "02/10 09:09 Geisa Reck Brasil de Souz",
-      "historico": "Pix - Enviado"
-    },
-    {
       "id": 521,
       "numbanco": 1,
       "data": "2026-08-03",
@@ -3398,28 +3376,6 @@
       "especie": "P",
       "numdoc": "20261001180000",
       "favorecido": "Pix - Enviado - 01/10 15:07 Geisa Reck Brasil de Souz",
-      "historico": "--"
-    },
-    {
-      "id": 683,
-      "numbanco": 1,
-      "data": "2026-10-01",
-      "valor": 37,
-      "operacao": "D",
-      "especie": "P",
-      "numdoc": "20261001137000",
-      "favorecido": "Pix - Enviado - 01/10 17:58 ALEXIS XAVIER DA SILVA",
-      "historico": "--"
-    },
-    {
-      "id": 684,
-      "numbanco": 1,
-      "data": "2026-10-01",
-      "valor": 54,
-      "operacao": "D",
-      "especie": "P",
-      "numdoc": "20261001154000",
-      "favorecido": "Pix - Enviado - 01/10 20:38 ALEXIS XAVIER DA SILVA",
       "historico": "--"
     }
   ]
