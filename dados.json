@@ -1553,28 +1553,6 @@
       "historico": "Pix - Enviado"
     },
     {
-      "id": 513,
-      "numbanco": 1,
-      "data": "2026-10-01",
-      "valor": 37,
-      "operacao": "D",
-      "especie": "P",
-      "numdoc": "20261001137000",
-      "favorecido": "01/10 17:58 ALEXIS XAVIER DA SILVA",
-      "historico": "Pix - Enviado"
-    },
-    {
-      "id": 514,
-      "numbanco": 1,
-      "data": "2026-10-01",
-      "valor": 54,
-      "operacao": "D",
-      "especie": "P",
-      "numdoc": "20261001154000",
-      "favorecido": "01/10 20:38 ALEXIS XAVIER DA SILVA",
-      "historico": "Pix - Enviado"
-    },
-    {
       "id": 521,
       "numbanco": 1,
       "data": "2026-08-03",
