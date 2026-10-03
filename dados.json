@@ -3399,6 +3399,105 @@
       "numdoc": "202609301146450",
       "favorecido": "RFB - PAGAMENTO DARF/RFB",
       "historico": "Pagamento de DARF/RFB"
+    },
+    {
+      "id": 681,
+      "numbanco": 1,
+      "data": "2026-10-01",
+      "valor": 180,
+      "operacao": "C",
+      "especie": "O",
+      "numdoc": "202610010180000",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "--"
+    },
+    {
+      "id": 682,
+      "numbanco": 1,
+      "data": "2026-10-01",
+      "valor": 80,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "20261001180000",
+      "favorecido": "Pix - Enviado - 01/10 15:07 Geisa Reck Brasil de Souz",
+      "historico": "--"
+    },
+    {
+      "id": 683,
+      "numbanco": 1,
+      "data": "2026-10-01",
+      "valor": 37,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "20261001137000",
+      "favorecido": "Pix - Enviado - 01/10 17:58 ALEXIS XAVIER DA SILVA",
+      "historico": "--"
+    },
+    {
+      "id": 684,
+      "numbanco": 1,
+      "data": "2026-10-01",
+      "valor": 54,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "20261001154000",
+      "favorecido": "Pix - Enviado - 01/10 20:38 ALEXIS XAVIER DA SILVA",
+      "historico": "--"
+    },
+    {
+      "id": 685,
+      "numbanco": 1,
+      "data": "2026-10-02",
+      "valor": 5166.4,
+      "operacao": "C",
+      "especie": "O",
+      "numdoc": "2026100205166400",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "--"
+    },
+    {
+      "id": 686,
+      "numbanco": 1,
+      "data": "2026-10-02",
+      "valor": 152,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "202610021152000",
+      "favorecido": "Pix - Enviado - 02/10 09:09 Geisa Reck Brasil de Souz",
+      "historico": "--"
+    },
+    {
+      "id": 687,
+      "numbanco": 1,
+      "data": "2026-10-02",
+      "valor": 4900,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "2026100214900000",
+      "favorecido": "Pix - Enviado - 02/10 09:11 Luiz Martins de Souza",
+      "historico": "--"
+    },
+    {
+      "id": 688,
+      "numbanco": 1,
+      "data": "2026-10-02",
+      "valor": 10,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "20261002110000",
+      "favorecido": "Pix - Enviado - 02/10 18:56 Anderson Marcos Barbosa",
+      "historico": "--"
+    },
+    {
+      "id": 689,
+      "numbanco": 1,
+      "data": "2026-10-02",
+      "valor": 22,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "20261002122000",
+      "favorecido": "Pix - Enviado - 02/10 20:30 ALEXIS XAVIER DA SILVA",
+      "historico": "--"
     }
   ]
 }
