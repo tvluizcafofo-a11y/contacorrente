@@ -3355,28 +3355,6 @@
       "numdoc": "202609301146450",
       "favorecido": "RFB - PAGAMENTO DARF/RFB",
       "historico": "Pagamento de DARF/RFB"
-    },
-    {
-      "id": 681,
-      "numbanco": 1,
-      "data": "2026-10-01",
-      "valor": 180,
-      "operacao": "C",
-      "especie": "O",
-      "numdoc": "202610010180000",
-      "favorecido": "Luiz M. de Souza",
-      "historico": "--"
-    },
-    {
-      "id": 682,
-      "numbanco": 1,
-      "data": "2026-10-01",
-      "valor": 80,
-      "operacao": "D",
-      "especie": "P",
-      "numdoc": "20261001180000",
-      "favorecido": "Pix - Enviado - 01/10 15:07 Geisa Reck Brasil de Souz",
-      "historico": "--"
     }
   ]
 }
