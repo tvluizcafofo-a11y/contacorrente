@@ -13,7 +13,7 @@
     {
       "codigo": 2,
       "nome": "Usuario1",
-      "nomeCompleto": "Usuário Teste",
+      "nomeCompleto": "UsuÃ¡rio Teste",
       "endereco": "Rua Exemplo, 123",
       "telefone": "(11) 99999-9999",
       "email": "usuario@teste.com",
@@ -59,7 +59,7 @@
       "operacao": "D",
       "especie": "D",
       "numdoc": "2002",
-      "favorecido": "Caixa Eletrônico",
+      "favorecido": "Caixa EletrÃ´nico",
       "historico": "Saque em dinheiro"
     },
     {
