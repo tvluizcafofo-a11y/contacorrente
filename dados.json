@@ -3598,6 +3598,17 @@
       "numdoc": "20261009050000",
       "favorecido": "Luiz M. de Souza",
       "historico": "Pix - Recebido"
+    },
+    {
+      "id": 709,
+      "numbanco": 1,
+      "data": "2026-10-09",
+      "valor": 32,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "20261009132000",
+      "favorecido": "09/10 19:37 ALEXIS XAVIER DA SILVA",
+      "historico": "Pix - Enviado"
     }
   ]
 }
