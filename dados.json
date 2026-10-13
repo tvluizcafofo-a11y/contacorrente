@@ -3609,6 +3609,39 @@
       "numdoc": "20261009132000",
       "favorecido": "09/10 19:37 ALEXIS XAVIER DA SILVA",
       "historico": "Pix - Enviado"
+    },
+    {
+      "id": 710,
+      "numbanco": 1,
+      "data": "2026-10-13",
+      "valor": 1624.15,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "2026101311624150",
+      "favorecido": "12/10 12:20 LUIZ MARTINS DE SOUZA",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 711,
+      "numbanco": 1,
+      "data": "2026-10-13",
+      "valor": 130.99,
+      "operacao": "D",
+      "especie": "A",
+      "numdoc": "202610131130990",
+      "favorecido": "Pagamento de Telefone",
+      "historico": "Pagamento de Telefone"
+    },
+    {
+      "id": 712,
+      "numbanco": 1,
+      "data": "2026-10-13",
+      "valor": 1755,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "2026101301755000",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Recebido"
     }
   ]
 }
