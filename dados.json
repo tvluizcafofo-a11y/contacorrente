@@ -3642,6 +3642,50 @@
       "numdoc": "2026101301755000",
       "favorecido": "Luiz M. de Souza",
       "historico": "Pix - Recebido"
+    },
+    {
+      "id": 713,
+      "numbanco": 1,
+      "data": "2026-10-13",
+      "valor": 1300,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "2026101301300000",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Recebido"
+    },
+    {
+      "id": 714,
+      "numbanco": 1,
+      "data": "2026-10-13",
+      "valor": 130.99,
+      "operacao": "D",
+      "especie": "A",
+      "numdoc": "202610131130990",
+      "favorecido": "VIVO MOVEL - MG",
+      "historico": "Pagamento de Telefone"
+    },
+    {
+      "id": 715,
+      "numbanco": 1,
+      "data": "2026-10-14",
+      "valor": 1208,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "2026101401208000",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Recebido"
+    },
+    {
+      "id": 716,
+      "numbanco": 1,
+      "data": "2026-10-14",
+      "valor": 2400,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "2026101412400000",
+      "favorecido": "14/10 09:08 Luiz Martins de Souza",
+      "historico": "Pix - Enviado"
     }
   ]
 }
