@@ -3622,17 +3622,6 @@
       "historico": "Pix - Enviado"
     },
     {
-      "id": 711,
-      "numbanco": 1,
-      "data": "2026-10-13",
-      "valor": 130.99,
-      "operacao": "D",
-      "especie": "A",
-      "numdoc": "202610131130990",
-      "favorecido": "Pagamento de Telefone",
-      "historico": "Pagamento de Telefone"
-    },
-    {
       "id": 712,
       "numbanco": 1,
       "data": "2026-10-13",
