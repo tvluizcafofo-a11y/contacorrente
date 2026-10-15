@@ -3675,6 +3675,83 @@
       "numdoc": "2026101412400000",
       "favorecido": "14/10 09:08 Luiz Martins de Souza",
       "historico": "Pix - Enviado"
+    },
+    {
+      "id": 717,
+      "numbanco": 1,
+      "data": "2026-10-14",
+      "valor": 22,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "20261014122000",
+      "favorecido": "14/10 14:11 CANTINHO DA ROCA RESTAURA",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 718,
+      "numbanco": 1,
+      "data": "2026-10-14",
+      "valor": 20,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "20261014120000",
+      "favorecido": "14/10 15:17 ALEXIS XAVIER DA SILVA",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 719,
+      "numbanco": 1,
+      "data": "2026-10-14",
+      "valor": 30,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "20261014130000",
+      "favorecido": "14/10 19:49 ALEXIS XAVIER DA SILVA",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 720,
+      "numbanco": 1,
+      "data": "2026-10-15",
+      "valor": 124.11,
+      "operacao": "D",
+      "especie": "A",
+      "numdoc": "202610151124110",
+      "favorecido": "Pagto Energia Eletrica",
+      "historico": "Pagto Energia Eletrica"
+    },
+    {
+      "id": 721,
+      "numbanco": 1,
+      "data": "2026-10-15",
+      "valor": 6101,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "2026101506101000",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Recebido"
+    },
+    {
+      "id": 722,
+      "numbanco": 1,
+      "data": "2026-10-15",
+      "valor": 5510.53,
+      "operacao": "D",
+      "especie": "A",
+      "numdoc": "2026101515510530",
+      "favorecido": "BANCO XP S.A",
+      "historico": "Pagamento de Boleto"
+    },
+    {
+      "id": 723,
+      "numbanco": 1,
+      "data": "2026-10-15",
+      "valor": 465.82,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "202610151465820",
+      "favorecido": "15/10 09:42 MUNICIPIO DE BELO HORIZON",
+      "historico": "Pix - Enviado"
     }
   ]
 }
