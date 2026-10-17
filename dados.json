@@ -3710,17 +3710,6 @@
       "historico": "Pix - Enviado"
     },
     {
-      "id": 720,
-      "numbanco": 1,
-      "data": "2026-10-15",
-      "valor": 124.11,
-      "operacao": "D",
-      "especie": "A",
-      "numdoc": "202610151124110",
-      "favorecido": "Pagto Energia Eletrica",
-      "historico": "Pagto Energia Eletrica"
-    },
-    {
       "id": 721,
       "numbanco": 1,
       "data": "2026-10-15",
