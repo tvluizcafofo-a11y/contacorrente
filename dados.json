@@ -3752,6 +3752,83 @@
       "numdoc": "202610151465820",
       "favorecido": "15/10 09:42 MUNICIPIO DE BELO HORIZON",
       "historico": "Pix - Enviado"
+    },
+    {
+      "id": 724,
+      "numbanco": 1,
+      "data": "2026-10-15",
+      "valor": 124.11,
+      "operacao": "D",
+      "especie": "A",
+      "numdoc": "202610151124110",
+      "favorecido": "CEMIG DISTRIBUICAO",
+      "historico": "Pagto Energia Eletrica"
+    },
+    {
+      "id": 725,
+      "numbanco": 1,
+      "data": "2026-10-16",
+      "valor": 282,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "202610160282000",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Recebido"
+    },
+    {
+      "id": 726,
+      "numbanco": 1,
+      "data": "2026-10-16",
+      "valor": 50,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "20261016050000",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Recebido"
+    },
+    {
+      "id": 727,
+      "numbanco": 1,
+      "data": "2026-10-16",
+      "valor": 150,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "202610161150000",
+      "favorecido": "16/10 00:06 Geisa Reck Brasil de Souz",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 728,
+      "numbanco": 1,
+      "data": "2026-10-16",
+      "valor": 150,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "2026101611500002",
+      "favorecido": "16/10 12:13 FELIPE JUNIOR DOS SANTOS",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 729,
+      "numbanco": 1,
+      "data": "2026-10-16",
+      "valor": 10,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "20261016110000",
+      "favorecido": "16/10 17:57 DENILSON OLIVEIRA DE ARAU",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 730,
+      "numbanco": 1,
+      "data": "2026-10-16",
+      "valor": 54,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "20261016154000",
+      "favorecido": "16/10 21:40 ALEXIS XAVIER DA SILVA",
+      "historico": "Pix - Enviado"
     }
   ]
 }
