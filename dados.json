@@ -3818,6 +3818,50 @@
       "numdoc": "20261016154000",
       "favorecido": "16/10 21:40 ALEXIS XAVIER DA SILVA",
       "historico": "Pix - Enviado"
+    },
+    {
+      "id": 731,
+      "numbanco": 1,
+      "data": "2026-10-19",
+      "valor": 21.98,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "20261019121980",
+      "favorecido": "17/10 14:27 Minera Bier Caicaras",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 732,
+      "numbanco": 1,
+      "data": "2026-10-19",
+      "valor": 22,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "20261019122000",
+      "favorecido": "18/10 17:27 LUIZ EDUARDO PRADO",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 733,
+      "numbanco": 1,
+      "data": "2026-10-19",
+      "valor": 355.5,
+      "operacao": "D",
+      "especie": "A",
+      "numdoc": "202610191355500",
+      "favorecido": "PJBANK PAGAMENTOS S A",
+      "historico": "Pagamento de Boleto"
+    },
+    {
+      "id": 734,
+      "numbanco": 1,
+      "data": "2026-10-19",
+      "valor": 394.8,
+      "operacao": "C",
+      "especie": "O",
+      "numdoc": "202610190394800",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "TED Transf.Eletr.Disponiv"
     }
   ]
 }
