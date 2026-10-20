@@ -3862,6 +3862,50 @@
       "numdoc": "202610190394800",
       "favorecido": "Luiz M. de Souza",
       "historico": "TED Transf.Eletr.Disponiv"
+    },
+    {
+      "id": 735,
+      "numbanco": 1,
+      "data": "2026-10-19",
+      "valor": 394.8,
+      "operacao": "C",
+      "especie": "A",
+      "numdoc": "202610190394800",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "TED-Credito em Conta"
+    },
+    {
+      "id": 736,
+      "numbanco": 1,
+      "data": "2026-10-20",
+      "valor": 275,
+      "operacao": "D",
+      "especie": "A",
+      "numdoc": "202610201275000",
+      "favorecido": "PJBANK PAGAMENTOS S.A.",
+      "historico": "Pagamento de Boleto"
+    },
+    {
+      "id": 737,
+      "numbanco": 1,
+      "data": "2026-10-20",
+      "valor": 77.03,
+      "operacao": "D",
+      "especie": "A",
+      "numdoc": "20261020177030",
+      "favorecido": "CONSORCIO INCONFIDENTES",
+      "historico": "Pagamento de Boleto"
+    },
+    {
+      "id": 738,
+      "numbanco": 1,
+      "data": "2026-10-20",
+      "valor": 345.42,
+      "operacao": "C",
+      "especie": "O",
+      "numdoc": "202610200345420",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "TED Transf.Eletr.Disponiv"
     }
   ]
 }
