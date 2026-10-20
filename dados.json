@@ -3853,17 +3853,6 @@
       "historico": "Pagamento de Boleto"
     },
     {
-      "id": 734,
-      "numbanco": 1,
-      "data": "2026-10-19",
-      "valor": 394.8,
-      "operacao": "C",
-      "especie": "O",
-      "numdoc": "202610190394800",
-      "favorecido": "Luiz M. de Souza",
-      "historico": "TED Transf.Eletr.Disponiv"
-    },
-    {
       "id": 735,
       "numbanco": 1,
       "data": "2026-10-19",
