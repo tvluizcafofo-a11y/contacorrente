@@ -3941,17 +3941,6 @@
       "historico": "Transfer�ncia recebida"
     },
     {
-      "id": 744,
-      "numbanco": 1,
-      "data": "2026-10-20",
-      "valor": 345.42,
-      "operacao": "C",
-      "especie": "A",
-      "numdoc": "202610200345420",
-      "favorecido": "Luiz M. de Souza",
-      "historico": "TED-Cr�dito em Conta"
-    },
-    {
       "id": 745,
       "numbanco": 1,
       "data": "2026-10-20",
