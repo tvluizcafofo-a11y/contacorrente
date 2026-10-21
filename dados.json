@@ -3919,17 +3919,6 @@
       "historico": "Pagto Energia El�trica"
     },
     {
-      "id": 742,
-      "numbanco": 1,
-      "data": "2026-10-19",
-      "valor": 394.8,
-      "operacao": "C",
-      "especie": "A",
-      "numdoc": "202610190394800",
-      "favorecido": "Luiz M. de Souza",
-      "historico": "TED-Cr�dito em Conta"
-    },
-    {
       "id": 743,
       "numbanco": 1,
       "data": "2026-10-20",
