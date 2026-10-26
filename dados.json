@@ -3928,6 +3928,105 @@
       "numdoc": "2026102111500000",
       "favorecido": "21/10 08:02 Luiz Martins de Souza",
       "historico": "Pix - Enviado"
+    },
+    {
+      "id": 747,
+      "numbanco": 1,
+      "data": "2026-10-02",
+      "valor": 5166.4,
+      "operacao": "C",
+      "especie": "O",
+      "numdoc": "2026100205166400",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Benef�cio INSS"
+    },
+    {
+      "id": 748,
+      "numbanco": 1,
+      "data": "2026-10-05",
+      "valor": 19.62,
+      "operacao": "C",
+      "especie": "A",
+      "numdoc": "20261005019620",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "TED-Cr�dito em Conta"
+    },
+    {
+      "id": 749,
+      "numbanco": 1,
+      "data": "2026-10-15",
+      "valor": 124.11,
+      "operacao": "D",
+      "especie": "A",
+      "numdoc": "202610151124110",
+      "favorecido": "CEMIG DISTRIBUICAO",
+      "historico": "Pagto Energia El�trica"
+    },
+    {
+      "id": 750,
+      "numbanco": 1,
+      "data": "2026-10-19",
+      "valor": 394.8,
+      "operacao": "C",
+      "especie": "A",
+      "numdoc": "202610190394800",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "TED-Cr�dito em Conta"
+    },
+    {
+      "id": 751,
+      "numbanco": 1,
+      "data": "2026-10-20",
+      "valor": 345.42,
+      "operacao": "C",
+      "especie": "A",
+      "numdoc": "202610200345420",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "TED-Cr�dito em Conta"
+    },
+    {
+      "id": 752,
+      "numbanco": 1,
+      "data": "2026-10-23",
+      "valor": 200,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "202610231200000",
+      "favorecido": "23/10 09:08 Geisa Reck Brasil de Souz",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 753,
+      "numbanco": 1,
+      "data": "2026-10-26",
+      "valor": 40,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "20261026140000",
+      "favorecido": "25/10 14:56 ALEXIS XAVIER DA SILVA",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 754,
+      "numbanco": 1,
+      "data": "2026-10-26",
+      "valor": 107.01,
+      "operacao": "D",
+      "especie": "A",
+      "numdoc": "202610261107010",
+      "favorecido": "Pagamento de Telefone",
+      "historico": "Pagamento de Telefone"
+    },
+    {
+      "id": 755,
+      "numbanco": 1,
+      "data": "2026-10-26",
+      "valor": 80,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "20261026080000",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Recebido"
     }
   ]
 }
