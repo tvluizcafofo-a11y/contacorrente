@@ -7,32 +7,14 @@
   <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background: #e8ecf1;
-      font-family: 'Segoe UI', 'Microsoft Sans Serif', Arial, sans-serif;
-      padding: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      min-height: 100vh;
-    }
-    .app {
-      max-width: 1100px;
-      width: 100%;
-      background: #ffffff;
-      border-radius: 12px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-      padding: 24px 28px;
-      transition: all 0.2s;
-    }
-    #mensagemGlobal {
-      position: fixed; top: 10px; left: 50%; transform: translateX(-50%);
-      z-index: 9999; padding: 6px 16px; border-radius: 6px;
-      font-weight: 500; font-size: 0.9rem;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.12);
-      display: none; max-width: 90%; text-align: center;
-      transition: opacity 0.3s ease; white-space: nowrap; line-height: 1.4;
-    }
+    body { background: #e8ecf1; font-family: 'Segoe UI', 'Microsoft Sans Serif', Arial, sans-serif;
+      padding: 20px; display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; }
+    .app { max-width: 1100px; width: 100%; background: #ffffff; border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12); padding: 24px 28px; transition: all 0.2s; }
+    #mensagemGlobal { position: fixed; top: 10px; left: 50%; transform: translateX(-50%);
+      z-index: 9999; padding: 6px 16px; border-radius: 6px; font-weight: 500; font-size: 0.9rem;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.12); display: none; max-width: 90%; text-align: center;
+      transition: opacity 0.3s ease; white-space: nowrap; line-height: 1.4; }
     #mensagemGlobal.sucesso { background: #28a745; color: white; border-left: 4px solid #1e7e34; }
     #mensagemGlobal.erro { background: #dc3545; color: white; border-left: 4px solid #b02a37; }
     h1, h2, h3 { font-weight: 400; color: #1a2634; margin: 0 0 12px 0; }
@@ -291,6 +273,12 @@
       display: inline-flex; align-items: center; gap: 6px; }
     .btn-batch-excluir:hover { background: #b02a37; transform: scale(1.02); }
     .btn-batch-excluir:disabled { background: #e2a0a8; cursor: not-allowed; transform: none; }
+    .btn-batch-incluir { background: #28a745; color: white; border: none;
+      padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 13px;
+      font-weight: 600; transition: background 0.2s, transform 0.1s;
+      display: inline-flex; align-items: center; gap: 6px; }
+    .btn-batch-incluir:hover { background: #1e7e34; transform: scale(1.02); }
+    .btn-batch-incluir:disabled { background: #a8d5b3; cursor: not-allowed; transform: none; }
     .chk-conc-cell { text-align: center; width: 36px; }
     .chk-conc-cell input[type="checkbox"] { width: 16px; height: 16px; cursor: pointer; }
     @media (max-width:700px) {
@@ -715,7 +703,6 @@
 <script>
   const VERSAO = '2.0.0';
 
-  // ===== ÍCONES DE OLHO (SVG com cílios, sem traço) =====
   const OLHO_ABERTO = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" stroke="#1a2634" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' +
     '<path d="M4 16 Q16 6 28 16 Q16 26 4 16 Z"/>' +
@@ -2129,7 +2116,7 @@
     }
     html += `</div></div>`;
 
-    // ===== SOMENTE NO APP (com checkboxes em lote) =====
+    // ===== SOMENTE NO APP (checkboxes + botão único) =====
     html += `<div class="conc-bloco warn" id="bApp"><div class="conc-bloco-header" onclick="document.getElementById('bApp').classList.toggle('collapsed')"><h3>⚠️ Somente no App <span class="badge">${r.soNoApp.length}</span></h3><span class="toggle-icon">▼</span></div><div class="conc-bloco-body">`;
     if (r.soNoApp.length === 0) html += `<p style="color:#6b7a8a;">Nenhum lançamento exclusivo do app.</p>`;
     else {
@@ -2154,19 +2141,26 @@
     }
     html += `</div></div>`;
 
-    // ===== SOMENTE NO EXTRATO (com botão individual de inclusão) =====
+    // ===== SOMENTE NO EXTRATO (checkboxes + botão único) =====
     html += `<div class="conc-bloco err" id="bBan"><div class="conc-bloco-header" onclick="document.getElementById('bBan').classList.toggle('collapsed')"><h3>❌ Somente no Extrato Bancário <span class="badge">${r.soNoBanco.length}</span></h3><span class="toggle-icon">▼</span></div><div class="conc-bloco-body">`;
     if (r.soNoBanco.length === 0) html += `<p style="color:#6b7a8a;">Nenhuma transação exclusiva do extrato.</p>`;
     else {
-      html += `<p style="font-size:0.85rem; color:#8a1c1c; margin-bottom:8px;">Aparecem no extrato mas não foram cadastradas no app. Use ➕ para incluir no app.</p>`;
-      html += `<table><thead><tr><th>Data</th><th>Favorecido</th><th>Histórico</th><th>Nº Doc (FITID)</th><th>Operação</th><th class="valor-direita">Valor</th><th>Arquivo</th><th>Ação</th></tr></thead><tbody>`;
+      html += `<div class="conc-toolbar">
+        <p class="info-text" style="color:#8a1c1c;">Aparecem no extrato mas não foram cadastradas no app. Marque os registros e inclua em lote.</p>
+        <button type="button" class="btn-batch-incluir" id="btnIncluirSelConc" disabled>➕ Incluir selecionados</button>
+      </div>`;
+      html += `<table><thead><tr>
+        <th class="chk-conc-cell"><input type="checkbox" id="chkAllExtrato" title="Marcar/desmarcar todos"></th>
+        <th>Data</th><th>Favorecido</th><th>Histórico</th><th>Nº Doc (FITID)</th><th>Operação</th><th class="valor-direita">Valor</th><th>Arquivo</th>
+      </tr></thead><tbody>`;
       r.soNoBanco.forEach((t, idx) => {
         const ehC = t.operacao === 'C';
         const cl = ehC ? 'fluxo-positivo' : 'fluxo-negativo';
-        html += `<tr><td>${t.data.split('-').reverse().join('/')}</td><td>${t.favorecido || ''}</td><td>${t.historico || ''}</td><td>${t.numdoc || ''}</td>
+        html += `<tr>
+          <td class="chk-conc-cell"><input type="checkbox" class="chk-conc-extrato" data-bidx="${idx}"></td>
+          <td>${t.data.split('-').reverse().join('/')}</td><td>${t.favorecido || ''}</td><td>${t.historico || ''}</td><td>${t.numdoc || ''}</td>
           <td class="${cl}">${ehC ? 'C' : 'D'}</td><td class="valor-direita ${cl}">${formatCurrency(t.valor)}</td>
-          <td style="font-size:0.8rem; color:#6b7a8a;">${t._arquivo || ''}</td>
-          <td><button class="btn-acao" data-action="incluir-conc" data-bidx="${idx}" title="Incluir no app">➕</button></td></tr>`;
+          <td style="font-size:0.8rem; color:#6b7a8a;">${t._arquivo || ''}</td></tr>`;
       });
       html += `</tbody></table>`;
     }
@@ -2174,18 +2168,8 @@
 
     c.innerHTML = html;
 
-    // Listeners: inclusão individual (Somente no Extrato)
-    c.querySelectorAll('[data-action="incluir-conc"]').forEach(btn => {
-      btn.addEventListener('click', function (e) {
-        e.stopPropagation();
-        const idx = parseInt(this.dataset.bidx);
-        const t = r.soNoBanco[idx];
-        if (t) incluirMovConciliacao(t, r.banco.numbanco);
-      });
-    });
-
-    // Listeners: exclusão em lote (Somente no App)
-    const chkAll = c.querySelector('#chkAllConc');
+    // ---- Listeners: EXCLUSÃO em lote (Somente no App) ----
+    const chkAllApp = c.querySelector('#chkAllConc');
     const chksApp = c.querySelectorAll('.chk-conc-app');
     const btnExcSel = c.querySelector('#btnExcluirSelConc');
 
@@ -2196,21 +2180,18 @@
       btnExcSel.innerHTML = marcados > 0
         ? `🗑️ Excluir selecionados (${marcados})`
         : '🗑️ Excluir selecionados';
-      if (chkAll) {
-        chkAll.checked = chksApp.length > 0 && marcados === chksApp.length;
-        chkAll.indeterminate = marcados > 0 && marcados < chksApp.length;
+      if (chkAllApp) {
+        chkAllApp.checked = chksApp.length > 0 && marcados === chksApp.length;
+        chkAllApp.indeterminate = marcados > 0 && marcados < chksApp.length;
       }
     }
-
-    if (chkAll) {
-      chkAll.addEventListener('change', function () {
+    if (chkAllApp) {
+      chkAllApp.addEventListener('change', function () {
         chksApp.forEach(ch => { ch.checked = this.checked; });
         atualizarEstadoBtnExcluir();
       });
     }
-    chksApp.forEach(ch => {
-      ch.addEventListener('change', atualizarEstadoBtnExcluir);
-    });
+    chksApp.forEach(ch => ch.addEventListener('change', atualizarEstadoBtnExcluir));
     if (btnExcSel) {
       btnExcSel.addEventListener('click', function () {
         const ids = Array.from(c.querySelectorAll('.chk-conc-app:checked'))
@@ -2221,6 +2202,42 @@
       });
     }
     atualizarEstadoBtnExcluir();
+
+    // ---- Listeners: INCLUSÃO em lote (Somente no Extrato) ----
+    const chkAllExt = c.querySelector('#chkAllExtrato');
+    const chksExt = c.querySelectorAll('.chk-conc-extrato');
+    const btnIncSel = c.querySelector('#btnIncluirSelConc');
+
+    function atualizarEstadoBtnIncluir() {
+      if (!btnIncSel) return;
+      const marcados = c.querySelectorAll('.chk-conc-extrato:checked').length;
+      btnIncSel.disabled = marcados === 0;
+      btnIncSel.innerHTML = marcados > 0
+        ? `➕ Incluir selecionados (${marcados})`
+        : '➕ Incluir selecionados';
+      if (chkAllExt) {
+        chkAllExt.checked = chksExt.length > 0 && marcados === chksExt.length;
+        chkAllExt.indeterminate = marcados > 0 && marcados < chksExt.length;
+      }
+    }
+    if (chkAllExt) {
+      chkAllExt.addEventListener('change', function () {
+        chksExt.forEach(ch => { ch.checked = this.checked; });
+        atualizarEstadoBtnIncluir();
+      });
+    }
+    chksExt.forEach(ch => ch.addEventListener('change', atualizarEstadoBtnIncluir));
+    if (btnIncSel) {
+      btnIncSel.addEventListener('click', function () {
+        const idxs = Array.from(c.querySelectorAll('.chk-conc-extrato:checked'))
+          .map(ch => parseInt(ch.dataset.bidx))
+          .filter(i => !isNaN(i));
+        if (idxs.length === 0) { exibirMsg('Nenhum registro selecionado.', true); return; }
+        const itens = idxs.map(i => r.soNoBanco[i]).filter(Boolean);
+        incluirMovsConciliacao(itens, r.banco.numbanco);
+      });
+    }
+    atualizarEstadoBtnIncluir();
 
     c.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
@@ -2238,7 +2255,6 @@
                 `Débitos: ${formatCurrency(totalD)}\n\n` +
                 `Esta ação não pode ser desfeita.`;
     if (!confirm(msg)) return;
-
     const idsSet = new Set(ids);
     setMovimentos(todos.filter(m => !idsSet.has(m.id)));
     await salvarNoGitHub(false);
@@ -2246,26 +2262,36 @@
     conciliar();
   }
 
-  // Inclusão no app de 1 transação do extrato
-  async function incluirMovConciliacao(t, numbanco) {
-    const msg = `Incluir este movimento no app?\n\nData: ${t.data.split('-').reverse().join('/')}\nValor: ${formatCurrency(t.valor)}\nOperação: ${t.operacao === 'C' ? 'Crédito' : 'Débito'}\nFavorecido: ${t.favorecido || ''}\nHistórico: ${t.historico || ''}\nNº Doc: ${t.numdoc || 'S/N'}`;
+  // Inclusão em lote das transações do extrato "Somente no Banco"
+  async function incluirMovsConciliacao(itens, numbanco) {
+    if (!itens || itens.length === 0) { exibirMsg('Nenhum registro selecionado.', true); return; }
+    const totalC = itens.filter(t => t.operacao === 'C').reduce((s, t) => s + t.valor, 0);
+    const totalD = itens.filter(t => t.operacao === 'D').reduce((s, t) => s + t.valor, 0);
+    const msg = `Incluir ${itens.length} movimento(s) no app?\n\n` +
+                `Créditos: ${formatCurrency(totalC)}\n` +
+                `Débitos: ${formatCurrency(totalD)}\n\n` +
+                `Os registros serão adicionados ao app.`;
     if (!confirm(msg)) return;
-    const especie = classificarEspecie(t.favorecido || '', t.historico || '', t.operacao);
+
     const movs = getMovimentos();
-    movs.push({
-      id: proximoIdMovimento(),
-      numbanco: numbanco,
-      data: t.data,
-      valor: t.valor,
-      operacao: t.operacao,
-      especie: especie,
-      numdoc: t.numdoc || 'S/N',
-      favorecido: t.favorecido || '',
-      historico: t.historico || ''
+    let nextId = proximoIdMovimento();
+    itens.forEach(t => {
+      const especie = classificarEspecie(t.favorecido || '', t.historico || '', t.operacao);
+      movs.push({
+        id: nextId++,
+        numbanco: numbanco,
+        data: t.data,
+        valor: t.valor,
+        operacao: t.operacao,
+        especie: especie,
+        numdoc: t.numdoc || 'S/N',
+        favorecido: t.favorecido || '',
+        historico: t.historico || ''
+      });
     });
     setMovimentos(movs);
     await salvarNoGitHub(false);
-    exibirMsg('Movimento incluído no app.', false);
+    exibirMsg(`✅ ${itens.length} movimento(s) incluído(s) no app.`, false);
     conciliar();
   }
 
@@ -2345,7 +2371,6 @@
     if (!carregarQRCodesLocal()) await carregarQRCodesDoGitHub();
     carregarQRCodeUI();
 
-    // QR
     document.getElementById('qrSelector').addEventListener('change', selecionarQRCode);
     document.getElementById('btnNovoQR').addEventListener('click', novoQRCode);
     document.getElementById('btnCopiarQR').addEventListener('click', copiarPayloadQR);
@@ -2355,11 +2380,9 @@
     document.getElementById('btnSalvarQR').addEventListener('click', salvarQRCodeAtual);
     document.getElementById('btnRemoverQR').addEventListener('click', removerQRCodeAtual);
 
-    // Movimentos
     document.getElementById('btnIncluirMov').addEventListener('click', incluirMovimento);
     document.getElementById('btnImportarExtrato').addEventListener('click', importarExtrato);
 
-    // Logos / fotos
     setupLogoPreview('logoFileInput', 'logoPreview');
     setupLogoPreview('editLogoFileInput', 'editLogoPreview');
     setupLogoPreview('fotoFileInput', 'fotoPreview');
@@ -2512,7 +2535,6 @@
     const f = new Date(); f.setDate(f.getDate() + 30);
     document.getElementById('dtFimFluxo').value = f.toISOString().slice(0, 10);
 
-    // Conciliação
     document.getElementById('btnConciliar').addEventListener('click', conciliar);
     document.getElementById('btnLimparConciliacao').addEventListener('click', limparConciliacao);
     document.getElementById('fileExtratoConc').addEventListener('change', function() {
