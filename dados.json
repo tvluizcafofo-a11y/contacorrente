@@ -3994,6 +3994,17 @@
       "numdoc": "202610261107010",
       "favorecido": "VIVO MOVEL - MG",
       "historico": "Pagamento de Telefone"
+    },
+    {
+      "id": 764,
+      "numbanco": 1,
+      "data": "2026-10-27",
+      "valor": 301.45,
+      "operacao": "D",
+      "especie": "A",
+      "numdoc": "202610271301450",
+      "favorecido": "CIA DE SANEAMENTO DE MG",
+      "historico": "Pgto conta �gua"
     }
   ]
 }
