@@ -703,8 +703,8 @@
 
 <script>
   const VERSAO = '2.0.0';
-  const OLHO_ABERTO = 'data:image/png;base64,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';
-  const OLHO_FECHADO = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAADJElEQVR4nO2Ze2jOYRTHP2zjdZ+ZFVZDLWm5pSXxBykpk2RYCRGSlOIvSyGFZMU/UhKi/KUkqZH9YYjl0jbN1ELkLom5zXh16vurp9V7+b37vRf6fepp7949zznPec5zOucMQkJCQkJCcoMIMBfYA5wHWoEPwHegG/gIPAHqgcPAUqCYHGIOcAr4CER9NjPwCrAa6J8tAxYBTc6k/gD3gDpgOTAVKJKn8oDhQDmwENgJXJW3vPEvge2ZNKhc28ObwBtgFzA+BVmFwHrggSOvQ8amlQ1ApxTa/t+iFQ+CBUCLY9AxYCABUwCccJScBkYErQTIB7Y5W+4+MCZIBZck2LxRQ/qZBDyWzhfAyCCE2kF9C7wCppM5ioBrwA+dy0CwQzmYzNMHGJQFvSEh/zr5iTrYNfcM2E/usgLoUtAZk1J1+g3MJPco0lNg70t1os516tiiFz2XOK653dLVHJdhek2jCgZzhfnaKV2KrJNingZZqyL7jAXea3F3+B28VwM/ARPJHkOBZs2lXiGTL/oCFyTgNVBB5ikEbmsO7fo9JQYADRL0DphG5ihWxmm6nwJlvRVY4+QhX4F1pJ9ZwHNH74wgCgtekuOtjrUzaaqA9ANqgV/S81M/rSJTkqrQSqcyclTfVausY999AXYHmOpaMaNDsu22PKLs0Et/HwGj/AqtUE5uAs7q4HtYkeGy4x1LuA4AE1KYfIkqJ22OvIfA7B59WlPxzDiVZmzgxTivuxXj7vSoUzXLe6uUTZYpIYtodScDi4GDQKOzdaKK8dbEuF59GzPacW9DEttmq+MVz4N+2jdVH+3zyQS6fBnjHWhb6SEJBEccz1Vp+1XqsNp2vOH83XuLmlRO3afoIaKt2i3vlPowxmTFpFEdkin1bHZus3gBnGdIPM6pz6Ek9JoxdxU49poC7WlTviRB32QMmaKSa2ea6mUx2ejcMO6NlqohOGXYWjJEgXNArVhNQIbYmYkqcbLQKO2slcK2JLzhxxDDCxA3kQHapWxlkv39GLLMiXTTzk21vDQYkqer3/7NkHP4MYRkcvFsYW/T9WxPIiQkhP+Dv586CF9EuOZSAAAAAElFTkSuQmCC';
+  const OLHO_ABERTO = "data:image/svg+xml;charset=utf-8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#1a2634" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>');
+  const OLHO_FECHADO = "data:image/svg+xml;charset=utf-8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#1a2634" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>');
 
   let dados = { usuarios: [], bancos: [], movimentos: [] };
   let qrCodes = [];
@@ -2094,14 +2094,15 @@
     html += `<div class="conc-bloco warn" id="bApp"><div class="conc-bloco-header" onclick="document.getElementById('bApp').classList.toggle('collapsed')"><h3>⚠️ Somente no App <span class="badge">${r.soNoApp.length}</span></h3><span class="toggle-icon">▼</span></div><div class="conc-bloco-body">`;
     if (r.soNoApp.length === 0) html += `<p style="color:#6b7a8a;">Nenhum lançamento exclusivo do app.</p>`;
     else {
-      html += `<p style="font-size:0.85rem; color:#8a5a00; margin-bottom:8px;">Existem no app mas não foram encontrados no extrato.</p>`;
-      html += `<table><thead><tr><th>Data</th><th>Favorecido</th><th>Histórico</th><th>Nº Doc</th><th>Espécie</th><th>Operação</th><th class="valor-direita">Valor</th></tr></thead><tbody>`;
+      html += `<p style="font-size:0.85rem; color:#8a5a00; margin-bottom:8px;">Existem no app mas não foram encontrados no extrato. Use 🗑️ para excluir do app.</p>`;
+      html += `<table><thead><tr><th>Data</th><th>Favorecido</th><th>Histórico</th><th>Nº Doc</th><th>Espécie</th><th>Operação</th><th class="valor-direita">Valor</th><th>Ação</th></tr></thead><tbody>`;
       r.soNoApp.forEach(m => {
         const ehC = m.operacao === 'C';
         const cl = ehC ? 'fluxo-positivo' : 'fluxo-negativo';
         const esp = m.especie || classificarEspecie(m.favorecido, m.historico, m.operacao);
         html += `<tr><td>${m.data.split('-').reverse().join('/')}</td><td>${m.favorecido || ''}</td><td>${m.historico || ''}</td><td>${m.numdoc || ''}</td><td>${esp}</td>
-          <td class="${cl}">${ehC ? 'C' : 'D'}</td><td class="valor-direita ${cl}">${formatCurrency(m.valor)}</td></tr>`;
+          <td class="${cl}">${ehC ? 'C' : 'D'}</td><td class="valor-direita ${cl}">${formatCurrency(m.valor)}</td>
+          <td><button class="btn-acao" data-action="excluir-conc" data-movid="${m.id}" title="Excluir movimento do app">🗑️</button></td></tr>`;
       });
       html += `</tbody></table>`;
     }
@@ -2110,21 +2111,71 @@
     html += `<div class="conc-bloco err" id="bBan"><div class="conc-bloco-header" onclick="document.getElementById('bBan').classList.toggle('collapsed')"><h3>❌ Somente no Extrato Bancário <span class="badge">${r.soNoBanco.length}</span></h3><span class="toggle-icon">▼</span></div><div class="conc-bloco-body">`;
     if (r.soNoBanco.length === 0) html += `<p style="color:#6b7a8a;">Nenhuma transação exclusiva do extrato.</p>`;
     else {
-      html += `<p style="font-size:0.85rem; color:#8a1c1c; margin-bottom:8px;">Aparecem no extrato mas não foram cadastradas no app.</p>`;
-      html += `<table><thead><tr><th>Data</th><th>Favorecido</th><th>Histórico</th><th>Nº Doc (FITID)</th><th>Operação</th><th class="valor-direita">Valor</th><th>Arquivo</th></tr></thead><tbody>`;
-      r.soNoBanco.forEach(t => {
+      html += `<p style="font-size:0.85rem; color:#8a1c1c; margin-bottom:8px;">Aparecem no extrato mas não foram cadastradas no app. Use ➕ para incluir no app.</p>`;
+      html += `<table><thead><tr><th>Data</th><th>Favorecido</th><th>Histórico</th><th>Nº Doc (FITID)</th><th>Operação</th><th class="valor-direita">Valor</th><th>Arquivo</th><th>Ação</th></tr></thead><tbody>`;
+      r.soNoBanco.forEach((t, idx) => {
         const ehC = t.operacao === 'C';
         const cl = ehC ? 'fluxo-positivo' : 'fluxo-negativo';
         html += `<tr><td>${t.data.split('-').reverse().join('/')}</td><td>${t.favorecido || ''}</td><td>${t.historico || ''}</td><td>${t.numdoc || ''}</td>
           <td class="${cl}">${ehC ? 'C' : 'D'}</td><td class="valor-direita ${cl}">${formatCurrency(t.valor)}</td>
-          <td style="font-size:0.8rem; color:#6b7a8a;">${t._arquivo || ''}</td></tr>`;
+          <td style="font-size:0.8rem; color:#6b7a8a;">${t._arquivo || ''}</td>
+          <td><button class="btn-acao" data-action="incluir-conc" data-bidx="${idx}" title="Incluir no app">➕</button></td></tr>`;
       });
       html += `</tbody></table>`;
     }
     html += `</div></div>`;
 
     c.innerHTML = html;
+
+    c.querySelectorAll('[data-action="excluir-conc"]').forEach(btn => {
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        excluirMovConciliacao(parseInt(this.dataset.movid));
+      });
+    });
+    c.querySelectorAll('[data-action="incluir-conc"]').forEach(btn => {
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        const idx = parseInt(this.dataset.bidx);
+        const t = r.soNoBanco[idx];
+        if (t) incluirMovConciliacao(t, r.banco.numbanco);
+      });
+    });
+
     c.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  async function excluirMovConciliacao(id) {
+    const mov = getMovimentos().find(m => m.id === id);
+    if (!mov) { exibirMsg('Movimento não encontrado.', true); return; }
+    const msg = `Excluir este movimento do app?\n\nData: ${mov.data.split('-').reverse().join('/')}\nFavorecido: ${mov.favorecido || ''}\nValor: ${formatCurrency(mov.valor)}\n\nEsta ação não pode ser desfeita.`;
+    if (!confirm(msg)) return;
+    setMovimentos(getMovimentos().filter(m => m.id !== id));
+    await salvarNoGitHub(false);
+    exibirMsg('Movimento excluído do app.', false);
+    conciliar();
+  }
+
+  async function incluirMovConciliacao(t, numbanco) {
+    const msg = `Incluir este movimento no app?\n\nData: ${t.data.split('-').reverse().join('/')}\nValor: ${formatCurrency(t.valor)}\nOperação: ${t.operacao === 'C' ? 'Crédito' : 'Débito'}\nFavorecido: ${t.favorecido || ''}\nHistórico: ${t.historico || ''}\nNº Doc: ${t.numdoc || 'S/N'}`;
+    if (!confirm(msg)) return;
+    const especie = classificarEspecie(t.favorecido || '', t.historico || '', t.operacao);
+    const movs = getMovimentos();
+    movs.push({
+      id: proximoIdMovimento(),
+      numbanco: numbanco,
+      data: t.data,
+      valor: t.valor,
+      operacao: t.operacao,
+      especie: especie,
+      numdoc: t.numdoc || 'S/N',
+      favorecido: t.favorecido || '',
+      historico: t.historico || ''
+    });
+    setMovimentos(movs);
+    await salvarNoGitHub(false);
+    exibirMsg('Movimento incluído no app.', false);
+    conciliar();
   }
 
   // ===== AUX =====
