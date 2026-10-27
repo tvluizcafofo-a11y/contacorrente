@@ -4018,17 +4018,6 @@
       "historico": "Pix - Recebido"
     },
     {
-      "id": 768,
-      "numbanco": 1,
-      "data": "2026-10-15",
-      "valor": 124.11,
-      "operacao": "D",
-      "especie": "A",
-      "numdoc": "202610151124110",
-      "favorecido": "CEMIG DISTRIBUICAO",
-      "historico": "Pagto Energia El�trica"
-    },
-    {
       "id": 769,
       "numbanco": 1,
       "data": "2026-10-19",
