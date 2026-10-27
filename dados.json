@@ -3952,17 +3952,6 @@
       "historico": "Pix - Enviado"
     },
     {
-      "id": 754,
-      "numbanco": 1,
-      "data": "2026-10-26",
-      "valor": 107.01,
-      "operacao": "D",
-      "especie": "A",
-      "numdoc": "202610261107010",
-      "favorecido": "Pagamento de Telefone",
-      "historico": "Pagamento de Telefone"
-    },
-    {
       "id": 755,
       "numbanco": 1,
       "data": "2026-10-26",
