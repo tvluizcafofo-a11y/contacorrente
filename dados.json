@@ -3941,7 +3941,51 @@
       "historico": "Pix - Enviado"
     },
     {
-      "id": 763,
+      "id": 753,
+      "numbanco": 1,
+      "data": "2026-10-26",
+      "valor": 80,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "20261026080000",
+      "favorecido": "26/10 10:50 25587170659 Luiz Martins d",
+      "historico": "Pix - Recebido"
+    },
+    {
+      "id": 754,
+      "numbanco": 1,
+      "data": "2026-10-26",
+      "valor": 200.96,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "202610260200960",
+      "favorecido": "26/10 15:25 07483756608 Cinthia Reck B",
+      "historico": "Pix - Recebido"
+    },
+    {
+      "id": 755,
+      "numbanco": 1,
+      "data": "2026-10-26",
+      "valor": 40,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "20261026140000",
+      "favorecido": "25/10 14:56 ALEXIS XAVIER DA SILVA",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 756,
+      "numbanco": 1,
+      "data": "2026-10-26",
+      "valor": 50,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "20261026150000",
+      "favorecido": "26/10 15:43 Geisa Reck Brasil de Souz",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 757,
       "numbanco": 1,
       "data": "2026-10-26",
       "valor": 107.01,
@@ -3950,6 +3994,28 @@
       "numdoc": "202610261107010",
       "favorecido": "VIVO MOVEL - MG",
       "historico": "Pagamento de Telefone"
+    },
+    {
+      "id": 758,
+      "numbanco": 1,
+      "data": "2026-10-27",
+      "valor": 301.45,
+      "operacao": "D",
+      "especie": "A",
+      "numdoc": "202610271301450",
+      "favorecido": "CIA DE SANEAMENTO DE MG",
+      "historico": "Pgto conta �gua"
+    },
+    {
+      "id": 759,
+      "numbanco": 1,
+      "data": "2026-10-27",
+      "valor": 150,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "202610270150000",
+      "favorecido": "27/10 10:35 25587170659 Luiz Martins d",
+      "historico": "Pix - Recebido"
     }
   ]
 }
