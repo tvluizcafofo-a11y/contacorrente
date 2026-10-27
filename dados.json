@@ -3996,17 +3996,6 @@
       "historico": "TED-Cr�dito em Conta"
     },
     {
-      "id": 758,
-      "numbanco": 1,
-      "data": "2026-10-15",
-      "valor": 124.11,
-      "operacao": "D",
-      "especie": "A",
-      "numdoc": "202610151124110",
-      "favorecido": "CEMIG DISTRIBUICAO",
-      "historico": "Pagto Energia El�trica"
-    },
-    {
       "id": 761,
       "numbanco": 1,
       "data": "2026-10-26",
