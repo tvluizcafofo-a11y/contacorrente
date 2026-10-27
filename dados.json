@@ -3963,17 +3963,6 @@
       "historico": "Pix - Recebido"
     },
     {
-      "id": 757,
-      "numbanco": 1,
-      "data": "2026-10-05",
-      "valor": 19.62,
-      "operacao": "C",
-      "especie": "A",
-      "numdoc": "20261005019620",
-      "favorecido": "Luiz M. de Souza",
-      "historico": "TED-Cr�dito em Conta"
-    },
-    {
       "id": 761,
       "numbanco": 1,
       "data": "2026-10-26",
