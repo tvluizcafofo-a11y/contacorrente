@@ -3941,28 +3941,6 @@
       "historico": "Pix - Enviado"
     },
     {
-      "id": 761,
-      "numbanco": 1,
-      "data": "2026-10-26",
-      "valor": 200.96,
-      "operacao": "C",
-      "especie": "P",
-      "numdoc": "202610260200960",
-      "favorecido": "Luiz M. de Souza",
-      "historico": "Pix - Recebido"
-    },
-    {
-      "id": 762,
-      "numbanco": 1,
-      "data": "2026-10-26",
-      "valor": 50,
-      "operacao": "D",
-      "especie": "P",
-      "numdoc": "20261026150000",
-      "favorecido": "26/10 15:43 Geisa Reck Brasil de Souz",
-      "historico": "Pix - Enviado"
-    },
-    {
       "id": 763,
       "numbanco": 1,
       "data": "2026-10-26",
