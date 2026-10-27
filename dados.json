@@ -3972,6 +3972,116 @@
       "numdoc": "20261026080000",
       "favorecido": "Luiz M. de Souza",
       "historico": "Pix - Recebido"
+    },
+    {
+      "id": 756,
+      "numbanco": 1,
+      "data": "2026-10-02",
+      "valor": 5166.4,
+      "operacao": "C",
+      "especie": "O",
+      "numdoc": "2026100205166400",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Benef�cio INSS"
+    },
+    {
+      "id": 757,
+      "numbanco": 1,
+      "data": "2026-10-05",
+      "valor": 19.62,
+      "operacao": "C",
+      "especie": "A",
+      "numdoc": "20261005019620",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "TED-Cr�dito em Conta"
+    },
+    {
+      "id": 758,
+      "numbanco": 1,
+      "data": "2026-10-15",
+      "valor": 124.11,
+      "operacao": "D",
+      "especie": "A",
+      "numdoc": "202610151124110",
+      "favorecido": "CEMIG DISTRIBUICAO",
+      "historico": "Pagto Energia El�trica"
+    },
+    {
+      "id": 759,
+      "numbanco": 1,
+      "data": "2026-10-19",
+      "valor": 394.8,
+      "operacao": "C",
+      "especie": "A",
+      "numdoc": "202610190394800",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "TED-Cr�dito em Conta"
+    },
+    {
+      "id": 760,
+      "numbanco": 1,
+      "data": "2026-10-20",
+      "valor": 345.42,
+      "operacao": "C",
+      "especie": "A",
+      "numdoc": "202610200345420",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "TED-Cr�dito em Conta"
+    },
+    {
+      "id": 761,
+      "numbanco": 1,
+      "data": "2026-10-26",
+      "valor": 200.96,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "202610260200960",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Recebido"
+    },
+    {
+      "id": 762,
+      "numbanco": 1,
+      "data": "2026-10-26",
+      "valor": 50,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "20261026150000",
+      "favorecido": "26/10 15:43 Geisa Reck Brasil de Souz",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 763,
+      "numbanco": 1,
+      "data": "2026-10-26",
+      "valor": 107.01,
+      "operacao": "D",
+      "especie": "A",
+      "numdoc": "202610261107010",
+      "favorecido": "VIVO MOVEL - MG",
+      "historico": "Pagamento de Telefone"
+    },
+    {
+      "id": 764,
+      "numbanco": 1,
+      "data": "2026-10-27",
+      "valor": 301.45,
+      "operacao": "D",
+      "especie": "A",
+      "numdoc": "202610271301450",
+      "favorecido": "CIA DE SANEAMENTO DE MG",
+      "historico": "Pgto conta �gua"
+    },
+    {
+      "id": 765,
+      "numbanco": 1,
+      "data": "2026-10-27",
+      "valor": 150,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "202610270150000",
+      "favorecido": "Luiz M. de Souza",
+      "historico": "Pix - Recebido"
     }
   ]
 }
