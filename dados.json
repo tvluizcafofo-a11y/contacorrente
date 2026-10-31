@@ -4060,6 +4060,28 @@
       "numdoc": "202610300700000",
       "favorecido": "Luiz M. de Souza",
       "historico": "Pix - Recebido"
+    },
+    {
+      "id": 779,
+      "numbanco": 1,
+      "data": "2026-11-03",
+      "valor": 70,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "20261103170000",
+      "favorecido": "31/10 14:56 LUIZ MARTINS DE SOUZA",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 780,
+      "numbanco": 1,
+      "data": "2026-11-03",
+      "valor": 244.12,
+      "operacao": "D",
+      "especie": "A",
+      "numdoc": "202611031244120",
+      "favorecido": "CONSELHO REGIONAL DE ADMINISTR",
+      "historico": "Pagamento de Boleto"
     }
   ]
 }
