@@ -1211,6 +1211,28 @@
       "numdoc": "20261109010",
       "favorecido": "09/11 20:39 00025587170659 LUIZ MARTIN",
       "historico": "Pix - Recebido"
+    },
+    {
+      "id": 822,
+      "numbanco": 1,
+      "data": "2026-11-10",
+      "valor": 130.99,
+      "operacao": "D",
+      "especie": "A",
+      "numdoc": "202611101130990",
+      "favorecido": "Pagamento de Telefone",
+      "historico": "Pagamento de Telefone"
+    },
+    {
+      "id": 823,
+      "numbanco": 1,
+      "data": "2026-11-10",
+      "valor": 121,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "202611100121000",
+      "favorecido": "10/11 07:42 00025587170659 LUIZ MARTIN",
+      "historico": "Pix - Recebido"
     }
   ]
 }
