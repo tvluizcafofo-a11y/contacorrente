@@ -1475,6 +1475,28 @@
       "numdoc": "2026111615267530",
       "favorecido": "BANCO XP S.A",
       "historico": "Pagamento de Boleto"
+    },
+    {
+      "id": 846,
+      "numbanco": 1,
+      "data": "2026-11-16",
+      "valor": 1208,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "2026111601208000",
+      "favorecido": "16/11 12:23 00052150062615 JACKSON ROD",
+      "historico": "Pix - Recebido"
+    },
+    {
+      "id": 847,
+      "numbanco": 1,
+      "data": "2026-11-16",
+      "valor": 23,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "20261116023000",
+      "favorecido": "16/11 12:37 00025587170659 LUIZ MARTIN",
+      "historico": "Pix - Recebido"
     }
   ]
 }
