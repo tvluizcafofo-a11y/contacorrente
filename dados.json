@@ -1442,6 +1442,39 @@
       "numdoc": "20261116152000",
       "favorecido": "14/11 17:25 ALEXIS XAVIER DA SILVA",
       "historico": "Pix - Enviado"
+    },
+    {
+      "id": 843,
+      "numbanco": 1,
+      "data": "2026-11-16",
+      "valor": 32,
+      "operacao": "D",
+      "especie": "P",
+      "numdoc": "20261116132000",
+      "favorecido": "15/11 16:22 ALEXIS XAVIER DA SILVA",
+      "historico": "Pix - Enviado"
+    },
+    {
+      "id": 844,
+      "numbanco": 1,
+      "data": "2026-11-16",
+      "valor": 5021,
+      "operacao": "C",
+      "especie": "P",
+      "numdoc": "2026111605021000",
+      "favorecido": "16/11 11:19 00025587170659 LUIZ MARTIN",
+      "historico": "Pix - Recebido"
+    },
+    {
+      "id": 845,
+      "numbanco": 1,
+      "data": "2026-11-16",
+      "valor": 5267.53,
+      "operacao": "D",
+      "especie": "A",
+      "numdoc": "2026111615267530",
+      "favorecido": "BANCO XP S.A",
+      "historico": "Pagamento de Boleto"
     }
   ]
 }
