@@ -1497,6 +1497,28 @@
       "numdoc": "20261116023000",
       "favorecido": "16/11 12:37 00025587170659 LUIZ MARTIN",
       "historico": "Pix - Recebido"
+    },
+    {
+      "id": 848,
+      "numbanco": 1,
+      "data": "2026-11-18",
+      "valor": 355.5,
+      "operacao": "D",
+      "especie": "A",
+      "numdoc": "202611181355500",
+      "favorecido": "PJBANK PAGAMENTOS S A",
+      "historico": "Pagamento de Boleto"
+    },
+    {
+      "id": 849,
+      "numbanco": 1,
+      "data": "2026-11-18",
+      "valor": 446.68,
+      "operacao": "C",
+      "especie": "O",
+      "numdoc": "202611180446680",
+      "favorecido": "102 0001    25587170659 LUIZ MARTINS D",
+      "historico": "TED Transf.Eletr.Dispon�v"
     }
   ]
 }
